@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     // create audio clip
     public AudioClip deathClip;
+    public AudioClip projectileClip;
 
     // create rigid body
     private Rigidbody2D rb;
@@ -72,6 +73,9 @@ public class Player : MonoBehaviour
         Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y + 1);
         Vector2 direction = clickPosition - playerPosition;
         direction.Normalize();
+
+        // play projectile sound
+        AudioSource.PlayClipAtPoint(projectileClip, transform.position);
 
         // create projectile and make it move
         GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.identity);
