@@ -9,6 +9,10 @@ public class Player : MonoBehaviour
     public float spookLevel = 0;
     public float speed;
 
+    // For shooting
+    public GameObject playerProjectile;
+    public float projectileSpeed = 15.0f;
+
     // create audio clip
     public AudioClip deathClip;
 
@@ -28,6 +32,11 @@ public class Player : MonoBehaviour
     {
         Vector2 moveInput = new Vector2( Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVel = moveInput.normalized * speed;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
     private void FixedUpdate()
@@ -54,6 +63,19 @@ public class Player : MonoBehaviour
 
             }
         }
+    }
+
+    void Shoot()
+    {
+        // get positions
+        Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y + 1);
+        Vector2 direction = clickPosition - playerPosition;
+        direction.Normalize();
+
+        // create projectile and make it move
+        GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
     }
 
 }
