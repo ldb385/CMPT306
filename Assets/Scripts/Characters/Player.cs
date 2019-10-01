@@ -41,18 +41,17 @@ public class Player : MonoBehaviour
         // check if the object the player collided with was an enemy
         if (col.gameObject.CompareTag("Enemy"))
         {
+            // players spook level goes up
+            spookLevel++;
+
             // if spook meter is full, player is "killed"
             if(spookLevel >= 10)
             {
-                // play the death sound
+                // play death sound
                 AudioSource.PlayClipAtPoint(deathClip, transform.position);
                 // mark object destroyed in the next frame
                 Destroy(gameObject);
-            }
-            // otherwise increase spook meter
-            else
-            {
-                spookLevel++;
+
             }
         }
     }
