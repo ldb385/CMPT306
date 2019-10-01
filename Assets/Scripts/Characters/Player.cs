@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     // create rigid body
     private Rigidbody2D rb;
+    private bool faceRight;
+
     // Create the movement velocity
     private Vector2 moveVel;
     
@@ -33,6 +35,17 @@ public class Player : MonoBehaviour
     {
         Vector2 moveInput = new Vector2( Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVel = moveInput.normalized * speed;
+        if (Input.GetKeyDown(KeyCode.D)){
+            if(faceRight==true){
+                Flip();
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.A)){
+            if(faceRight==false){
+                Flip();
+            }
+        }
+        
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -82,4 +95,10 @@ public class Player : MonoBehaviour
         projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
     }
 
+    // flips the sprite on key press
+    private void Flip(){
+            faceRight = !faceRight;
+            transform.Rotate(0f, 180f, 0f);
+
+    }
 }
