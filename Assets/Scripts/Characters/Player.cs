@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     // create rigid body
     private Rigidbody2D rb;
+
+    // create faceing bool
     private bool faceRight;
 
     // Create the movement velocity
