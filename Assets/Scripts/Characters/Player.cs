@@ -6,9 +6,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Set a spook meter
-    public float spookLevel;
+    public float spookLevel = 0;
     public float speed;
-    
+
+    // create audio clip
+    public AudioClip deathClip;
+
     // create rigid body
     private Rigidbody2D rb;
     // Create the movement velocity
@@ -31,4 +34,27 @@ public class Player : MonoBehaviour
     {
         rb.MovePosition( rb.position + moveVel * Time.fixedDeltaTime );
     }
+
+    // check if the enemy physically touches the player (demonstrating melee damage for now?)
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        // check if the object the player collided with was an enemy
+        if (col.gameObject.CompareTag("Enemy"))
+        {
+            // if spook meter is full, player is "killed"
+            if(spookLevel >= 10)
+            {
+                // play the death sound
+                AudioSource.PlayClipAtPoint(deathClip, transform.position);
+                // mark object destroyed in the next frame
+                Destroy(gameObject);
+            }
+            // otherwise increase spook meter
+            else
+            {
+                spookLevel++;
+            }
+        }
+    }
+
 }
