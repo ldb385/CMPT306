@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
     {
         // get positions
         Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y + 1);
+        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
         Vector2 direction = clickPosition - playerPosition;
         direction.Normalize();
 
