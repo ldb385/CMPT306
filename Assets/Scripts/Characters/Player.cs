@@ -38,12 +38,12 @@ public class Player : MonoBehaviour
         Vector2 moveInput = new Vector2( Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVel = moveInput.normalized * speed;
         if (Input.GetKeyDown(KeyCode.D)){
-            if(faceRight==true){
+            if(faceRight==false){
                 Flip();
             }
         }
         else if(Input.GetKeyDown(KeyCode.A)){
-            if(faceRight==false){
+            if(faceRight==true){
                 Flip();
             }
         }
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     {
         // get positions
         Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y + 1);
+        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
         Vector2 direction = clickPosition - playerPosition;
         direction.Normalize();
 
