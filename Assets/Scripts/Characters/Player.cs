@@ -81,6 +81,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    //void DestroyProjectile(Collision2D obstacle, GameObject projectile)
+    //{
+    //    if (obstacle.gameObject.CompareTag("Obstacle"))
+    //    {
+    //        // play animation/sound here?
+    //        Destroy(projectile);
+    //    }
+
+    //    // destroy projectile after 4 seconds if it hasn't hit anything
+    //    Destroy(projectile, 4.0f);
+    //}
+
     void Shoot()
     {
         // get positions
@@ -95,6 +107,12 @@ public class Player : MonoBehaviour
         // create projectile and make it move
         GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.identity);
         projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
+
+        // destroy projectile after 4 seconds if it hasn't hit anything
+        Destroy(projectile, 4.0f);
+
+        // remove above line and use DestroyProjectile once obstacles implemented
+        //DestroyProjectile(obstacle, projectile);
     }
 
     // flips the sprite on key press
