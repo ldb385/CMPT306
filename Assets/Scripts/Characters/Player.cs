@@ -38,12 +38,12 @@ public class Player : MonoBehaviour
         Vector2 moveInput = new Vector2( Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVel = moveInput.normalized * speed;
         if (Input.GetKeyDown(KeyCode.D)){
-            if(faceRight==false){
+            if(faceRight==true){
                 Flip();
             }
         }
         else if(Input.GetKeyDown(KeyCode.A)){
-            if(faceRight==true){
+            if(faceRight==false){
                 Flip();
             }
         }
@@ -61,10 +61,10 @@ public class Player : MonoBehaviour
     }
 
     // check if the enemy physically touches the player (demonstrating melee damage for now?)
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         // check if the object the player collided with was an enemy
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.CompareTag("Enemies"))
         {
             // players spook level goes up
             spookLevel++;
@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
     {
         // get positions
         Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
+        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y + 1);
         Vector2 direction = clickPosition - playerPosition;
         direction.Normalize();
 
