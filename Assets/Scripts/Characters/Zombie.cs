@@ -17,10 +17,15 @@ public class Zombie : MonoBehaviour
 
     private int _chargeFatigue;
     private bool _canCharge;
+
     // the max frames for zombie to be fatigued
     [SerializeField] private int maxFatigue;
-    
-    
+
+    // array to hold zombie sounds
+    public AudioSource _as;
+    public AudioClip[] audioClipArray;
+
+
     /**
      * simple following command that follows target based off vector position
      */
@@ -54,7 +59,7 @@ public class Zombie : MonoBehaviour
                 _canCharge = false;
 
             }
-        }
+        } 
         else
         {
             // *** Tint zombie when its not charging ( CAN BE TAKEN OUT ) ***
@@ -86,7 +91,20 @@ public class Zombie : MonoBehaviour
         _chargeFatigue = 0;
         _canCharge = true;
 
+        // play
+
+
+        InvokeRepeating("PlaySound", 0.001f, 5f);
+
     }
+
+    void PlaySound()
+    {
+        _as.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
+        _as.PlayOneShot(_as.clip);
+        Debug.Log("zombie sound");
+    }
+
     
     // Update is called once per frame
     void FixedUpdate()
