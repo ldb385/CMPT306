@@ -9,6 +9,9 @@ public class Ghost : MonoBehaviour
     // Ghost speed, Note, this should be faster then average since the player will not
     // immidiately be targeted
     public float speed;
+    
+    // Stop enemy from ending up on top of player
+    private float stopDist = 0.65f;
 
     // these are used for detection and movement of AI
     public float visibilityDistance;
@@ -71,13 +74,16 @@ public class Ghost : MonoBehaviour
      */
     private void movement()
     {
-        if (canSeePlayer())
+        if (Vector2.Distance(transform.position, target.position) > stopDist)
         {
-            Chase();
-        }
-        else
-        {
-            wander();
+            if (canSeePlayer())
+            {
+                Chase();
+            }
+            else
+            {
+                wander();
+            }
         }
     }
 

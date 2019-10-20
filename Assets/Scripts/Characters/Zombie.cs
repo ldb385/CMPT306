@@ -14,6 +14,9 @@ public class Zombie : MonoBehaviour
     public float chargeSpeed;
     // distance that charge will be called at
     public float chargeDist;
+    
+    // Stop enemy from ending up on top of player
+    private float stopDist = 0.65f;
 
 
     private int _chargeFatigue;
@@ -115,15 +118,18 @@ public class Zombie : MonoBehaviour
      */
     private void movement()
     {
-        // check if the enemy is close enough to charge
-        if (Vector2.Distance(transform.position, target.position) <=  chargeDist )
+        if (Vector2.Distance(transform.position, target.position) > stopDist)
         {
-            Charge();
-        }
-        else
-        {
-            // if not close enough to charge simply chase
-            Chase();
+            // check if the enemy is close enough to charge
+            if (Vector2.Distance(transform.position, target.position) <= chargeDist)
+            {
+                Charge();
+            }
+            else
+            {
+                // if not close enough to charge simply chase
+                Chase();
+            }
         }
     }
 
