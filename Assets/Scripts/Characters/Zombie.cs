@@ -5,7 +5,8 @@ using System.Collections.Generic;
 
 public class Zombie : MonoBehaviour
 {
-    public Transform target;
+    // Target will always be player
+    private Transform target;
     
     // speed at which to follow player
     public float chaseSpeed;
@@ -19,7 +20,7 @@ public class Zombie : MonoBehaviour
     private bool _canCharge;
 
     // the max frames for zombie to be fatigued
-    [SerializeField] private int maxFatigue;
+    public int maxFatigue;
 
     // array to hold zombie sounds
     public AudioSource _as;
@@ -88,6 +89,10 @@ public class Zombie : MonoBehaviour
     
     void Start()
     {
+        // initialize player as target
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        // Setting up for charge functions
         _chargeFatigue = 0;
         _canCharge = true;
 
@@ -105,9 +110,10 @@ public class Zombie : MonoBehaviour
         Debug.Log("zombie sound");
     }
 
-    
-    // Update is called once per frame
-    void FixedUpdate()
+    /**
+     * this is the runner of the Zombie's movement
+     */
+    private void movement()
     {
         // check if the enemy is close enough to charge
         if (Vector2.Distance(transform.position, target.position) <=  chargeDist )
@@ -119,6 +125,13 @@ public class Zombie : MonoBehaviour
             // if not close enough to charge simply chase
             Chase();
         }
+    }
+
+    
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        movement();
         
         // check if player is close enough to attack the player
         if (Vector2.Distance(transform.position, target.position) <= 1)
