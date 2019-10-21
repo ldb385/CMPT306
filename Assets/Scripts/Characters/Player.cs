@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     // For shooting
     public GameObject playerProjectile;
     public float projectileSpeed = 15.0f;
-
+    public float ballonAmmo = 0.0f;
+    
     // create audio clip
     public AudioClip deathClip;
     public AudioClip projectileClip;
@@ -63,7 +64,7 @@ public class Player : MonoBehaviour
     // check if the enemy physically touches the player (demonstrating melee damage for now?)
     void OnCollisionEnter2D(Collision2D col)
     {
-        // check if the object the player collided with was an enemy
+        // check if the object the player collided with was an enemy or Pick up
         if (col.gameObject.CompareTag("Enemies"))
         {
             // players spook level goes up
@@ -79,7 +80,40 @@ public class Player : MonoBehaviour
 
             }
         }
+        else if(col.gameObject.CompareTag("Soda")){
+            StartCoroutine(SodaPickUp());
+        }
+        else if(col.gameObject.CompareTag("Cape")){
+            StartCoroutine(CapePickUp());
+        }
+        else if(col.gameObject.CompareTag("Flashlight")){
+            FlashlightPickUp();
+        }
+        else if(col.gameObject.CompareTag("Nerf")){
+            StartCoroutine(NerfGunPickUp());
+        }
+        else if(col.gameObject.CompareTag("Teddy")){
+            TeddyBearPickUp();
+        }
+        else if(col.gameObject.CompareTag("Candy")){
+            CandyCornPickUp();
+        }
+        else if(col.gameObject.CompareTag("Balloon")){
+            WaterBalloonPickUp();
+        }
     }
+
+    //void DestroyProjectile(Collision2D obstacle, GameObject projectile)
+    //{
+    //    if (obstacle.gameObject.CompareTag("Obstacle"))
+    //    {
+    //        // play animation/sound here?
+    //        Destroy(projectile);
+    //    }
+
+    //    // destroy projectile after 4 seconds if it hasn't hit anything
+    //    Destroy(projectile, 4.0f);
+    //}
 
     void Shoot()
     {
@@ -95,6 +129,12 @@ public class Player : MonoBehaviour
         // create projectile and make it move
         GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.identity);
         projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
+
+        // destroy projectile after 4 seconds if it hasn't hit anything
+        Destroy(projectile, 4.0f);
+
+        // remove above line and use DestroyProjectile once obstacles implemented
+        //DestroyProjectile(obstacle, projectile);
     }
 
     // flips the sprite on key press
@@ -103,4 +143,46 @@ public class Player : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
 
     }
+    
+    // SodaPickUp changes the speed to 4.5(?) instead of 3.0
+    public IEnumerator SodaPickUp(){
+            
+            speed = 4.5f;
+            yield return new WaitForSecondsRealtime(5);
+            speed = 3.0f;
+    }
+    
+    // CapePickUp gives the player immunity from damage for 15(?) seconds
+    public IEnumerator CapePickUp(){
+            //TO BE DONE
+            yield return new WaitForSecondsRealtime(15);
+    }
+    
+    // FlashlightPickUp despooks player by 5(?)
+    public void FlashlightPickUp(){
+            spookLevel -=5.0f;
+    }
+    
+    // NerfGunPickUp gives the player rapid fire for 20(?) seconds
+    public IEnumerator NerfGunPickUp(){
+            projectileSpeed = 25.0f;
+            yield return new WaitForSecondsRealtime(20);
+            projectileSpeed = 15.0f;
+    }
+    
+    // TeddyBearPickUp despooks the player by 2(?)
+    public void TeddyBearPickUp(){
+            spookLevel -=2.0f;
+    }
+    
+    // CandyCornPickUp despooks the player by 1(?)
+    public void CandyCornPickUp(){
+            spookLevel -=1.0f;
+    }
+    
+    // WaterBallonPickUp adds a waterballon to the current amount of balloons
+    public void WaterBalloonPickUp(){
+            ballonAmmo +=1.0f;
+    }
+
 }

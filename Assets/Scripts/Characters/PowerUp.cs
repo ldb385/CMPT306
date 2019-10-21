@@ -4,42 +4,23 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public float multiplier = 1.5f;
-    public float duration = 10f;
-    public GameObject pickupEffect;
-
-    void OnTriggerEnter(Collider other)
+    
+    public float oldSpeed = 3.0f;
+    public GameObject player;
+    //private float timer = 0.0f;
+    
+    void OnTriggerEnter2D(Collider2D other)
     {
+        // Will Destroy the pickup only if the player goes over it
         if (other.CompareTag("Player"))
         {
-            StartCoroutine(Pickup(other));
+            CleanUp();
         }
-        else
-        {
-            Debug.Log("Power up can't be picked up by enemies.");
-        }
+        
     }
 
-    IEnumerator Pickup(Collider player)
+    private void CleanUp()
     {
-        
-        //Spawn some kind of effect
-        Instantiate(pickupEffect, transform.position, transform.rotation);
-
-        //Apply effect to player
-        Player wiz = player.GetComponent<Player>();
-        wiz.speed *= multiplier;
-
-        //Timer
-        //Makes the game object disappear
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
-        yield return new WaitForSeconds(duration);
-        //Returns to original value
-        wiz.speed /= multiplier;
-
-        //Clean Up and remove from scene
         Destroy(gameObject);
-
     }
 }
