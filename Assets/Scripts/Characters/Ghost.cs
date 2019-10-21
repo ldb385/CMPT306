@@ -9,7 +9,9 @@ public class Ghost : MonoBehaviour
     // Ghost speed, Note, this should be faster then average since the player will not
     // immidiately be targeted
     public float speed;
-    
+
+    public float health = 10f;
+
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
 
@@ -109,6 +111,20 @@ public class Ghost : MonoBehaviour
         if (collision.gameObject.tag == "wall")
         {
             calcuateNewMovementVector();
+        }
+
+        // detect if hit by projectile
+        if (collision.gameObject.CompareTag("Projectile"))
+        {
+            health--;
+
+            if (health <= 0)
+            {
+                // play death sound/animation here
+
+                Destroy(gameObject);
+
+            }
         }
     }
 }

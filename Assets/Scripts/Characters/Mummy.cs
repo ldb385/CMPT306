@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Mummy : MonoBehaviour
 {
+    public float health = 10f;
     public float speed;
     private Transform target;
     
@@ -30,8 +31,23 @@ public class Mummy : MonoBehaviour
         }
     }
 
-    
-    
+    // detect if hit by projectile
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            health--;
+
+            if (health <= 0)
+            {
+                // play death sound/animation here
+                
+                Destroy(gameObject);
+
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

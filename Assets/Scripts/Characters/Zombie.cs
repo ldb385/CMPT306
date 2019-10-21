@@ -29,6 +29,24 @@ public class Zombie : MonoBehaviour
     public AudioSource _as;
     public AudioClip[] audioClipArray;
 
+    public float health = 10f;
+
+    // detect if hit by projectile
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            health--;
+
+            if (health <= 0)
+            {
+                // play death sound/animation here
+
+                Destroy(gameObject);
+
+            }
+        }
+    }
 
     /**
      * simple following command that follows target based off vector position

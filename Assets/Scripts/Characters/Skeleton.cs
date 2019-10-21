@@ -16,8 +16,9 @@ public class Skeleton : MonoBehaviour
     
     // Ranged attack radius for skeleton attack
     public float attackRange;
-    
-    
+
+    public float health = 10f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,8 +29,24 @@ public class Skeleton : MonoBehaviour
         lookingRight = true;
         lookAt();
     }
-    
-    
+
+    // detect if hit by projectile
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            health--;
+
+            if (health <= 0)
+            {
+                // play death sound/animation here
+
+                Destroy(gameObject);
+
+            }
+        }
+    }
+
     /**
      * this function will just make the skeleton flip based off the player location
      * basically just flips sprite based off player location

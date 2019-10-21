@@ -6,12 +6,28 @@ public class Alien : MonoBehaviour
 {
     public float speed;
     private Transform target;
+    public float health = 10f;
 
-    
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
-    
-    
+
+    // detect if hit by projectile
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            health--;
+
+            if (health <= 0)
+            {
+                // play death sound/animation here
+
+                Destroy(gameObject);
+
+            }
+        }
+    }
+
     /**
     * simple following command that follows target based off vector position
     */
