@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
@@ -13,6 +15,10 @@ public class Spawner : MonoBehaviour
     
     // ALL OBSTACLES
     [SerializeField] private GameObject endTable;
+    [SerializeField] private GameObject table;
+    [SerializeField] private GameObject chairSide;
+    [SerializeField] private GameObject chairBack;
+
 
     // This will store the game tiles (Phenotype)
     private Dictionary<Vector2Int, GameObject> tiles;
@@ -24,8 +30,10 @@ public class Spawner : MonoBehaviour
     public int width;
     public int height;
     
-    // Used for testing
-    public int spookMult;
+    // Used for spook level and Player spook
+    public int spookPercent;
+    private float spookLevel;
+    private int minEnemies = 3;
     
     private void Awake()
     {
@@ -34,18 +42,33 @@ public class Spawner : MonoBehaviour
         data = new Dictionary<Vector2Int, int>();
 
         data = GenerateModel();
+        
+        LoadTiles();
+    }
+
+    private void Start()
+    {
+        spookLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().spookLevel;
+        
+        data = GenerateModel();
         LoadTiles();
     }
 
     private GameObject getObstacle()
     {
-        int rnd = Random.Range(0, 1);
+        int rnd = Random.Range(0, 4);
 
         switch (rnd)
         {
             case 0:
                 // Spawn in stool
                 return endTable;
+            case 1:
+                return table;
+            case 2:
+                return chairSide;
+            case 3:
+                return chairBack;
         }
 
         // It will never hit this
@@ -91,19 +114,20 @@ public class Spawner : MonoBehaviour
         UnloadTiles();
 
         GameObject tile;
+        Vector2 diff = new Vector2(transform.position.x, transform.position.y);
 
         foreach( Vector2Int i in data.Keys )
         {
             // 0 Empty, 1 Obstacle, 2 Enemy
             switch( data[i] ){
                 case 1:
-                    
                     // Spawn in Obstacle
-                    tile = Instantiate( getObstacle(), (Vector2)i, Quaternion.identity) as GameObject;
+                    tile = Instantiate( getObstacle(), (Vector2)i + diff, Quaternion.identity) as GameObject;
                     break;
                 case 2:
                     // Spawn in Enemy
-                    tile = Instantiate( getEnemy( 2 ) , (Vector2)i, Quaternion.identity) as GameObject;
+                    tile = Instantiate( getEnemy( (int) spookLevel * ( spookPercent/100) ) ,
+                        (Vector2)i + diff, Quaternion.identity) as GameObject;
                     break;
                 default:
                     tile = null;
@@ -125,58 +149,68 @@ public class Spawner : MonoBehaviour
         }
         tiles.Clear();
     }
+    
 
-    // If model gen is happening in a different script or GameObject, use this to set the model
-    public void SetModel(Dictionary<Vector2Int, int> model)
-    {
-        data = model;
-    }
 
-    // Generate a new model for the level
-    // Currently random 10X10
-    // REPLACE THIS CODE WITH YOUR GENERATION ALGORITHM
     public Dictionary<Vector2Int, int> GenerateModel()
     {
-//        float spook = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().spookLevel;
 
-        // WILL BE REMOVED
-        int enemies = ( int ) spookMult;
-        int obstacles = 5;
+        int enemies = ( spookPercent / 100 ) * (int) ( 10.0f - spookLevel );
+
+        if (enemies < minEnemies)
+        {
+            enemies = minEnemies;
+        }
+
+        int avelen = width + height / 2;
+        int obstacles = ( avelen * 3) / Random.Range( avelen/2, avelen) ;
         
         Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
 
+        int spawned = Random.Range(1, 5);
+        
         for(int i=0; i<width; i++)
         {
             for(int j=0; j<height; j++)
             {
                 Vector2Int coord = new Vector2Int(i, j);
-                
-                // Pick whether its empty, obstacle, enemy
-                int rnd = Random.Range( 0, 3 );
-                switch (rnd)
+
+                spawned = spawned - Random.Range(0, 3);
+
+                if (spawned <= 0)
                 {
-                    // 0 Empty, 1 Obstacle, 2 Enemey
-                    case 1:
-                        obstacles--;
-                        if ( obstacles <= 0)
-                        {
-                            rnd = 0;
-                        }
-                        break;
-                    case 2:
-                        if ( enemies <= 0)
-                        {
-                            rnd = 0;
-                        }
-                        enemies--;
-                        break;
+                    // Pick whether its empty, obstacle, enemy
+                    int rnd = Random.Range(0, avelen );
+                    switch (rnd)
+                    {
+                        // 0 Empty, 1 Obstacle, 2 Enemey
+                        case 1:
+                            obstacles--;
+                            if (obstacles <= 0)
+                            {
+                                rnd = 0;
+                                spawned = Random.Range(0, 5);
+                            }
+
+                            break;
+                        case 2:
+                            if (enemies <= 0)
+                            {
+                                rnd = 0;
+                                spawned = Random.Range(0, 5);
+                            }
+
+                            enemies--;
+                            break;
+                    }
+                    
+                    // Check to make sure the coordinate isn't already added to dict
+                    if(!tmp_model.ContainsKey(coord))
+                    {
+                        tmp_model.Add(coord, rnd);
+                    }
                 }
                 
-                // Check to make sure the coordinate isn't already added to dict
-                if(!tmp_model.ContainsKey(coord))
-                {
-                    tmp_model.Add(coord, rnd);
-                }
             }
         }
         // Return the current model
