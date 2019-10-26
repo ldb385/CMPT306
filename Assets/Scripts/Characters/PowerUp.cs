@@ -5,9 +5,6 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     
-    public float oldSpeed = 3.0f;
-    public GameObject player;
-    //private float timer = 0.0f;
     
     void OnTriggerEnter2D(Collider2D other)
     {

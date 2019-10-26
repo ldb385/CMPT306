@@ -26,6 +26,9 @@ public class Player : MonoBehaviour
 
     // Create the movement velocity
     private Vector2 moveVel;
+
+	// Create invincible state
+	private bool invincible = false;
     
     // Start is called before the first frame update
     void Start()
@@ -67,41 +70,47 @@ public class Player : MonoBehaviour
         // check if the object the player collided with was an enemy or Pick up
         if (col.gameObject.CompareTag("Enemies"))
         {
-            // players spook level goes up
-            spookLevel++;
+			if(!invincible){
+				 // players spook level goes up
+				spookLevel++;
 
-            // if spook meter is full, player is "killed"
-            if(spookLevel >= 10)
-            {
-                // play death sound
-                AudioSource.PlayClipAtPoint(deathClip, transform.position);
-                // mark object destroyed in the next frame
-                Destroy(gameObject);
+				// if spook meter is full, player is "killed"
+				if(spookLevel >= 10)
+				{
+					// play death sound
+					AudioSource.PlayClipAtPoint(deathClip, transform.position);
+					// mark object destroyed in the next frame
+					Destroy(gameObject);
 
-            }
-        }
-        else if(col.gameObject.CompareTag("Soda")){
-            StartCoroutine(SodaPickUp());
-        }
-        else if(col.gameObject.CompareTag("Cape")){
-            StartCoroutine(CapePickUp());
-        }
-        else if(col.gameObject.CompareTag("Flashlight")){
-            FlashlightPickUp();
-        }
-        else if(col.gameObject.CompareTag("Nerf")){
-            StartCoroutine(NerfGunPickUp());
-        }
-        else if(col.gameObject.CompareTag("Teddy")){
-            TeddyBearPickUp();
-        }
-        else if(col.gameObject.CompareTag("Candy")){
-            CandyCornPickUp();
-        }
-        else if(col.gameObject.CompareTag("Balloon")){
-            WaterBalloonPickUp();
+				}
+			}
         }
     }
+
+	// check if the player has picked up an item
+	void OnTriggerEnter2D(Collider2D c){
+		if(c.gameObject.CompareTag("Soda")){
+            StartCoroutine(SodaPickUp());
+        }
+        else if(c.gameObject.CompareTag("Cape")){
+            StartCoroutine(CapePickUp());
+        }
+        else if(c.gameObject.CompareTag("Flashlight")){
+            FlashlightPickUp();
+        }
+        else if(c.gameObject.CompareTag("Nerf")){
+            StartCoroutine(NerfGunPickUp());
+        }
+        else if(c.gameObject.CompareTag("Teddy")){
+            TeddyBearPickUp();
+        }
+        else if(c.gameObject.CompareTag("Candy")){
+            CandyCornPickUp();
+        }
+        else if(c.gameObject.CompareTag("Balloon")){
+            WaterBalloonPickUp();
+        }
+	}
 
     //void DestroyProjectile(Collision2D obstacle, GameObject projectile)
     //{
@@ -144,18 +153,18 @@ public class Player : MonoBehaviour
 
     }
     
-    // SodaPickUp changes the speed to 4.5(?) instead of 3.0
+    // SodaPickUp changes the speed to 2.0(?)
     public IEnumerator SodaPickUp(){
-            
-            speed = 4.5f;
+            speed = 2.0f;
             yield return new WaitForSecondsRealtime(5);
-            speed = 3.0f;
+            speed = 1.0f;
     }
     
     // CapePickUp gives the player immunity from damage for 15(?) seconds
     public IEnumerator CapePickUp(){
-            //TO BE DONE
+            invincible = true;
             yield return new WaitForSecondsRealtime(15);
+			invincible = false;
     }
     
     // FlashlightPickUp despooks player by 5(?)
