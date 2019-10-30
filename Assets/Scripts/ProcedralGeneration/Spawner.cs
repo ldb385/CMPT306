@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,11 +26,13 @@ public class Spawner : MonoBehaviour
     // This will store the underlying data structure (Genotype)
     private Dictionary<Vector2Int, int> data;
     
+    // Whether enemies were already spawned
+    private bool hasBeenActivated = false;
 
     // the dimension of the room
     public int width;
     public int height;
-    
+
     // Used for spook level and Player spook
     public int spookPercent;
     private float spookLevel;
@@ -40,19 +43,14 @@ public class Spawner : MonoBehaviour
         // Create the data structures <VERY IMPORTANT THIS IS DONE FIRST>
         tiles = new Dictionary<Vector2Int, GameObject>();
         data = new Dictionary<Vector2Int, int>();
-
-        data = GenerateModel();
-        
-        LoadTiles();
     }
+
 
     private void Start()
     {
-        spookLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().spookLevel;
-        
-        data = GenerateModel();
-        LoadTiles();
+        createSpawner( width, height );
     }
+
 
     private GameObject getObstacle()
     {
@@ -121,20 +119,31 @@ public class Spawner : MonoBehaviour
             // 0 Empty, 1 Obstacle, 2 Enemy
             switch( data[i] ){
                 case 1:
+
                     // Spawn in Obstacle
                     tile = Instantiate( getObstacle(), (Vector2)i + diff, Quaternion.identity) as GameObject;
                     break;
                 case 2:
-                    // Spawn in Enemy
-                    tile = Instantiate( getEnemy( (int) spookLevel * ( spookPercent/100) ) ,
-                        (Vector2)i + diff, Quaternion.identity) as GameObject;
+                    if ( spookLevel <= 0 )
+                    {
+                        // Spawn in Enemy
+                        tile = Instantiate(getEnemy( 2 ),
+                            (Vector2) i + diff, Quaternion.identity) as GameObject;
+                    }
+                    else
+                    {
+                        // Spawn in Enemy
+                        tile = Instantiate(getEnemy((int) spookLevel * (spookPercent / 100)),
+                            (Vector2) i + diff, Quaternion.identity) as GameObject;
+                    }
+
                     break;
                 default:
                     tile = null;
                     break;
             }
             // Check to make sure it doesn't duplicate
-            if (!tiles.ContainsKey(i))
+            if ( !tiles.ContainsKey(i) )
                 tiles.Add(i, tile);
         }
     }
@@ -152,7 +161,7 @@ public class Spawner : MonoBehaviour
     
 
 
-    public Dictionary<Vector2Int, int> GenerateModel()
+    public Dictionary<Vector2Int, int> GenerateModel( int w, int h )
     {
 
         int enemies = ( spookPercent / 100 ) * (int) ( 10.0f - spookLevel );
@@ -162,20 +171,22 @@ public class Spawner : MonoBehaviour
             enemies = minEnemies;
         }
 
-        int avelen = width + height / 2;
+        int avelen = w + h / 2;
         int obstacles = ( avelen * 3) / Random.Range( avelen/2, avelen) ;
-        
+        int distFromObs = 3;
+        int distFromEne = 3;
+
         Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
 
         int spawned = Random.Range(1, 5);
         
-        for(int i=0; i<width; i++)
+        for(int i=0; i<w; i++)
         {
-            for(int j=0; j<height; j++)
+            for(int j=0; j<h; j++)
             {
                 Vector2Int coord = new Vector2Int(i, j);
 
-                spawned = spawned - Random.Range(0, 3);
+                spawned = spawned - 3;
 
                 if (spawned <= 0)
                 {
@@ -186,18 +197,31 @@ public class Spawner : MonoBehaviour
                         // 0 Empty, 1 Obstacle, 2 Enemey
                         case 1:
                             obstacles--;
-                            if (obstacles <= 0)
+                            if (obstacles <= 0 || distFromObs < 2 )
                             {
+                                // if there is too many or too close
                                 rnd = 0;
-                                spawned = Random.Range(0, 5);
+                                spawned = Random.Range(0, avelen);
+                                distFromObs++;
                             }
+                            else
+                            {
+                                distFromObs = 0;
+                            }
+                            
 
                             break;
                         case 2:
-                            if (enemies <= 0)
+                            if (enemies <= 0 || distFromEne < 2 )
                             {
+                                // if there is too many or too close
                                 rnd = 0;
-                                spawned = Random.Range(0, 5);
+                                spawned = Random.Range(0, avelen);
+                                distFromEne++;
+                            }
+                            else
+                            {
+                                distFromEne = 0;
                             }
 
                             enemies--;
@@ -209,6 +233,7 @@ public class Spawner : MonoBehaviour
                     {
                         tmp_model.Add(coord, rnd);
                     }
+
                 }
                 
             }
@@ -217,14 +242,45 @@ public class Spawner : MonoBehaviour
         return tmp_model;
     }
 
+
+    public void createSpawner( int wdt, int hgt )
+    {
+        // Create a rectangle that encapsulates the room so that we can use it as a trigger
+        // this is for visual purposes
+        //GameObject trig = GameObject.CreatePrimitive(PrimitiveType.Cube );
+        //trig.transform.position = new Vector2( transform.position.x + wdt/2, transform.position.y + hgt/2);
+        //trig.transform.localScale =  new Vector3(wdt, hgt, 1);
+        //trig.GetComponent<Renderer>().enabled = false;
+        //trig.GetComponent<Collider>().isTrigger = true;
+        //trigger = trig;
+
+        width = wdt;
+        height = hgt;
+    }
+
+    public void spawnIn( )
+    {
+        data = GenerateModel( width, height );
+        LoadTiles();
+        hasBeenActivated = true;
+
+    }
+
+
     // Allow quick reload of level for testing
     // This should be removed in a real game context
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
+        Vector2 player = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+        if (player.x > transform.position.x && player.x < transform.position.x + width
+                                            && player.y > transform.position.y &&
+                                            player.y < transform.position.y + height &&
+                                            !hasBeenActivated)
         {
-            data = GenerateModel();
-            LoadTiles();
+            spawnIn( );
         }
+
+
     }
 }
