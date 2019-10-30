@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8859374689890134082}
   m_Layer: 0
   m_Name: alien
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.2
+  health: 10

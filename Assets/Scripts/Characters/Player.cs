@@ -85,11 +85,11 @@ public class Player : MonoBehaviour
 				}
 			}
         }
-        Debug.Log("Working");
-        if (col.gameObject.name == "circle(Clone)")
-        {
-            Destroy(col.gameObject);
-        }
+        //Debug.Log("Working");
+        //if (col.gameObject.name == "circle(Clone)")
+        //{
+        //    Destroy(col.gameObject);
+        //}
     }
 
 	// check if the player has picked up an item
