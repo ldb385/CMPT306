@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     // For shooting
     public GameObject playerProjectile;
-    public float projectileSpeed = 15.0f;
+    public float projectileSpeed = 1f;
     public float ballonAmmo = 0.0f;
     
     // create audio clip
@@ -84,6 +84,11 @@ public class Player : MonoBehaviour
 
 				}
 			}
+        }
+        Debug.Log("Working");
+        if (col.gameObject.name == "circle(Clone)")
+        {
+            Destroy(col.gameObject);
         }
     }
 

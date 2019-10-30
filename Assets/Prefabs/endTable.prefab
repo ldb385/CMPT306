@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2851181082469291278}
   - component: {fileID: 2150139232492156755}
   m_Layer: 0
-  m_Name: tableend
-  m_TagString: Untagged
+  m_Name: endTable
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

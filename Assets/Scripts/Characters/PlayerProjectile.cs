@@ -7,17 +7,14 @@ public class PlayerProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // destroy projectile after 4 seconds if it hasn't hit anything
-        Destroy(gameObject, 4.0f);
+        // destroy projectile after 3 seconds if it hasn't hit anything
+        Destroy(gameObject, 3.0f);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Enemies"))
-        {
-            // play animation/sound?
+        // add fancy effects here
 
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }
