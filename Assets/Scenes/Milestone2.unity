@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 1626053555}
   - component: {fileID: 1626053556}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: TileGen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,7 +239,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Floor: {fileID: 7443767859827992060, guid: a699401f9f0038e4480f3e3240cdaf90, type: 3}
   Wall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe, type: 3}
-  maxWidth: 0
-  minWidth: 0
-  maxHeight: 0
-  minHeight: 0
+  RoomCount: 10
+  maxWidth: 10
+  minWidth: 5
+  maxHeight: 10
+  minHeight: 5
+  mWidth: 100
+  mHeight: 100
+  up: 0
+  down: 0
+  left: 0
+  right: 0
+  room: 0
