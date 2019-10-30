@@ -79,9 +79,9 @@ public class Map : MonoBehaviour
         int Mapwidth = 100;
         int Mapheight = 100;
 
-        for(int i=0; i<width; i++)
+        for(int i=0; i<Mapwidth; i++)
         {
-            for(int j=0; j<height; j++)
+            for(int j=0; j<Mapheight; j++)
             {
                 Vector2Int coord = new Vector2Int(i, j);
 
