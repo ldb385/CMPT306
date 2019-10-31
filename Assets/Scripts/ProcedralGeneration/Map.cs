@@ -30,25 +30,20 @@ public class Map : MonoBehaviour
     private int RoomWidth;
     private int RoomHeight;
 
-
-
     // choice weights
-    private int upW = 10;
-    private int downW = 10;
-    private int leftW = 10;
-    private int rightW = 10; 
+    private int upW = 100;
+    private int downW = 100;
+    private int leftW = 100;
+    private int rightW = 100; 
     private int roomW = 0;
+    
     // amount of rooms
     private int curRoom = 0;
-
+    
+    // create room bool
     private bool createRoom = false;
-
-
-
-    // private int Stra = 1;
-    // private int turn = 0;
-
-
+    
+    // global xy position
     private int xPos;
     private int yPos;
 
@@ -101,35 +96,48 @@ public class Map : MonoBehaviour
 
 // genotype creation     
     public Dictionary<Vector2Int, int> GenerateModel(){
-
+        // initializing the temporary model
         Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
         
+        // starting position
         xPos = 0;
         yPos = 0;
         
+        // while not all rooms are made
         while (curRoom <= RoomCount){
+            // get what direction to move
             Vector2Int coord = (CalculateChoice(xPos, yPos, tmp_model));
             
+            // if we are making a room
             if( createRoom == false){
+                // not making a room
                 if(!tmp_model.ContainsKey(coord)){
                         tmp_model.Add(coord, 0);
                 }
             }
             else{
+                // we are building a room
+                // THIS PART IS NOT RIGHT
+
                 RoomWidth = Random.Range(minWidth, maxWidth);
                 RoomHeight = Random.Range(minHeight, maxHeight);
+                // increment the amount of rooms by one
                 curRoom= curRoom + 1;
 
-                for(int i=yPos; i<RoomWidth; i++){
-                    for(int j=xPos; j<RoomHeight; j++){
-                        Vector2Int roomCoord = new Vector2Int(j,i);
-                        if(tmp_model.ContainsKey(roomCoord)){
-                            tmp_model.Remove(roomCoord);
+                /* TODO:
+                    replace this with an array of preset vecters?
+                    or
+                    find the reason why the two stupid arrays dont work
+                    */ 
+                    
+                // get positions of where the room is going to be
+                for(int i=yPos; i<=RoomHeight; i++){
+                    for(int j=xPos; j<=RoomWidth; j++){
+                        Vector2Int roomCoord = new Vector2Int(i,j);
+                        tmp_model.Remove(roomCoord);
+                        if(!tmp_model.ContainsKey(roomCoord)){
                             tmp_model.Add(roomCoord, 1);
-                            Debug.Log(roomCoord);
-                        }
-                        else{
-                            tmp_model.Add(roomCoord, 1);
+                            // Debug.Log(roomCoord);
                         }
                     }
                 }
@@ -142,61 +150,72 @@ public class Map : MonoBehaviour
 
     public Vector2Int CalculateChoice(int x, int y, Dictionary<Vector2Int, int> tmp_model){
 
-
+        // total weight
     int weightTotal = upW+downW+leftW+rightW+roomW;
-    // THIS IS BROKEN NEED TO FIX THIS PIECE OF SHIT
+        // get the choice 
      int RandomChoice = Random.Range(0, weightTotal);
+        // move up
      if ((RandomChoice -= upW) <= 0){
         upW+=10;
         downW+=2;
         leftW+=2;
         rightW+=2;
-        roomW+=5;
+        roomW+=2;
         yPos+=1;
+        Debug.Log(1);
         return new Vector2Int(x, y+1);
      }
+        // move down
     else if ((RandomChoice -= downW) <= 0){
         upW+=2;
         downW+=10;
         leftW+=2;
         rightW+=2;
-        roomW+=2;
+        roomW+=7;
         yPos-=1;
+        Debug.Log(1);
         return new Vector2Int(x, y-1);
      }
+        // move left
     else if ((RandomChoice -= leftW) <= 0){
         upW+=2;
         downW+=2;
         leftW+=10;
         rightW+=2;
-        roomW+=5;
+        roomW+=1;
         xPos-=1;
+        Debug.Log(1);
         return new Vector2Int(x-1, y);
     }
+        // move right
     else if ((RandomChoice -= rightW) <= 0){
         upW+=2;        
         downW+=2;
         leftW+=2;
-        rightW+=10;
-        roomW+=2;
+        rightW+=5;
+        roomW+=10;
         xPos+=1;
+        Debug.Log(1);
+
         return new Vector2Int(x+1, y);
     }
+        // create room
     else if ((RandomChoice -= roomW) <= 0){
         // create room
         // RoomCreation(xPos,yPos, tmp_model);
         curRoom= curRoom + 1;
-        upW=0;
-        downW=0;
-        leftW=0;
-        rightW=0;
+        upW=1;
+        downW=1;
+        leftW=2;
+        rightW=2;
         roomW=0;
         createRoom = true;
-        Debug.Log(1);
-        return new Vector2Int(x, y);
+        Debug.Log(curRoom);
+
+        return new Vector2Int(xPos, yPos);
     }
     
-    return new Vector2Int(0, 0);
+    return new Vector2Int(xPos, yPos);
 }
 
     // Allow quick reload of level for testing
