@@ -22,6 +22,9 @@ public class Ghost : MonoBehaviour
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
 
+    // create audio clips
+    public AudioClip deathClip;
+    public AudioClip chaseClip;
 
     private Transform target;
     
@@ -50,6 +53,18 @@ public class Ghost : MonoBehaviour
      */
     private void Chase()
     {
+
+        // rangedAttack(
+        if (period > laughInterval)
+        {
+            // play chase sounds
+            AudioSource.PlayClipAtPoint(chaseClip, transform.position);
+
+            period = 0;
+        }
+        period += UnityEngine.Time.deltaTime;
+
+
         // this will be used to chase the player
         transform.position = Vector2.MoveTowards(transform.position, target.position, 
             speed * Time.deltaTime);
@@ -71,6 +86,10 @@ public class Ghost : MonoBehaviour
             transform.position.y + (movementPerSecond.y * Time.deltaTime));
     }
 
+
+    public float laughInterval;
+    private float period = 0.0f;
+
     /**
      * Executes enemy movement
      */
@@ -79,8 +98,8 @@ public class Ghost : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) > stopDist)
         {
             if (canSeePlayer())
-            {
-                Chase();
+            {  
+             Chase();
             }
             else
             {
@@ -120,8 +139,8 @@ public class Ghost : MonoBehaviour
 
             if (health <= 0)
             {
-                // play death sound/animation here
-
+                // play death sound and destroy object
+                AudioSource.PlayClipAtPoint(deathClip, transform.position);
                 Destroy(gameObject);
 
             }

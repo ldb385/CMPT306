@@ -13,7 +13,11 @@ public class Skeleton : MonoBehaviour
     // following, used specifically for lookAt function
     private Vector2 relativeTarget;
     private bool lookingRight;
-    
+
+    // create audio clips
+    public AudioClip deathClip;
+    public AudioClip projectileClip;
+
     // Ranged attack radius for skeleton attack
     public float attackRange;
 
@@ -28,6 +32,7 @@ public class Skeleton : MonoBehaviour
         // set orientation of enemy
         lookingRight = true;
         lookAt();
+
     }
 
     // detect if hit by projectile
@@ -39,8 +44,8 @@ public class Skeleton : MonoBehaviour
 
             if (health <= 0)
             {
-                // play death sound/animation here
-
+                // play death sound and destroy objectx
+                AudioSource.PlayClipAtPoint(deathClip, transform.position);
                 Destroy(gameObject);
 
             }
@@ -92,17 +97,30 @@ public class Skeleton : MonoBehaviour
      */
     void rangedAttack()
     {
-        
+
+        // play projectile sound
+        AudioSource.PlayClipAtPoint(projectileClip, transform.position);
     }
 
-    
+
+    public float attackInterval;
+    private float period = 0.0f;
+
     // Update is called once per frame
     void Update()
     {
+        // rangedAttack(
+        if(period > attackInterval)
+        {
+            rangedAttack();
+            period = 0;
+        }
+        period += UnityEngine.Time.deltaTime;
+
+
         // Can just run look at since checks are called in function
         lookAt();
-        // check if in range and attack if so
-        inRange();
+
         
     }
 }
