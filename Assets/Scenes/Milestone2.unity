@@ -148,7 +148,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -238,16 +238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Floor: {fileID: 7443767859827992060, guid: a699401f9f0038e4480f3e3240cdaf90, type: 3}
-  Wall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe, type: 3}
-  RoomCount: 10
+  Wall: {fileID: 4501691227019468229, guid: 1f812384784634569af00b20e22ba6b6, type: 3}
+  RoomCount: 100
   maxWidth: 10
-  minWidth: 5
+  minWidth: 1
   maxHeight: 10
-  minHeight: 5
-  mWidth: 100
-  mHeight: 100
-  up: 0
-  down: 0
-  left: 0
-  right: 0
-  room: 0
+  minHeight: 1

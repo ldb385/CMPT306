@@ -30,9 +30,6 @@ public class Map : MonoBehaviour
     private int RoomWidth;
     private int RoomHeight;
 
-    // map size
-    public int mWidth = 100;
-    public int mHeight = 100;
 
 
     // choice weights
@@ -40,9 +37,16 @@ public class Map : MonoBehaviour
     private int downW = 10;
     private int leftW = 10;
     private int rightW = 10; 
-    private int roomW = 5;
+    private int roomW = 0;
     // amount of rooms
     private int curRoom = 0;
+
+    private bool createRoom = false;
+
+
+
+    // private int Stra = 1;
+    // private int turn = 0;
 
 
     private int xPos;
@@ -100,103 +104,110 @@ public class Map : MonoBehaviour
 
         Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
         
-        xPos = mWidth/2;
-        yPos = mHeight/2;
+        xPos = 0;
+        yPos = 0;
         
         while (curRoom <= RoomCount){
             Vector2Int coord = (CalculateChoice(xPos, yPos, tmp_model));
-            if(!tmp_model.ContainsKey(coord)){
-                    tmp_model.Add(coord, 1);
+            
+            if( createRoom == false){
+                if(!tmp_model.ContainsKey(coord)){
+                        tmp_model.Add(coord, 0);
                 }
+            }
+            else{
+                RoomWidth = Random.Range(minWidth, maxWidth);
+                RoomHeight = Random.Range(minHeight, maxHeight);
+                curRoom= curRoom + 1;
+
+                for(int i=yPos; i<RoomWidth; i++){
+                    for(int j=xPos; j<RoomHeight; j++){
+                        Vector2Int roomCoord = new Vector2Int(j,i);
+                        if(tmp_model.ContainsKey(roomCoord)){
+                            tmp_model.Remove(roomCoord);
+                            tmp_model.Add(roomCoord, 1);
+                            Debug.Log(roomCoord);
+                        }
+                        else{
+                            tmp_model.Add(roomCoord, 1);
+                        }
+                    }
+                }
+            createRoom = false;
+            }
         }
         return tmp_model;
     }
 
-        private void RoomCreation(int xPos, int yPos, Dictionary<Vector2Int, int> tmp_model){
-            RoomWidth = Random.Range(minWidth, maxWidth);
-            RoomHeight = Random.Range(minHeight, maxHeight);
-            
-            // for(int i=yPos; i<RoomWidth; i++){
-            //     for(int j=xPos; j<RoomHeight; j++){
-            //         Vector2Int roomCoord = CalculateChoice(i, j, tmp_model);
-            //         if(!tmp_model.ContainsKey(roomCoord)){
-            //             tmp_model.Add(roomCoord, 0);
-            //         }
-            //     }
-            // }
-        }
-
 
     public Vector2Int CalculateChoice(int x, int y, Dictionary<Vector2Int, int> tmp_model){
-    
+
+
     int weightTotal = upW+downW+leftW+rightW+roomW;
     // THIS IS BROKEN NEED TO FIX THIS PIECE OF SHIT
      int RandomChoice = Random.Range(0, weightTotal);
      if ((RandomChoice -= upW) <= 0){
         upW+=10;
-        downW+=9;
-        leftW+=9;
-        rightW+=9;
-        roomW+=4;
+        downW+=2;
+        leftW+=2;
+        rightW+=2;
+        roomW+=5;
         yPos+=1;
         return new Vector2Int(x, y+1);
      }
     else if ((RandomChoice -= downW) <= 0){
-        upW+=10;
+        upW+=2;
         downW+=10;
-        leftW+=10;
-        rightW+=10;
-        roomW+=4;
-        Debug.Log(2);
+        leftW+=2;
+        rightW+=2;
+        roomW+=2;
         yPos-=1;
         return new Vector2Int(x, y-1);
      }
     else if ((RandomChoice -= leftW) <= 0){
-        upW+=10;
-        downW+=10;
+        upW+=2;
+        downW+=2;
         leftW+=10;
-        rightW+=10;
-        roomW+=4;
-        Debug.Log(3);
+        rightW+=2;
+        roomW+=5;
         xPos-=1;
         return new Vector2Int(x-1, y);
     }
     else if ((RandomChoice -= rightW) <= 0){
-        upW+=10;        
-        downW+=10;
-        leftW+=10;
+        upW+=2;        
+        downW+=2;
+        leftW+=2;
         rightW+=10;
-        roomW+=4;
-        Debug.Log(4);
+        roomW+=2;
         xPos+=1;
         return new Vector2Int(x+1, y);
     }
     else if ((RandomChoice -= roomW) <= 0){
         // create room
-        RoomCreation(xPos,yPos, tmp_model);
+        // RoomCreation(xPos,yPos, tmp_model);
         curRoom= curRoom + 1;
         upW=0;
         downW=0;
         leftW=0;
         rightW=0;
         roomW=0;
-        Debug.Log(5);
+        createRoom = true;
+        Debug.Log(1);
         return new Vector2Int(x, y);
     }
     
     return new Vector2Int(0, 0);
- }
-
+}
 
     // Allow quick reload of level for testing
     // This should be removed in a real game context
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            data = GenerateModel();
-            LoadTiles();
-        }
+        // if(Input.GetKeyDown(KeyCode.R))
+        // {
+            // data = GenerateModel();
+            // LoadTiles();
+        // }
     }
 }
 
