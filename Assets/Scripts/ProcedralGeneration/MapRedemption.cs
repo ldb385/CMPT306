@@ -108,76 +108,77 @@ public class MapRedemption : MonoBehaviour
 
     private ArrayList getRoomCoords(int x, int y, int xLength, int yLength)
     {
-        int xL;
-        int xR;
-        int yL;
-        int yR;
+        int xL = splitNum( xLength, true );
+        int xR = splitNum( xLength, false );
+        int yL = splitNum( yLength, true );
+        int yR = splitNum( yLength, false );
 
         ArrayList coords = new ArrayList();
+        
 
-        if (xLength % 2 == 0)
-        {
-            // is even split
-            xL = xLength / 2;
-            xR = xLength / 2;
-        }
-        else
-        {
-            xL = xLength / 2;
-            xR = (xLength / 2) + 1;
-        }
-
-        if (yLength % 2 == 0)
-        {
-            // is even split
-            yL = yLength / 2;
-            yR = yLength / 2;
-        }
-        else
-        {
-            yL = yLength / 2;
-            yR = (yLength / 2) + 1;
-        }
+//        if (xLength % 2 == 0)
+//        {
+//            // is even split
+//            xL = xLength / 2;
+//            xR = xLength / 2;
+//        }
+//        else
+//        {
+//            xL = xLength / 2;
+//            xR = (xLength / 2) + 1;
+//        }
+//
+//       if (yLength % 2 == 0)
+//        {
+//            // is even split
+//            yL = yLength / 2;
+//            yR = yLength / 2;
+//        }
+//        else
+//        {
+//            yL = yLength / 2;
+//           yR = (yLength / 2) + 1;
+//        }
 
         // Now fill in coordinate array
         int tempyL;
         int tempyR;
-        while (xL >= 0)
+        while (xR >= 0)
         {
             tempyL = yL;
             tempyR = yR;
-            while (tempyL >= 0)
+            while (tempyR >= 0)
             {
-                coords.Add(new Vector2Int(x - xL, y + tempyL));
-                tempyL--;
-            }
-
-            while (tempyR > 0)
-            {
-                coords.Add(new Vector2Int(x - xL, y - tempyR));
+                coords.Add(new Vector2Int(x + xR, y + tempyR));
                 tempyR--;
             }
 
-            xL--;
-        }
-
-        while (xR > 0)
-        {
-            tempyL = yL;
-            tempyR = yR;
-            while (tempyL >= 0)
+            while (tempyL > 0)
             {
-                coords.Add(new Vector2Int(x + xR, y + tempyL));
+                coords.Add(new Vector2Int(x + xR, y - tempyL));
                 tempyL--;
-            }
-            
-            while (tempyR > 0)
-            {
-                coords.Add(new Vector2Int(x + xR, y - tempyR));
-                tempyR--;
             }
 
             xR--;
+        }
+
+        while (xL > 0)
+        {
+            tempyL = yL;
+            tempyR = yR;
+            while (tempyR >= 0)
+            {
+                coords.Add(new Vector2Int(x - xL, y + tempyR));
+                tempyR--;
+            }
+            
+            while (tempyL > 0)
+            {
+                coords.Add(new Vector2Int(x - xL, y - tempyL));
+                tempyL--;
+            }
+
+            xL--;
         }
 
         return coords;
@@ -194,7 +195,7 @@ public class MapRedemption : MonoBehaviour
         }
 
         int tempx;
-        int tempy = 0;
+        int tempy;
         
         // direction Guide
         // north: 0, East: 1, South: 2, West: 3
@@ -202,7 +203,7 @@ public class MapRedemption : MonoBehaviour
         {
             case( 0 ): // North
                 tempx = x;
-                for (tempy = y; tempy > (y - len); tempy--)
+                for (tempy = y; tempy < (y + len); tempy++)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
                     if (!isPlaced(pos))
@@ -224,7 +225,7 @@ public class MapRedemption : MonoBehaviour
                 break;
             case( 2 ): // South
                 tempx = x;
-                for (tempy = y; tempy < (y + len); tempy++)
+                for (tempy = y; tempy > (y - len); tempy--)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
                     if (!isPlaced(pos))
@@ -336,13 +337,13 @@ public class MapRedemption : MonoBehaviour
     public void GenerateModel()
     {
         // create a room in the center to start from
-        makeRoom(0, 0, 6, 6, false);
+        makeRoom(0, 0, 7, 7, false);
         
         // keeping track of objects created
         int featuresMade = 1;
         
-        int prevXSize = 6;
-        int prevYSize = 6;
+        int prevXSize = 7;
+        int prevYSize = 7;
         int newx = 0;
         int newy = 0;
         
@@ -369,40 +370,48 @@ public class MapRedemption : MonoBehaviour
                     // moving North
                     if ( N )
                     {
-                        newy = newy + prevYSize / 2;
+                        newy = newy + splitNum( prevYSize, false );
                         makeCooridor(newx, newy, cooridorLen, 0);
                         updateDir( true, true, false, true );
                         cooridorbuilt = true;
+                        // update Y location
+                        newy = newy + cooridorLen;
                     }
                     break;
                 case( 1 ):
                     // moving East
                     if (E)
                     {
-                        newx = newx + prevXSize / 2;
+                        newx = newx + splitNum(prevXSize, false );
                         makeCooridor(newx, newy, cooridorLen, 1);
                         updateDir( true, true, true, false );
                         cooridorbuilt = true;
+                        // update X location
+                        newx = newx + cooridorLen;
                     }
                     break;
                 case( 2 ):
                     // Moving South
                     if (S)
                     {
-                        newy = newy - prevYSize / 2;
+                        newy = newy - splitNum( prevYSize, true );
                         makeCooridor(newx, newy, cooridorLen, 2);
                         updateDir( false, true, true, true );
                         cooridorbuilt = true;
+                        // update Y location
+                        newy = newy - cooridorLen;
                     }
                     break;
                 case( 3 ):
                     // Moving West
                     if (W)
                     {
-                        newx = newx - prevXSize / 2;
+                        newx = newx - splitNum( prevXSize, true );
                         makeCooridor(newx, newy, cooridorLen, 3);
                         updateDir( true, false, true, true );
                         cooridorbuilt = true;
+                        // update X location
+                        newx = newx - cooridorLen;
                     }
                     break;
             }
@@ -419,23 +428,23 @@ public class MapRedemption : MonoBehaviour
                 {
                     case( 0 ):
                         // Moved North
-                        newy = newy + prevYSize /2;
-                        makeRoom(newx, newy, roomYLen, roomXLen);
+                        newy = newy + splitNum( prevYSize, true );
+                        makeRoom(newx, newy +1, roomYLen, roomXLen);
                         break;
                     case( 1 ):
                         // Moved East
-                        newx = newx + prevXSize /2;
-                        makeRoom(newx, newy, roomYLen, roomXLen);
+                        newx = newx + splitNum( prevXSize, true );
+                        makeRoom(newx +1, newy, roomYLen, roomXLen);
                         break;
                     case( 2 ):
                         // Moved South
-                        newy = newy - prevYSize /2;
-                        makeRoom(newx, newy, roomYLen, roomXLen);
+                        newy = newy - splitNum( prevYSize, false );
+                        makeRoom(newx, newy -1, roomYLen, roomXLen);
                         break;
                     case( 3 ):
                         // Moved West
-                        newx = newx - prevXSize /2;
-                        makeRoom(newx, newy, roomYLen, roomXLen);
+                        newx = newx - splitNum( prevXSize, false );
+                        makeRoom(newx -1, newy, roomYLen, roomXLen);
                         break;
                 }
                 
@@ -464,6 +473,9 @@ public class MapRedemption : MonoBehaviour
     public void Start()
     {
         GenerateModel();
+        // makeRoom(0, 0, 4, 4, false);
+        // makeCooridor(0, 3, 5, 0);
+        // makeRoom(0, 5, 6, 6 );
         LoadTiles();
     }
     
