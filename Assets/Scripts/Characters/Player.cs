@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         // check if the object the player collided with was an enemy or Pick up
-        if (col.gameObject.CompareTag("Enemies"))
+        if (col.gameObject.CompareTag("Enemies") || col.gameObject.CompareTag("EnemyProjectile"))
         {
 			if(!invincible){
 				 // players spook level goes up

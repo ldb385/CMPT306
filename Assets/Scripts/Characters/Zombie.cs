@@ -18,7 +18,6 @@ public class Zombie : MonoBehaviour
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
 
-
     private int _chargeFatigue;
     private bool _canCharge;
 
@@ -28,6 +27,8 @@ public class Zombie : MonoBehaviour
     // array to hold zombie sounds
     public AudioSource _as;
     public AudioClip[] audioClipArray;
+    // public AudioClip deathClip;
+    // public AudioClip damageClip;
 
     public float health = 10f;
 
@@ -37,13 +38,12 @@ public class Zombie : MonoBehaviour
         if (col.gameObject.CompareTag("Projectile"))
         {
             health--;
-
+            //AudioSource.PlayClipAtPoint(damageClip, transform.position);
             if (health <= 0)
             {
                 // play death sound/animation here
-
+                //AudioSource.PlayClipAtPoint(deathClip, transform.position);
                 Destroy(gameObject);
-
             }
         }
     }
@@ -59,7 +59,7 @@ public class Zombie : MonoBehaviour
     }
     
     /**
-     * This will obe used to increase speed when the zombie gets close enough to the player
+     * This will be used to increase speed when the zombie gets close enough to the player
      * after a certain amount of frames the zombie will become tired and slow its speed
      */
     void Charge()

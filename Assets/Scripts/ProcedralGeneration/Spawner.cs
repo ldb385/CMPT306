@@ -37,7 +37,10 @@ public class Spawner : MonoBehaviour
     public int spookPercent;
     private float spookLevel;
     private int minEnemies = 3;
+ 
     
+
+
     private void Awake()
     {
         // Create the data structures <VERY IMPORTANT THIS IS DONE FIRST>
@@ -127,13 +130,13 @@ public class Spawner : MonoBehaviour
                     if ( spookLevel <= 0 )
                     {
                         // Spawn in Enemy
-                        tile = Instantiate(getEnemy( 2 ),
+                        tile = Instantiate(getEnemy( 9 ),
                             (Vector2) i + diff, Quaternion.identity) as GameObject;
                     }
                     else
                     {
                         // Spawn in Enemy
-                        tile = Instantiate(getEnemy((int) spookLevel * (spookPercent / 100)),
+                        tile = Instantiate(getEnemy((int) spookLevel),
                             (Vector2) i + diff, Quaternion.identity) as GameObject;
                     }
 
@@ -164,7 +167,7 @@ public class Spawner : MonoBehaviour
     public Dictionary<Vector2Int, int> GenerateModel( int w, int h )
     {
 
-        int enemies = ( spookPercent / 100 ) * (int) ( 10.0f - spookLevel );
+        int enemies = (int) ( 9.0f - spookLevel );
 
         if (enemies < minEnemies)
         {
@@ -272,7 +275,9 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         Vector2 player = GameObject.FindGameObjectWithTag("Player").transform.position;
-
+        GameObject wiz = GameObject.FindGameObjectWithTag("Player");
+        Player playerScript = wiz.GetComponent<Player>();
+        spookLevel = playerScript.spookLevel;
         if (player.x > transform.position.x && player.x < transform.position.x + width
                                             && player.y > transform.position.y &&
                                             player.y < transform.position.y + height &&

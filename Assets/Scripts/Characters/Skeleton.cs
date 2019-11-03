@@ -17,6 +17,7 @@ public class Skeleton : MonoBehaviour
     // create audio clips
     public AudioClip deathClip;
     public AudioClip projectileClip;
+    // public AudioClip damageClip;
 
     // Ranged attack radius for skeleton attack
     public float attackRange;
@@ -46,7 +47,7 @@ public class Skeleton : MonoBehaviour
         if (col.gameObject.CompareTag("Projectile"))
         {
             health--;
-
+            // AudioSource.PlayClipAtPoint(damageClip, transform.position);
             if (health <= 0)
             {
                 // play death sound and destroy objectx

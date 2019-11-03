@@ -345,5 +345,11 @@ PrefabInstance:
       propertyPath: deathClip
       value: 
       objectReference: {fileID: 8300000, guid: 277f0a96f37b8421db2239ffd2348201, type: 3}
+    - target: {fileID: 4647141352398576602, guid: c9fcac4af61d9bf40a3f6b54882f74ca,
+        type: 3}
+      propertyPath: enemyProjectile
+      value: 
+      objectReference: {fileID: 280472947904706412, guid: 5f82b4f3c22d04705be2a892fa9482b4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9fcac4af61d9bf40a3f6b54882f74ca, type: 3}
