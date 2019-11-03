@@ -117,18 +117,14 @@ public class Zombie : MonoBehaviour
         _chargeFatigue = 0;
         _canCharge = true;
 
-        // play
-
-
+        // play zombie sound every 5 seconds
         InvokeRepeating("PlaySound", 0.001f, 5f);
-
     }
 
     void PlaySound()
     {
         _as.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
         _as.PlayOneShot(_as.clip);
-        Debug.Log("zombie sound");
     }
 
     /**

@@ -21,6 +21,11 @@ public class Skeleton : MonoBehaviour
     // Ranged attack radius for skeleton attack
     public float attackRange;
 
+    // bool for coroutine in ranged attack
+    public bool canShoot = true;
+    public float cooldownTime;
+
+    // skeleton health
     public float health = 10f;
 
     // Start is called before the first frame update
@@ -86,37 +91,43 @@ public class Skeleton : MonoBehaviour
      */
     void inRange()
     {
+        // check if player is in range
         if ( Vector2.Distance(transform.position, target.GetComponent<Transform>().position) <= attackRange )
         {
-            rangedAttack();
+            // check if on cooldown
+            if (canShoot)
+            {
+                StartCoroutine(rangedAttack());
+            }
         }
     }
     
     /**
      * Perform the ranged attack
      */
-    void rangedAttack()
+    public IEnumerator rangedAttack()
     {
+        // projectile sprite goes here
 
         // play projectile sound
         AudioSource.PlayClipAtPoint(projectileClip, transform.position);
+
+        // cooldown begins here
+        canShoot = false;
+
+        // wait for cooldownTime seconds
+        yield return new WaitForSeconds(cooldownTime);
+
+        // cooldown time endsy
+        canShoot = true;
     }
 
-
-    public float attackInterval;
-    private float period = 0.0f;
 
     // Update is called once per frame
     void Update()
     {
-        // rangedAttack(
-        if(period > attackInterval)
-        {
-            rangedAttack();
-            period = 0;
-        }
-        period += UnityEngine.Time.deltaTime;
-
+        // check if player is in range for ranged attack
+        inRange();
 
         // Can just run look at since checks are called in function
         lookAt();
