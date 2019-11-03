@@ -422,3 +422,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 195105023}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1464729976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464729975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02822215fd4f49ce9a9b50fc337c027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
+  playerProjectile: {fileID: 6813800049911920383, guid: c6b7d4dfe2400479fa1438f8a13d4629,
+    type: 3}
+  projectileSpeed: 1
