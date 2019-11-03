@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 280472947904706409}
   - component: {fileID: 280472947904706414}
   - component: {fileID: 280472947904706415}
+  - component: {fileID: 7871787143429458}
   m_Layer: 0
   m_Name: skelebone
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,3 +119,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7871787143429458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280472947904706412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aabdb6c27b8c748599d8d54f249d03d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
