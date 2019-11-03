@@ -13,6 +13,7 @@ public class Mummy : MonoBehaviour
     // create audio clips uncomment when we have audio selected
     // public AudioClip deathClip;
     // public AudioClip groanClip;
+    // public AudioClip damageClip;
 
     // coroutine variables
     public float cooldownTime;
@@ -67,7 +68,7 @@ public class Mummy : MonoBehaviour
         if (col.gameObject.CompareTag("Projectile"))
         {
             health--;
-
+            //AudioSource.PlayClipAtPoint(damageClip, transform.position);
             if (health <= 0)
             {
                 // play death sound and destroy object

@@ -17,11 +17,10 @@ public class Skeleton : MonoBehaviour
     // create audio clips
     public AudioClip deathClip;
     public AudioClip projectileClip;
+    // public AudioClip damageClip;
 
     // Ranged attack radius for skeleton attack
     public float attackRange;
-
-	public GameObject enemyProjectile;
 
     // bool for coroutine in ranged attack
     public bool canShoot = true;
@@ -48,7 +47,7 @@ public class Skeleton : MonoBehaviour
         if (col.gameObject.CompareTag("Projectile"))
         {
             health--;
-
+            // AudioSource.PlayClipAtPoint(damageClip, transform.position);
             if (health <= 0)
             {
                 // play death sound and destroy objectx
@@ -109,25 +108,10 @@ public class Skeleton : MonoBehaviour
      */
     public IEnumerator rangedAttack()
     {
-		// projectile sprite goes here
+        // projectile sprite goes here
 
-		// get positions
-		Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
-		Vector2 direction = relativeTarget - enemyPosition;
-		direction.Normalize();
-
-		//Vector3 playerPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-		Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-		// create projectile and make it move
-		GameObject projectile = Instantiate(enemyProjectile, enemyPosition, Quaternion.LookRotation(Vector3.forward, playerPosition - transform.position));
-		projectile.GetComponent<Rigidbody2D>().velocity = direction * 3f;
-
-		// projectile can travel through player
-		Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-
-		// play projectile sound
-		AudioSource.PlayClipAtPoint(projectileClip, transform.position);
+        // play projectile sound
+        AudioSource.PlayClipAtPoint(projectileClip, transform.position);
 
         // cooldown begins here
         canShoot = false;
@@ -139,8 +123,9 @@ public class Skeleton : MonoBehaviour
         canShoot = true;
     }
 
-	// Update is called once per frame
-	void Update()
+
+    // Update is called once per frame
+    void Update()
     {
         // check if player is in range for ranged attack
         inRange();

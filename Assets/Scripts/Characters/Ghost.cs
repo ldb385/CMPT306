@@ -28,6 +28,7 @@ public class Ghost : MonoBehaviour
     // create audio clips
     public AudioClip deathClip;
     public AudioClip chaseClip;
+    // public AudioClip damageClip;
 
     // bool for coroutine in ranged attack
     public bool canLaugh = true;
@@ -157,6 +158,7 @@ public class Ghost : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             health--;
+            //AudioSource.PlayClipAtPoint(damageClip, transform.position);
             if (health <= 0)
             {
                 // play death sound and destroy object

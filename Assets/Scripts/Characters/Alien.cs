@@ -10,7 +10,8 @@ public class Alien : MonoBehaviour
 
    // create audio clips *** UNCOMMENT WHEN AUDIO CLIPS ARE CHOSEN ***
    // public AudioClip deathClip;
-   // public AudioClip projectileClip;
+   public AudioClip projectileClip;
+   // public AudioClip damageClip;
 
     // Ranged attack radius for alien attack
     public float attackRange;
@@ -28,7 +29,7 @@ public class Alien : MonoBehaviour
         if (col.gameObject.CompareTag("Projectile"))
         {
             health--;
-
+            // AudioSource.PlayClipAtPoint(damageClip, transform.position);
             if (health <= 0)
             {
                 // play death sound/animation here
@@ -64,7 +65,7 @@ public class Alien : MonoBehaviour
         // projectile sprite goes here
 
         // play projectile sound *** UNCOMMENT WHEN AUDIO CLIP IS CHOSEN *** 
-        // AudioSource.PlayClipAtPoint(projectileClip, transform.position);
+        AudioSource.PlayClipAtPoint(projectileClip, transform.position);
 
         // cooldown begins here
         canShoot = false;
