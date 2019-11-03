@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
 	// Create invincible state
 	private bool invincible = false;
     
+    public Camera cam;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +64,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb.MovePosition( rb.position + moveVel * Time.fixedDeltaTime );
+
     }
 
     // check if the enemy physically touches the player (demonstrating melee damage for now?)
@@ -140,8 +143,10 @@ public class Player : MonoBehaviour
         // play projectile sound
         AudioSource.PlayClipAtPoint(projectileClip, transform.position);
 
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
         // create projectile and make it move
-        GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.identity);
+        GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
         projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
 
         // destroy projectile after 4 seconds if it hasn't hit anything
