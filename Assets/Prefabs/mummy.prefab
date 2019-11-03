@@ -96,6 +96,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 2
+  cooldownTime: 5
+  canGroan: 1
 --- !u!50 &6408232461057747341
 Rigidbody2D:
   serializedVersion: 4
