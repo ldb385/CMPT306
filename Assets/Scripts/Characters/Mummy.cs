@@ -9,10 +9,20 @@ public class Mummy : MonoBehaviour
     public float health = 10f;
     public float speed;
     private Transform target;
-    
+
+    // create audio clips uncomment when we have audio selected
+    // public AudioClip deathClip;
+    // public AudioClip groanClip;
+
+    // coroutine variables
+    public float cooldownTime;
+    public bool canGroan = true;
+
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
     
+
+
     /**
     * simple following command that follows target based off vector position
     */
@@ -21,8 +31,28 @@ public class Mummy : MonoBehaviour
         // this will be used to chase the player
         transform.position = Vector2.MoveTowards(transform.position, target.position, 
             speed * Time.deltaTime);
+
+        // play mummy sound if not on cooldown
+        if (canGroan)
+        {
+            StartCoroutine(Groan());
+        }
     }
 
+    public IEnumerator Groan()
+    {
+        // play laugh
+        //AudioSource.PlayClipAtPoint(groanClip, transform.position);
+
+        // cooldown begins here
+        canGroan = false;
+
+        // wait for cooldownTime seconds
+        yield return new WaitForSeconds(cooldownTime);
+
+        // cooldown time ends
+        canGroan = true;
+    }
     private void movement()
     {
         if (Vector2.Distance(transform.position, target.position) > stopDist)
@@ -40,8 +70,8 @@ public class Mummy : MonoBehaviour
 
             if (health <= 0)
             {
-                // play death sound/animation here
-                
+                // play death sound and destroy object
+                //AudioSource.PlayClipAtPoint(deathClip, transform.position);
                 Destroy(gameObject);
 
             }
@@ -52,8 +82,7 @@ public class Mummy : MonoBehaviour
     void Start()
     {
         // set the target as the player
-        target = GameObject.FindWithTag("Player").transform;
-        
+        target = GameObject.FindWithTag("Player").transform; 
     }
 
     // Update is called once per frame
