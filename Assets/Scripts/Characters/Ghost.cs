@@ -140,7 +140,7 @@ public class Ghost : MonoBehaviour
             if (health <= 0)
             {
                 // play death sound and destroy object
-                AudioSource.PlayClipAtPoint(deathClip, transform.position);
+                //AudioSource.PlayClipAtPoint(deathClip, transform.position);
                 Destroy(gameObject);
 
             }

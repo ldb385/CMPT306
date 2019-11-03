@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
 
     // create faceing bool
-    private bool faceRight;
+    private bool faceRight = true;
 
     // Create the movement velocity
     private Vector2 moveVel;
@@ -120,18 +120,6 @@ public class Player : MonoBehaviour
         }
 	}
 
-    //void DestroyProjectile(Collision2D obstacle, GameObject projectile)
-    //{
-    //    if (obstacle.gameObject.CompareTag("Obstacle"))
-    //    {
-    //        // play animation/sound here?
-    //        Destroy(projectile);
-    //    }
-
-    //    // destroy projectile after 4 seconds if it hasn't hit anything
-    //    Destroy(projectile, 4.0f);
-    //}
-
     void Shoot()
     {
         // get positions
@@ -149,12 +137,9 @@ public class Player : MonoBehaviour
         GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
         projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
 
-        // destroy projectile after 4 seconds if it hasn't hit anything
-        Destroy(projectile, 4.0f);
-
-        // remove above line and use DestroyProjectile once obstacles implemented
-        //DestroyProjectile(obstacle, projectile);
-    }
+        // projectile can travel through player
+		Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+	}
 
     // flips the sprite on key press
     private void Flip(){

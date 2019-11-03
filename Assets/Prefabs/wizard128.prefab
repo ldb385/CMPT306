@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7496065576434700579}
   - component: {fileID: 7496065576434700578}
   - component: {fileID: 7496065576434700589}
+  - component: {fileID: 1254659450770508284}
   m_Layer: 0
   m_Name: wizard128
   m_TagString: Player
@@ -119,5 +120,32 @@ MonoBehaviour:
   playerProjectile: {fileID: 6813800049911920383, guid: c6b7d4dfe2400479fa1438f8a13d4629,
     type: 3}
   projectileSpeed: 15
+  ballonAmmo: 0
   deathClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
   projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
+--- !u!61 &1254659450770508284
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496065576434700588}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.010602415, y: 0.026549578}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.38234895, y: 0.63522077}
+  m_EdgeRadius: 0
