@@ -94,7 +94,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3277b6f2af4ac6d44a3fc5a57f33da9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathClip: {fileID: 8300000, guid: 785096dcb782d83499664e88c64ef3ad, type: 3}
+  projectileClip: {fileID: 8300000, guid: dcd53433aeaa0bc44ae62cb64ec47738, type: 3}
   attackRange: 5
+  canShoot: 1
+  cooldownTime: 3
   health: 10
 --- !u!61 &4722897191499538468
 BoxCollider2D:

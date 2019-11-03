@@ -123,6 +123,11 @@ MonoBehaviour:
   speed: 3
   health: 10
   visibilityDistance: 2.5
+  deathClip: {fileID: 8300000, guid: dcd53433aeaa0bc44ae62cb64ec47738, type: 3}
+  chaseClip: {fileID: 8300000, guid: 0b6dc16c58998d648b608cdc11c9f5c6, type: 3}
+  canLaugh: 1
+  cooldownTime: 5
+  laughInterval: 5
 --- !u!50 &8726340824236536013
 Rigidbody2D:
   serializedVersion: 4
