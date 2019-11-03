@@ -37,7 +37,8 @@ public class Spawner : MonoBehaviour
     public int spookPercent;
     private float spookLevel;
     private int minEnemies = 3;
-    
+    private GameObject wiz = GameObject.Find("Player");
+
     private void Awake()
     {
         // Create the data structures <VERY IMPORTANT THIS IS DONE FIRST>
@@ -272,7 +273,8 @@ public class Spawner : MonoBehaviour
     private void Update()
     {
         Vector2 player = GameObject.FindGameObjectWithTag("Player").transform.position;
-
+        Player playerScript = wiz.GetComponent<Player>();
+        spookLevel = playerScript.spookLevel;
         if (player.x > transform.position.x && player.x < transform.position.x + width
                                             && player.y > transform.position.y &&
                                             player.y < transform.position.y + height &&

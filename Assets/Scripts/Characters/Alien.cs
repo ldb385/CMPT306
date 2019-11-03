@@ -8,6 +8,17 @@ public class Alien : MonoBehaviour
     private Transform target;
     public float health = 10f;
 
+   // create audio clips *** UNCOMMENT WHEN AUDIO CLIPS ARE CHOSEN ***
+   // public AudioClip deathClip;
+   // public AudioClip projectileClip;
+
+    // Ranged attack radius for alien attack
+    public float attackRange;
+
+    // bool for coroutine in ranged attack
+    public bool canShoot = true;
+    public float cooldownTime;
+
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
 
@@ -21,30 +32,48 @@ public class Alien : MonoBehaviour
             if (health <= 0)
             {
                 // play death sound/animation here
-
+                // AudioSource.PlayClipAtPoint(deathClip, transform.position);
                 Destroy(gameObject);
 
             }
         }
     }
 
-    /**
-    * simple following command that follows target based off vector position
-    */
-    void Chase()
-    {
-        // this will be used to chase the player
-        transform.position = Vector2.MoveTowards(transform.position, target.position, 
-            speed * Time.deltaTime);
-    }
 
-    private void movement()
+    /**
+     * This will check if the enemy is in range and do an ranged attack if so
+     */
+    void inRange()
     {
-        if (Vector2.Distance(transform.position, target.position) > stopDist)
+        // check if player is in range
+        if (Vector2.Distance(transform.position, target.GetComponent<Transform>().position) <= attackRange)
         {
-            Chase();
+            // check if on cooldown
+            if (canShoot)
+            {
+                StartCoroutine(rangedAttack());
+            }
         }
     }
+
+    /**
+     * Perform the ranged attack
+     */
+    public IEnumerator rangedAttack()
+    {
+        // projectile sprite goes here
+
+        // play projectile sound *** UNCOMMENT WHEN AUDIO CLIP IS CHOSEN *** 
+        // AudioSource.PlayClipAtPoint(projectileClip, transform.position);
+
+        // cooldown begins here
+        canShoot = false;
+
+        // wait for cooldownTime seconds
+        yield return new WaitForSeconds(cooldownTime);
+
+        // cooldown time endsy
+        canShoot = true;
 
     
     // Start is called before the first frame update
@@ -57,12 +86,8 @@ public class Alien : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    
-    private void FixedUpdate()
-    {
-        // Perform Mummy movement
-        movement();
+        // check if player is in range
+        inRange();
+        }
     }
 }
