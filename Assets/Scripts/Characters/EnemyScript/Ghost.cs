@@ -154,17 +154,36 @@ public class Ghost : MonoBehaviour
             calcuateNewMovementVector();
         }
 
-        // detect if hit by projectile
+    // damage for ghost
         if (collision.gameObject.CompareTag("Projectile"))
         {
+<<<<<<< Updated upstream:Assets/Scripts/Characters/Ghost.cs
             health--;
             //AudioSource.PlayClipAtPoint(damageClip, transform.position);
+=======
+            health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
+
             if (health <= 0)
             {
-                // play death sound and destroy object
-                //AudioSource.PlayClipAtPoint(deathClip, transform.position);
+                // play death sound/animation here
+
+                Destroy(gameObject);
+
+            }
+        }
+        if (collision.gameObject.CompareTag("Balloon"))
+        {
+            
+            health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
+
+>>>>>>> Stashed changes:Assets/Scripts/Characters/EnemyScript/Ghost.cs
+            if (health <= 0)
+            {
+                // play death sound/animation here
+
                 Destroy(gameObject);
             }
         }
     }
+
 }

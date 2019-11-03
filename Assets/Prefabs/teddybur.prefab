@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5587014229061917685}
   m_Layer: 0
   m_Name: teddybur
-  m_TagString: Untagged
+  m_TagString: Teddy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

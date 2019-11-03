@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 5003905735237328959}
   - component: {fileID: 5003905735237328956}
   - component: {fileID: 5003905735237328957}
-  - component: {fileID: 5003905735237328930}
   - component: {fileID: 8931171756376075415}
   m_Layer: 0
   m_Name: waterballon
-  m_TagString: Projectile
+  m_TagString: DMGBalloon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,18 +97,6 @@ CircleCollider2D:
   m_Offset: {x: 0.07902566, y: 0.0933047}
   serializedVersion: 2
   m_Radius: 0.16450296
---- !u!114 &5003905735237328930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5003905735237328931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2b1469e688794438863cf0c517fded, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &8931171756376075415
 Rigidbody2D:
   serializedVersion: 4
@@ -130,4 +117,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0

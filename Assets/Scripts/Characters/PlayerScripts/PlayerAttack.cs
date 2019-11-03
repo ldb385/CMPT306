@@ -7,10 +7,9 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip projectileClip;
     public GameObject playerProjectile;
     public GameObject WaterBaloon;
-    private int degrees;
     public float projectileSpeed = 1f;
 
-    void Shoot()
+    public void Shoot()
     {
         // get positions
         Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
@@ -37,19 +36,11 @@ public class PlayerAttack : MonoBehaviour
         Vector2 direction = clickPosition - playerPosition;
         direction.Normalize();
 
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
         // create projectile and make it move
-        GameObject Balloon = Instantiate(WaterBaloon, playerPosition, Quaternion.identity);
-        Balloon.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed/2;
+        GameObject watBalloon = Instantiate(WaterBaloon, playerPosition, Quaternion.identity);
+        watBalloon.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed/2;
 
         // destroy projectile after 4 seconds if it hasn't hit anything
-        Destroy(Balloon, 1.0f);
+        Destroy(watBalloon, 1.0f);
     }
-
-    // private void Update() {
-        
-        // WaterBaloon.transform.rotation = Quaternion.Euler(Vector3.forward * degrees);
-    // }
-
 }

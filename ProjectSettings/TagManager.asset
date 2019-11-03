@@ -7,8 +7,19 @@ TagManager:
   - Enemies
   - Projectile
   - Obstacle
+<<<<<<< Updated upstream
   - Soda
   - EnemyProjectile
+=======
+  - Cape
+  - Soda
+  - Flashlight
+  - Teddy
+  - Balloon
+  - Nerf
+  - Candy
+  - DMGBalloon
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -51,4 +62,7 @@ TagManager:
     locked: 0
   - name: Midground
     uniqueID: 1627098603
+    locked: 0
+  - name: Projectile
+    uniqueID: 3492483689
     locked: 0

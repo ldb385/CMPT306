@@ -42,6 +42,7 @@ public class Skeleton : MonoBehaviour
     }
 
     // detect if hit by projectile
+<<<<<<< Updated upstream:Assets/Scripts/Characters/Skeleton.cs
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Projectile"))
@@ -56,6 +57,35 @@ public class Skeleton : MonoBehaviour
 
             }
         }
+=======
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Projectile"))
+        {
+            health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
+
+            if (health <= 0)
+            {
+                // play death sound/animation here
+
+                Destroy(gameObject);
+
+            }
+        }
+        if (col.gameObject.CompareTag("Balloon"))
+        {
+            
+            health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
+
+            if (health <= 0)
+            {
+                // play death sound/animation here
+
+                Destroy(gameObject);
+
+            }
+        }
+>>>>>>> Stashed changes:Assets/Scripts/Characters/EnemyScript/Skeleton.cs
     }
 
     /**

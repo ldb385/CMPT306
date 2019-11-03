@@ -10,8 +10,9 @@ public class Player : MonoBehaviour
     public float speed;
 
     // For shooting
-    public float ballonAmmo = 0.0f;
-    
+    public int ballonAmmo = 0;
+    public float BalloonDMG= 5.0f;
+    public float FireballDMG = 1.0f; 
     // create audio clip
     public AudioClip deathClip;
 
@@ -28,8 +29,6 @@ public class Player : MonoBehaviour
 	// Create invincible state
 	private bool invincible = false;
     
-    public Camera cam;
-
     
     // Start is called before the first frame update
     void Start()
@@ -44,12 +43,12 @@ public class Player : MonoBehaviour
         moveVel = moveInput.normalized * speed;
        
         if (Input.GetKeyDown(KeyCode.D)){
-            if(faceRight==false){
+            if(faceRight==true){
                 Flip();
             }
         }
         else if(Input.GetKeyDown(KeyCode.A)){
-            if(faceRight==true){
+            if(faceRight==false){
                 Flip();
             }
         }
@@ -61,8 +60,10 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)){
-            FindObjectOfType<PlayerAttack>().ThrowBalloon();
-            ballonAmmo -= 1;
+            if (ballonAmmo > 0){
+                ballonAmmo -= 1;
+                FindObjectOfType<PlayerAttack>().ThrowBalloon();
+            }
         }
     
 
@@ -109,7 +110,7 @@ public class Player : MonoBehaviour
             FlashlightPickUp();
         }
         else if(c.gameObject.CompareTag("Nerf")){
-            // StartCoroutine(NerfGunPickUp());
+            StartCoroutine(NerfGunPickUp());
         }
         else if(c.gameObject.CompareTag("Teddy")){
             TeddyBearPickUp();
@@ -121,63 +122,7 @@ public class Player : MonoBehaviour
             WaterBalloonPickUp();
         }
 	}
-
-<<<<<<< Updated upstream
-    void Shoot()
-    {
-        // get positions
-        Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector2 direction = clickPosition - playerPosition;
-        direction.Normalize();
-=======
-    //void DestroyProjectile(Collision2D obstacle, GameObject projectile)
-    //{
-    //    if (obstacle.gameObject.CompareTag("Obstacle"))
-    //    {
-    //        // play animation/sound here?
-    //        Destroy(projectile);
-    //    }
-
-    //    // destroy projectile after 4 seconds if it hasn't hit anything
-    //    Destroy(projectile, 4.0f);
-    //}
-
-    // void Shoot()
-    // {
-    //     // get positions
-    //     Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-    //     Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
-    //     Vector2 direction = clickPosition - playerPosition;
-    //     direction.Normalize();
->>>>>>> Stashed changes
-
-    //     // play projectile sound
-    //     AudioSource.PlayClipAtPoint(projectileClip, transform.position);
-
-    //     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-<<<<<<< Updated upstream
-        // create projectile and make it move
-        GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
-        projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
-
-        // projectile can travel through player
-		Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-	}
-=======
-    //     // create projectile and make it move
-    //     GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
-    //     projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
-
-    //     // destroy projectile after 4 seconds if it hasn't hit anything
-    //     Destroy(projectile, 4.0f);
-
-    //     // remove above line and use DestroyProjectile once obstacles implemented
-    //     //DestroyProjectile(obstacle, projectile);
-    // }
->>>>>>> Stashed changes
-
+    
     // flips the sprite on key press
     private void Flip(){
             faceRight = !faceRight;
@@ -226,7 +171,7 @@ public class Player : MonoBehaviour
     
     // WaterBallonPickUp adds a waterballon to the current amount of balloons
     public void WaterBalloonPickUp(){
-            ballonAmmo +=1.0f;
+            ballonAmmo +=1;
     }
 
 }
