@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 7496065576434700588, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: m_Name
-      value: wizard128
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7496065576434700576, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
@@ -184,8 +184,14 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3574764145134749907, guid: cfb343976707cc54f91825e46dbd83a7,
+        type: 3}
+      propertyPath: FireballDMG
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
+    - {fileID: 1246073624330527375, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
 --- !u!1 &587392969
 GameObject:
@@ -232,6 +238,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Floor: {fileID: 7443767859827992060, guid: a699401f9f0038e4480f3e3240cdaf90, type: 3}
   Wall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe, type: 3}
+  SideWallL: {fileID: 2264969029579212247, guid: 17cdc885fb15f4ababbdc8b395e9685b,
+    type: 3}
+  SideWallR: {fileID: 1893388467336113446, guid: cbcf40297ddf840ac9dda1f63f70735b,
+    type: 3}
   spawner: {fileID: 309428189480847958, guid: 7d27ac7c0b34bc44082921b539f337c8, type: 3}
   RoomCount: 100
 --- !u!1 &1228127115
@@ -289,7 +299,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 2.5106163
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

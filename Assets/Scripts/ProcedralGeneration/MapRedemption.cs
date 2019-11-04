@@ -10,6 +10,8 @@ public class MapRedemption : MonoBehaviour
     // map sprites
     [SerializeField] private GameObject Floor;
     [SerializeField] private GameObject Wall;
+    [SerializeField] private GameObject SideWallL;
+    [SerializeField] private GameObject SideWallR;
 
     // Spawner to add to rooms
     [SerializeField] private Spawner spawner;
@@ -45,6 +47,8 @@ public class MapRedemption : MonoBehaviour
     // this is just to set values to unload later
     private int floorG = 0;
     private int wallG = 1;
+    private int sideG1 = 2;
+    private int sideG2 = 3;
 
     private readonly Action<string> _logger;
 
@@ -177,8 +181,12 @@ public class MapRedemption : MonoBehaviour
                 for (tempy = y; tempy < (y + len); tempy++)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
+                    Vector2Int pos1 = new Vector2Int(tempx - 1, tempy);
+                    Vector2Int pos2 = new Vector2Int(tempx + 1, tempy);
                     if (!isPlaced(pos))
                     {
+                        // data.Add(pos1, sideG1);
+                        // data.Add(pos2, sideG2);
                         data.Add(pos, floorG);
                     }
                 }
@@ -199,6 +207,10 @@ public class MapRedemption : MonoBehaviour
                 for (tempy = y; tempy > (y - len); tempy--)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
+                    Vector2Int pos1 = new Vector2Int(tempx - 1, tempy);
+                    Vector2Int pos2 = new Vector2Int(tempx + 1, tempy);
+                    // data.Add(pos1, sideG1);
+                    // data.Add(pos2, sideG2);
                     if (!isPlaced(pos))
                     {
                         data.Add(pos, floorG);
@@ -260,6 +272,20 @@ public class MapRedemption : MonoBehaviour
             {
                 // spawn Wall tile at this location
                 tile = Instantiate(Wall, (Vector2)i, Quaternion.identity) as GameObject;
+                if (!tiles.ContainsKey(i))
+                    tiles.Add(i, tile);
+            }
+            else if (data[i] == sideG1)
+            {
+                // spawn side Wall tile at this location
+                tile = Instantiate(SideWallL, (Vector2)i, Quaternion.identity) as GameObject;
+                if (!tiles.ContainsKey(i))
+                    tiles.Add(i, tile);
+            }
+            else if (data[i] == sideG2)
+            {
+                // spawn side Wall tile at this location
+                tile = Instantiate(SideWallR, (Vector2)i, Quaternion.identity) as GameObject;
                 if (!tiles.ContainsKey(i))
                     tiles.Add(i, tile);
             }
