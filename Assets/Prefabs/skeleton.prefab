@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1627098603
+  m_SortingLayerID: 440110965
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 183b4555a12920b4c835f662e19231c9, type: 3}
@@ -97,6 +97,8 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 0bfe87246421040649ce8bc0fa22e47e, type: 3}
   projectileClip: {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
   attackRange: 5
+  enemyProjectile: {fileID: 280472947904706412, guid: 369454ac4dddb4496a45180f6ab06796,
+    type: 3}
   canShoot: 1
   cooldownTime: 3
   health: 10
@@ -146,4 +148,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

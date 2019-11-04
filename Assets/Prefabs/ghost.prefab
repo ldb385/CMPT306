@@ -68,7 +68,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1627098603
+  m_SortingLayerID: 440110965
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e4747a5b934bb4ea78d1fd77774ef675, type: 3}
@@ -123,11 +123,10 @@ MonoBehaviour:
   speed: 3
   health: 10
   visibilityDistance: 2.5
-  deathClip: {fileID: 8300000, guid: dcd53433aeaa0bc44ae62cb64ec47738, type: 3}
-  chaseClip: {fileID: 8300000, guid: 0b6dc16c58998d648b608cdc11c9f5c6, type: 3}
+  deathClip: {fileID: 8300000, guid: 43be07496ce9d48218e6139f3d89e0ff, type: 3}
+  chaseClip: {fileID: 8300000, guid: fdfe59be3519c428bbc822ec9db9bbab, type: 3}
   canLaugh: 1
   cooldownTime: 5
-  laughInterval: 5
 --- !u!50 &8726340824236536013
 Rigidbody2D:
   serializedVersion: 4
@@ -148,4 +147,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4

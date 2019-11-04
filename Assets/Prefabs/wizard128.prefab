@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7496065576434700576}
   - component: {fileID: 7496065576434700579}
   - component: {fileID: 7496065576434700578}
-  - component: {fileID: 7496065576434700589}
   - component: {fileID: 1254659450770508284}
+  - component: {fileID: 3574764145134749907}
+  - component: {fileID: 1246073624330527375}
   m_Layer: 0
   m_Name: wizard128
   m_TagString: Player
@@ -68,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 440110965
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 350c9e5794a4fb341a0fbbc802fa7c64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -103,26 +104,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7496065576434700589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7496065576434700588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f81e7f63c15b7d49b6394235762d17c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spookLevel: 0
-  speed: 3
-  playerProjectile: {fileID: 6813800049911920383, guid: c6b7d4dfe2400479fa1438f8a13d4629,
-    type: 3}
-  projectileSpeed: 15
-  ballonAmmo: 0
-  deathClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
-  projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
 --- !u!61 &1254659450770508284
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +130,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38234895, y: 0.63522077}
   m_EdgeRadius: 0
+--- !u!114 &3574764145134749907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496065576434700588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc7ad420b4154d53b50c54d00cd84a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spookLevel: 0
+  speed: 3
+  ballonAmmo: 5
+  BalloonDMG: 5
+  FireballDMG: 1
+  deathClip: {fileID: 0}
+--- !u!114 &1246073624330527375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496065576434700588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02822215fd4f49ce9a9b50fc337c027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileClip: {fileID: 8300000, guid: 8a1a366e4277f475fabd62bf53cda527, type: 3}
+  playerProjectile: {fileID: 6813800049911920383, guid: c6b7d4dfe2400479fa1438f8a13d4629,
+    type: 3}
+  WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
+    type: 3}
+  projectileSpeed: 1
