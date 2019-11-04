@@ -456,6 +456,7 @@ MonoBehaviour:
   WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
     type: 3}
   projectileSpeed: 9
+  CoolDown: 2
 --- !u!114 &1464729977
 MonoBehaviour:
   m_ObjectHideFlags: 0
