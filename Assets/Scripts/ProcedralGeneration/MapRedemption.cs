@@ -174,7 +174,7 @@ public class MapRedemption : MonoBehaviour
         {
             case( 0 ): // North
                 tempx = x;
-                for (tempy = y; tempy <= (y + len); tempy++)
+                for (tempy = y; tempy < (y + len); tempy++)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
                     if (!isPlaced(pos))
@@ -185,7 +185,7 @@ public class MapRedemption : MonoBehaviour
                 break;
             case( 1 ): // East
                 tempy = y;
-                for (tempx = x; tempx <= ( x + len); tempx++)
+                for (tempx = x; tempx < ( x + len); tempx++)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
                     if (!isPlaced(pos))
@@ -196,7 +196,7 @@ public class MapRedemption : MonoBehaviour
                 break;
             case( 2 ): // South
                 tempx = x;
-                for (tempy = y; tempy >= (y - len); tempy--)
+                for (tempy = y; tempy > (y - len); tempy--)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
                     if (!isPlaced(pos))
@@ -207,7 +207,7 @@ public class MapRedemption : MonoBehaviour
                 break;
             case( 3 ): // West
                 tempy = y;
-                for (tempx = x; tempx >= (x - len); tempx--)
+                for (tempx = x; tempx > (x - len); tempx--)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
                     if (!isPlaced(pos))
@@ -226,8 +226,6 @@ public class MapRedemption : MonoBehaviour
     // Despawns the level
     private void UnloadTiles()
     {
-        // RemoveSpawners();
-        
         foreach(Vector2Int coord in tiles.Keys)
         {
             GameObject go = tiles[coord];
@@ -240,9 +238,8 @@ public class MapRedemption : MonoBehaviour
     private void RemoveSpawners()
     {
         // Destroy all instances of spawners 
-        Object[] allObjects = GameObject.FindObjectsOfType( spawner.GetType() );
-        foreach( GameObject obj in allObjects) {
-            if(obj.transform.name == "Spawner(Clone)"){
+        foreach (GameObject obj in Object.FindObjectsOfType<GameObject>()) {
+            if( obj.transform.name == "Spawner(Clone)" ){
                 Destroy(obj);
             }
         }
@@ -433,22 +430,22 @@ public class MapRedemption : MonoBehaviour
                     case( 0 ):
                         // Moved North
                         newy = newy + splitNum( prevYSize, true );
-                        while( makeRoom(newx, newy +1, roomYLen, roomXLen) );
+                        makeRoom(newx , newy , roomXLen, roomYLen);
                         break;
                     case( 1 ):
                         // Moved East
                         newx = newx + splitNum( prevXSize, true );
-                        while( makeRoom(newx +1, newy, roomYLen, roomXLen) );
+                        makeRoom(newx , newy, roomXLen, roomYLen);
                         break;
                     case( 2 ):
                         // Moved South
                         newy = newy - splitNum( prevYSize, false );
-                        while( makeRoom(newx, newy -1, roomYLen, roomXLen) );
+                        makeRoom(newx, newy , roomXLen, roomYLen);
                         break;
                     case( 3 ):
                         // Moved West
                         newx = newx - splitNum( prevXSize, false );
-                        while( makeRoom(newx -1, newy, roomYLen, roomXLen) );
+                        makeRoom(newx , newy, roomXLen, roomYLen);
                         break;
                 }
                 
@@ -460,6 +457,8 @@ public class MapRedemption : MonoBehaviour
 
         if ( roomsMade < _objects - 3 || roomsMade < cooridorsMade)
         {
+            // if the rooms arent good enough rebuild rooms
+            RemoveSpawners();
             UnloadTiles();
             GenerateModel();
         }
