@@ -144,53 +144,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700576, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700576, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7496065576434700579, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: 1134746801
+      value: 1627098603
       objectReference: {fileID: 0}
     - target: {fileID: 7496065576434700579, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700578, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: projectileSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: spookLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: ballonAmmo
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: speed
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
 --- !u!1 &587392969
 GameObject:
@@ -252,6 +216,7 @@ GameObject:
   - component: {fileID: 1228127116}
   - component: {fileID: 1228127119}
   - component: {fileID: 1228127120}
+  - component: {fileID: 1228127121}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -432,46 +397,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1228127121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228127115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8b59ee86501428c931b8fc54d7ea7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &1464729975 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7496065576434700588, guid: cfb343976707cc54f91825e46dbd83a7,
     type: 3}
   m_PrefabInstance: {fileID: 195105023}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1464729976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464729975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02822215fd4f49ce9a9b50fc337c027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
-  playerProjectile: {fileID: 6813800049911920383, guid: c6b7d4dfe2400479fa1438f8a13d4629,
-    type: 3}
-  WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
-    type: 3}
-  projectileSpeed: 9
-  CoolDown: 2
---- !u!114 &1464729977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464729975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abc7ad420b4154d53b50c54d00cd84a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spookLevel: 0
-  speed: 3
-  ballonAmmo: 3
-  BalloonDMG: 5
-  FireballDMG: 1
-  deathClip: {fileID: 0}
