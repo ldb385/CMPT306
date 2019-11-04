@@ -63,22 +63,6 @@ public class Mummy : MonoBehaviour
     }
 
     // detect if hit by projectile
-<<<<<<< Updated upstream:Assets/Scripts/Characters/Mummy.cs
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Projectile"))
-        {
-            health--;
-            //AudioSource.PlayClipAtPoint(damageClip, transform.position);
-            if (health <= 0)
-            {
-                // play death sound and destroy object
-                //AudioSource.PlayClipAtPoint(deathClip, transform.position);
-                Destroy(gameObject);
-
-            }
-        }
-=======
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Projectile"))
@@ -106,7 +90,6 @@ public class Mummy : MonoBehaviour
 
             }
         }
->>>>>>> Stashed changes:Assets/Scripts/Characters/EnemyScript/Mummy.cs
     }
 
     // Start is called before the first frame update

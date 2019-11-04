@@ -157,10 +157,6 @@ public class Ghost : MonoBehaviour
     // damage for ghost
         if (collision.gameObject.CompareTag("Projectile"))
         {
-<<<<<<< Updated upstream:Assets/Scripts/Characters/Ghost.cs
-            health--;
-            //AudioSource.PlayClipAtPoint(damageClip, transform.position);
-=======
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
 
             if (health <= 0)
@@ -176,7 +172,6 @@ public class Ghost : MonoBehaviour
             
             health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
 
->>>>>>> Stashed changes:Assets/Scripts/Characters/EnemyScript/Ghost.cs
             if (health <= 0)
             {
                 // play death sound/animation here

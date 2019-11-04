@@ -4,22 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemies
-  - Projectile
-  - Obstacle
-<<<<<<< Updated upstream
-  - Soda
   - EnemyProjectile
-=======
+  - Enemies
   - Cape
   - Soda
   - Flashlight
-  - Teddy
-  - Balloon
-  - Nerf
-  - Candy
   - DMGBalloon
->>>>>>> Stashed changes
+  - Projectile
+  - Obstacle
+  - Nerf
+  - Balloon
+  - Candy
+  - Teddy
   layers:
   - Default
   - TransparentFX
@@ -57,12 +53,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Background
-    uniqueID: 4272424369
+  - name: mid
+    uniqueID: 1134746801
     locked: 0
-  - name: Midground
-    uniqueID: 1627098603
+  - name: fore
+    uniqueID: 440110965
     locked: 0
-  - name: Projectile
-    uniqueID: 3492483689
+  - name: proj
+    uniqueID: 1651236077
     locked: 0

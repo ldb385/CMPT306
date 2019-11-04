@@ -42,27 +42,11 @@ public class Skeleton : MonoBehaviour
     }
 
     // detect if hit by projectile
-<<<<<<< Updated upstream:Assets/Scripts/Characters/Skeleton.cs
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Projectile"))
         {
-            health--;
-            // AudioSource.PlayClipAtPoint(damageClip, transform.position);
-            if (health <= 0)
-            {
-                // play death sound and destroy objectx
-                AudioSource.PlayClipAtPoint(deathClip, transform.position);
-                Destroy(gameObject);
-
-            }
-        }
-=======
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Projectile"))
-        {
-            health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
+            // health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
 
             if (health <= 0)
             {
@@ -85,7 +69,6 @@ public class Skeleton : MonoBehaviour
 
             }
         }
->>>>>>> Stashed changes:Assets/Scripts/Characters/EnemyScript/Skeleton.cs
     }
 
     /**

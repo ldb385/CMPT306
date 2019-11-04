@@ -33,21 +33,6 @@ public class Zombie : MonoBehaviour
     public float health = 10f;
 
     // detect if hit by projectile
-<<<<<<< Updated upstream:Assets/Scripts/Characters/Zombie.cs
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Projectile"))
-        {
-            health--;
-            //AudioSource.PlayClipAtPoint(damageClip, transform.position);
-            if (health <= 0)
-            {
-                // play death sound/animation here
-                //AudioSource.PlayClipAtPoint(deathClip, transform.position);
-                Destroy(gameObject);
-            }
-        }
-=======
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Projectile"))
@@ -75,7 +60,6 @@ public class Zombie : MonoBehaviour
 
             }
         }
->>>>>>> Stashed changes:Assets/Scripts/Characters/EnemyScript/Zombie.cs
     }
 
     /**
