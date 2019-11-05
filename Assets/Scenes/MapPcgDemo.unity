@@ -154,6 +154,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7496065576434700578, guid: cfb343976707cc54f91825e46dbd83a7,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
 --- !u!1 &587392969
@@ -202,11 +207,11 @@ MonoBehaviour:
   Floor: {fileID: 7443767859827992060, guid: a699401f9f0038e4480f3e3240cdaf90, type: 3}
   northWall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe,
     type: 3}
-  eastWall: {fileID: 1893388467336113446, guid: a726de51c859e8d41aef1ba0ac9d88ef,
+  eastWall: {fileID: 1893388467336113446, guid: cbcf40297ddf840ac9dda1f63f70735b,
     type: 3}
   southWall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe,
     type: 3}
-  westWall: {fileID: 2264969029579212247, guid: dd60af44c925cd342a0c6fb1c3e29203,
+  westWall: {fileID: 2264969029579212247, guid: 17cdc885fb15f4ababbdc8b395e9685b,
     type: 3}
   spawner: {fileID: 309428189480847958, guid: 7d27ac7c0b34bc44082921b539f337c8, type: 3}
   roomAmount: 21
