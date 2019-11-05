@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 7496065576434700588, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: wizard128
       objectReference: {fileID: 0}
     - target: {fileID: 7496065576434700576, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
@@ -144,54 +144,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700576, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -16.69
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700576, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: ballonAmmo
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: spookLevel
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7496065576434700579, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: 440110965
+      value: 1627098603
       objectReference: {fileID: 0}
     - target: {fileID: 7496065576434700579, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 7496065576434700578, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3574764145134749907, guid: cfb343976707cc54f91825e46dbd83a7,
-        type: 3}
-      propertyPath: FireballDMG
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7496065576434700589, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
-    - {fileID: 1246073624330527375, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
 --- !u!1 &587392969
 GameObject:
@@ -237,13 +200,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Floor: {fileID: 7443767859827992060, guid: a699401f9f0038e4480f3e3240cdaf90, type: 3}
-  Wall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe, type: 3}
-  SideWallL: {fileID: 2264969029579212247, guid: 17cdc885fb15f4ababbdc8b395e9685b,
+  northWall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe,
     type: 3}
-  SideWallR: {fileID: 1893388467336113446, guid: cbcf40297ddf840ac9dda1f63f70735b,
+  eastWall: {fileID: 1893388467336113446, guid: a726de51c859e8d41aef1ba0ac9d88ef,
+    type: 3}
+  southWall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe,
+    type: 3}
+  westWall: {fileID: 2264969029579212247, guid: dd60af44c925cd342a0c6fb1c3e29203,
     type: 3}
   spawner: {fileID: 309428189480847958, guid: 7d27ac7c0b34bc44082921b539f337c8, type: 3}
-  RoomCount: 100
+  roomAmount: 21
+  maxRoomWidth: 15
+  maxRoomHeight: 15
+  maxCooridorLength: 15
 --- !u!1 &1228127115
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +224,6 @@ GameObject:
   - component: {fileID: 1228127118}
   - component: {fileID: 1228127117}
   - component: {fileID: 1228127116}
-  - component: {fileID: 1228127119}
   - component: {fileID: 1228127120}
   - component: {fileID: 1228127121}
   m_Layer: 0
@@ -283,7 +251,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -299,7 +267,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.5106163
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -323,25 +291,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228127115}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.69, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1228127119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228127115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc8b59ee86501428c931b8fc54d7ea7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1464729975}
 --- !u!82 &1228127120
 AudioSource:
   m_ObjectHideFlags: 0
@@ -450,28 +405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8b59ee86501428c931b8fc54d7ea7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1464729975}
---- !u!1 &1464729975 stripped
+  player: {fileID: 1623930763}
+--- !u!1 &1623930763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7496065576434700588, guid: cfb343976707cc54f91825e46dbd83a7,
     type: 3}
   m_PrefabInstance: {fileID: 195105023}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1464729976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1464729975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02822215fd4f49ce9a9b50fc337c027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileClip: {fileID: 8300000, guid: 8a1a366e4277f475fabd62bf53cda527, type: 3}
-  playerProjectile: {fileID: 6813800049911920383, guid: c6b7d4dfe2400479fa1438f8a13d4629,
-    type: 3}
-  WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
-    type: 3}
-  projectileSpeed: 9
