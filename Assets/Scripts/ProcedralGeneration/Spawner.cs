@@ -136,7 +136,7 @@ public class Spawner : MonoBehaviour
                     else
                     {
                         // Spawn in Enemy
-                        tile = Instantiate(getEnemy((int) 9.0f - spookLevel),
+                        tile = Instantiate(getEnemy((int) (9.0f - spookLevel)),
                             (Vector2) i + diff, Quaternion.identity) as GameObject;
                     }
 
