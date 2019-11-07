@@ -8,10 +8,10 @@ public class Alien : MonoBehaviour
     private Transform target;
     public float health = 10f;
 
-   // create audio clips *** UNCOMMENT WHEN AUDIO CLIPS ARE CHOSEN ***
-   // public AudioClip deathClip;
-   public AudioClip projectileClip;
-   // public AudioClip damageClip;
+    // create audio clips *** UNCOMMENT WHEN AUDIO CLIPS ARE CHOSEN ***
+    // public AudioClip deathClip;
+    public AudioClip projectileClip;
+    // public AudioClip damageClip;
 
     // Ranged attack radius for alien attack
     public float attackRange;
@@ -38,9 +38,9 @@ public class Alien : MonoBehaviour
 
             }
         }
-        if (col.gameObject.CompareTag("Balloon"))
+        if (col.gameObject.CompareTag("DMGBalloon"))
         {
-            
+
             health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
 
             if (health <= 0)
@@ -88,19 +88,19 @@ public class Alien : MonoBehaviour
         // cooldown time endsy
         canShoot = true;
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        // set the target as the player
-        target = GameObject.FindWithTag("Player").transform;
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // check if player is in range
-        inRange();
+        // Start is called before the first frame update
+        void Start()
+        {
+            // set the target as the player
+            target = GameObject.FindWithTag("Player").transform;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            // check if player is in range
+            inRange();
         }
     }
 }

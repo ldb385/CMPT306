@@ -21,7 +21,7 @@ public class Mummy : MonoBehaviour
 
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
-    
+
 
 
     /**
@@ -30,7 +30,7 @@ public class Mummy : MonoBehaviour
     void Chase()
     {
         // this will be used to chase the player
-        transform.position = Vector2.MoveTowards(transform.position, target.position, 
+        transform.position = Vector2.MoveTowards(transform.position, target.position,
             speed * Time.deltaTime);
 
         // play mummy sound if not on cooldown
@@ -77,9 +77,9 @@ public class Mummy : MonoBehaviour
 
             }
         }
-        if (col.gameObject.CompareTag("Balloon"))
+        if (col.gameObject.CompareTag("DMGBalloon"))
         {
-            
+
             health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
 
             if (health <= 0)
@@ -96,7 +96,7 @@ public class Mummy : MonoBehaviour
     void Start()
     {
         // set the target as the player
-        target = GameObject.FindWithTag("Player").transform; 
+        target = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

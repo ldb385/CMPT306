@@ -7,14 +7,14 @@ public class Zombie : MonoBehaviour
 {
     // Target will always be player
     private Transform target;
-    
+
     // speed at which to follow player
     public float chaseSpeed;
     // speed at which to Charge at player
     public float chargeSpeed;
     // distance that charge will be called at
     public float chargeDist;
-    
+
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
 
@@ -47,9 +47,8 @@ public class Zombie : MonoBehaviour
 
             }
         }
-        if (col.gameObject.CompareTag("Balloon"))
+        if (col.gameObject.CompareTag("DMGBalloon"))
         {
-            
             health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
 
             if (health <= 0)
@@ -68,10 +67,10 @@ public class Zombie : MonoBehaviour
     void Chase()
     {
         // this will be used to chase the player
-        transform.position = Vector2.MoveTowards(transform.position, target.position, 
+        transform.position = Vector2.MoveTowards(transform.position, target.position,
             chaseSpeed * Time.deltaTime);
     }
-    
+
     /**
      * This will be used to increase speed when the zombie gets close enough to the player
      * after a certain amount of frames the zombie will become tired and slow its speed
@@ -79,28 +78,28 @@ public class Zombie : MonoBehaviour
     void Charge()
     {
         // this function will increase speed slightly when it gets closer to the player
-        if ( (_chargeFatigue <= maxFatigue ) && _canCharge )
+        if ((_chargeFatigue <= maxFatigue) && _canCharge)
         {
             // *** Tint zombie when its charging ( CAN BE TAKEN OUT ) ***
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(0.9245283f, 0.7893378f,0.7893378f, 1);
-            
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(0.9245283f, 0.7893378f, 0.7893378f, 1);
+
             // Charge after player
-            transform.position = Vector2.MoveTowards(transform.position, target.position, 
+            transform.position = Vector2.MoveTowards(transform.position, target.position,
                 chargeSpeed * Time.deltaTime);
             // get tired from charging
             _chargeFatigue++;
-            if (_chargeFatigue == maxFatigue )
+            if (_chargeFatigue == maxFatigue)
             {
                 // too tired can no longer charge till strength is regained
                 _canCharge = false;
 
             }
-        } 
+        }
         else
         {
             // *** Tint zombie when its not charging ( CAN BE TAKEN OUT ) ***
             gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-            
+
             // zombie is too tired to charge more and will just chase instead
             Chase();
             if (_chargeFatigue <= 0)
@@ -121,12 +120,12 @@ public class Zombie : MonoBehaviour
     {
         // just a place holder for now
     }
-    
+
     void Start()
     {
         // initialize player as target
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        
+
         // Setting up for charge functions
         _chargeFatigue = 0;
         _canCharge = true;
@@ -161,12 +160,12 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    
+
     // Update is called once per frame
     void FixedUpdate()
     {
         movement();
-        
+
         // check if player is close enough to attack the player
         if (Vector2.Distance(transform.position, target.position) <= 1)
         {

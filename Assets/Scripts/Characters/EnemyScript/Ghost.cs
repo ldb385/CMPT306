@@ -154,7 +154,7 @@ public class Ghost : MonoBehaviour
             calcuateNewMovementVector();
         }
 
-    // damage for ghost
+        // damage for ghost
         if (collision.gameObject.CompareTag("Projectile"))
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
@@ -167,9 +167,9 @@ public class Ghost : MonoBehaviour
 
             }
         }
-        if (collision.gameObject.CompareTag("Balloon"))
+        if (collision.gameObject.CompareTag("DMGBalloon"))
         {
-            
+
             health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
 
             if (health <= 0)

@@ -53,6 +53,8 @@ public class PlayerAttack : MonoBehaviour
         GameObject watBalloon = Instantiate(WaterBaloon, playerPosition, Quaternion.identity);
         watBalloon.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed / 2;
 
+        Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+
         // destroy projectile after 4 seconds if it hasn't hit anything
         Destroy(watBalloon, 1.0f);
     }

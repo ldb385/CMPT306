@@ -58,7 +58,7 @@ public class Skeleton : MonoBehaviour
 
             }
         }
-        if (col.gameObject.CompareTag("Balloon"))
+        if (col.gameObject.CompareTag("DMGBalloon"))
         {
 
             health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
