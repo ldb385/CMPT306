@@ -20,6 +20,16 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject chairSide;
     [SerializeField] private GameObject chairBack;
 
+	// ALL DESPOOKERS
+	[SerializeField] private GameObject Flashlight;
+	[SerializeField] private GameObject Teddy;
+	[SerializeField] private GameObject Candy;
+
+	// ALL POWERUPS
+	[SerializeField] private GameObject Nerf;
+	[SerializeField] private GameObject Soda;
+	[SerializeField] private GameObject Balloon;
+	[SerializeField] private GameObject Cape;
 
     // This will store the game tiles (Phenotype)
     private Dictionary<Vector2Int, GameObject> tiles;
@@ -62,7 +72,6 @@ public class Spawner : MonoBehaviour
         switch (rnd)
         {
             case 0:
-                // Spawn in stool
                 return endTable;
             case 1:
                 return table;
@@ -76,6 +85,49 @@ public class Spawner : MonoBehaviour
         return endTable;
     }
 
+	private GameObject getDespooker()
+	{
+	
+		int rnd = Random.Range(0,4);
+		switch(rnd)
+		{
+			case 0:
+				return Candy;
+			case 1:
+				return Teddy;
+			case 2:
+				return Teddy;
+			case 3:
+				return Flashlight;
+			case 4:
+				return Flashlight;
+		}
+
+		// It will never hit THIS
+		return Candy;
+	}
+
+	private GameObject getPowerUp()
+	{
+	
+		int rnd = Random.Range(0,4);
+		switch(rnd)
+		{
+			case 0:
+				return Soda;
+			case 1:
+				return Nerf;
+			case 2:
+				return Balloon;
+			case 3:
+				return Balloon;
+			case 4:
+				return Cape;
+		}
+
+		// It will never hit THIS
+		return Soda;
+	}
 
     private GameObject getEnemy( int max )
     {
@@ -119,7 +171,7 @@ public class Spawner : MonoBehaviour
 
         foreach( Vector2Int i in data.Keys )
         {
-            // 0 Empty, 1 Obstacle, 2 Enemy
+            // 0 Empty, 1 Obstacle, 2 Enemy, 3 Despooker, 4 PowerUp
             switch( data[i] ){
                 case 1:
 
@@ -141,7 +193,37 @@ public class Spawner : MonoBehaviour
                     }
 
                     break;
-                default:
+                case 3:
+                    if ( spookLevel <= 0 )
+                    {
+                        // Spawn in Despooker
+						tile = Instantiate(getDespooker( 9 ),
+							(Vector2) i + diff, Quaternion.identity) as GameObject;
+                    }
+                    else
+                    {
+                        // Spawn in Despooker
+						tile = Instantiate(getDespooker((int)(9.0f - spookLevel) ),
+							(Vector2) i + diff, Quaternion.identity) as GameObject;
+                    }
+
+                    break;
+				case 4:
+                    if ( spookLevel <= 0 )
+                    {
+                        // Spawn in PowerUp
+						tile = Instantiate(getPowerUp( 9 ),
+							(Vector2) i + diff, Quaternion.identity) as GameObject;
+                    }
+                    else
+                    {
+                        // Spawn in PowerUp
+						tile = Instantiate(getPowerUp((int) (9.0f - spookLevel)),
+							(Vector2) i + diff, Quaternion.identity) as GameObject;
+                    }
+
+                    break;
+				default:
                     tile = null;
                     break;
             }
@@ -174,10 +256,18 @@ public class Spawner : MonoBehaviour
             enemies = minEnemies;
         }
 
+		int powers = (int) ( 9.0f - spookLevel );
+
+
+		int despooks = (int) ( 9.0f - spookLevel );
+
+
         int avelen = w + h / 2;
         int obstacles = ( avelen * 3) / Random.Range( avelen/2, avelen) ;
         int distFromObs = 3;
         int distFromEne = 3;
+		int distFromPow = 3;
+		int distFromDes = 3;
 
         Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
 
@@ -188,8 +278,8 @@ public class Spawner : MonoBehaviour
             for(int j=0; j<h; j++)
             {
                 Vector2Int coord = new Vector2Int(i, j);
-
-                spawned = spawned - 3;
+				//I changed this from 3 to 1 to account for the other cases I think...
+                spawned = spawned - 1;
 
                 if (spawned <= 0)
                 {
@@ -229,6 +319,32 @@ public class Spawner : MonoBehaviour
 
                             enemies--;
                             break;
+						case 3:
+							if (powers <= 0 || distFromPow < 2)
+							{
+								// if there is too many or too close
+								rnd = 0;
+								spawned = Random.Range(0 ,avelen);
+								distFromPow++;
+							}
+							else
+							{
+								distFromPow = 0;
+							}
+							break;
+						case 4:
+							if (despooks <= 0 || distFromDes < 2)
+							{
+								// if there is too many or too close
+								rnd = 0;
+								spawned = Random.Range(0, avelen);
+								distFromDes++
+							}
+							else
+							{
+								distFromDes = 0;
+							}
+							break;
                     }
                     
                     // Check to make sure the coordinate isn't already added to dict
