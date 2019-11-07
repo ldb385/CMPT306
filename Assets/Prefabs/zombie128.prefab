@@ -101,11 +101,10 @@ MonoBehaviour:
   maxFatigue: 150
   _as: {fileID: 137289694392638514}
   audioClipArray:
-  - {fileID: 8300000, guid: 722ef1ac0c8e8db4da75b462cc56c0e6, type: 3}
-  - {fileID: 8300000, guid: 4e287630039ddb2418c9418d4e2e3fc6, type: 3}
-  - {fileID: 8300000, guid: bbcff36526e5a1440a6d7b894f33f780, type: 3}
-  - {fileID: 8300000, guid: eef29da530390aa4bb2cd08a92bb8713, type: 3}
-  - {fileID: 8300000, guid: d2c54c92089181a4ea85a313a56a66a8, type: 3}
+  - {fileID: 8300000, guid: 3daaf57b1ce4e447489b628f51890a30, type: 3}
+  - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}
+  - {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
+  - {fileID: 8300000, guid: 0bfe87246421040649ce8bc0fa22e47e, type: 3}
   health: 10
 --- !u!50 &7536065948401648839
 Rigidbody2D:
@@ -139,7 +138,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
