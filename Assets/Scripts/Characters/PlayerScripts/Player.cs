@@ -13,9 +13,13 @@ public class Player : MonoBehaviour
     public int ballonAmmo = 0;
     public float BalloonDMG= 5.0f;
     public float FireballDMG = 1.0f; 
+
     // create audio clip
     public AudioClip deathClip;
 
+    // footstep sounds
+    public AudioSource _as;
+    public AudioClip footstepClip;
 
     // create rigid body
     private Rigidbody2D rb;
@@ -28,7 +32,10 @@ public class Player : MonoBehaviour
 
 	// Create invincible state
 	private bool invincible = false;
-    
+
+    // footstep sound variables
+    private bool canWalk = true;
+    public float footstepDelay;
     
     // Start is called before the first frame update
     void Start()
@@ -39,9 +46,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 moveInput = new Vector2( Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVel = moveInput.normalized * speed;
-       
+
+        // check if the player is moving and play footset sounds
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0){
+            PlayFootstep();
+        }
+
         if (Input.GetKeyDown(KeyCode.D)){
             if(faceRight==true){
                 Flip();
@@ -172,6 +184,31 @@ public class Player : MonoBehaviour
     // WaterBallonPickUp adds a waterballon to the current amount of balloons
     public void WaterBalloonPickUp(){
             ballonAmmo +=1;
+    }
+
+    // Play footstep sound based on canWalk interval
+    public void PlayFootstep()
+    {
+        if (canWalk)
+        {
+            StartCoroutine(PlayFootsteps());
+        }
+    }
+
+    // Coroutine for previous function
+    public IEnumerator PlayFootsteps()
+    {   
+
+        // play footstep sound
+        _as.PlayOneShot(footstepClip);
+
+        // cooldown starts
+        canWalk = false;
+
+        // play footstep sound every footstepDelay seconds
+        yield return new WaitForSeconds(footstepDelay);
+
+        canWalk = true;
     }
 
 }
