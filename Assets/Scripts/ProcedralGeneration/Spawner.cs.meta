@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 3c59c5feb2897e6429046b0d9c4414d2
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Ghost: {fileID: 4789583149841275649, guid: 102ccd43a6a5ea44dacdd64be8664c90, type: 3}
+  - Skeleton: {fileID: 4647141352398576607, guid: c9fcac4af61d9bf40a3f6b54882f74ca,
+      type: 3}
+  - Mummy: {fileID: 6408232461057747334, guid: 857fe20336c8df242919ff7b6289d024, type: 3}
+  - Zombie: {fileID: 7536065948401648841, guid: 84f9596f607f6b64ebe0e93a5880251f,
+      type: 3}
+  - Alien: {fileID: 8859374689890134087, guid: 37721a248d6dcb7498242f9c1c695b5a, type: 3}
+  - endTable: {fileID: 7250554789379511836, guid: 24a03c8692e8683409cc4a129dd7abdd,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
