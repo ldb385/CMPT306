@@ -85,10 +85,14 @@ public class Spawner : MonoBehaviour
         return endTable;
     }
 
-	private GameObject getDespooker()
+	private GameObject getDespooker( int max )
 	{
+		if (max > 4)
+		{
+			max = 4;
+		}
 	
-		int rnd = Random.Range(0,4);
+		int rnd = Random.Range(0, max );
 		switch(rnd)
 		{
 			case 0:
@@ -107,10 +111,14 @@ public class Spawner : MonoBehaviour
 		return Candy;
 	}
 
-	private GameObject getPowerUp()
+	private GameObject getPowerUp( int max )
 	{
+		if (max > 4)
+		{
+			max = 4;
+		}
 	
-		int rnd = Random.Range(0,4);
+		int rnd = Random.Range(0, max );
 		switch(rnd)
 		{
 			case 0:
@@ -274,79 +282,93 @@ public class Spawner : MonoBehaviour
         int spawned = Random.Range(1, 5);
         
         for(int i=0; i<w; i++)
-        {
+        {	// iterate through width
             for(int j=0; j<h; j++)
-            {
+            {	// iterate through height
                 Vector2Int coord = new Vector2Int(i, j);
-				//I changed this from 3 to 1 to account for the other cases I think...
+
+                //I changed this from 3 to 1 to account for the other cases I think...
                 spawned = spawned - 1;
 
                 if (spawned <= 0)
                 {
                     // Pick whether its empty, obstacle, enemy
                     int rnd = Random.Range(0, avelen );
-                    switch (rnd)
-                    {
-                        // 0 Empty, 1 Obstacle, 2 Enemey
-                        case 1:
-                            obstacles--;
-                            if (obstacles <= 0 || distFromObs < 2 )
-                            {
-                                // if there is too many or too close
-                                rnd = 0;
-                                spawned = Random.Range(0, avelen);
-                                distFromObs++;
-                            }
-                            else
-                            {
-                                distFromObs = 0;
-                            }
-                            
-
-                            break;
-                        case 2:
-                            if (enemies <= 0 || distFromEne < 2 )
-                            {
-                                // if there is too many or too close
-                                rnd = 0;
-                                spawned = Random.Range(0, avelen);
-                                distFromEne++;
-                            }
-                            else
-                            {
-                                distFromEne = 0;
-                            }
-
-                            enemies--;
-                            break;
-						case 3:
-							if (powers <= 0 || distFromPow < 2)
-							{
-								// if there is too many or too close
-								rnd = 0;
-								spawned = Random.Range(0 ,avelen);
-								distFromPow++;
-							}
-							else
-							{
-								distFromPow = 0;
-							}
-							break;
-						case 4:
-							if (despooks <= 0 || distFromDes < 2)
-							{
-								// if there is too many or too close
-								rnd = 0;
-								spawned = Random.Range(0, avelen);
-								distFromDes++
-							}
-							else
-							{
-								distFromDes = 0;
-							}
-							break;
-                    }
                     
+                    
+                    // need to make sure you are not spawning in front of a potential door
+                    if (i == w / 2 && (j == 0 || j == h - 1) ||
+                        j == h / 2 && (i == 0 || i == w - 1))
+                    {
+	                    rnd = 0;
+                    }
+                    else
+                    {
+	                    switch (rnd)
+	                    {
+		                    // 0 Empty, 1 Obstacle, 2 Enemey
+		                    case 1:
+			                    obstacles--;
+			                    if (obstacles <= 0 || distFromObs < 2)
+			                    {
+				                    // if there is too many or too close
+				                    rnd = 0;
+				                    spawned = Random.Range(0, avelen);
+				                    distFromObs++;
+			                    }
+			                    else
+			                    {
+				                    distFromObs = 0;
+			                    }
+
+
+			                    break;
+		                    case 2:
+			                    if (enemies <= 0 || distFromEne < 2)
+			                    {
+				                    // if there is too many or too close
+				                    rnd = 0;
+				                    spawned = Random.Range(0, avelen);
+				                    distFromEne++;
+			                    }
+			                    else
+			                    {
+				                    distFromEne = 0;
+			                    }
+
+			                    enemies--;
+			                    break;
+		                    case 3:
+			                    if (powers <= 0 || distFromPow < 2)
+			                    {
+				                    // if there is too many or too close
+				                    rnd = 0;
+				                    spawned = Random.Range(0, avelen);
+				                    distFromPow++;
+			                    }
+			                    else
+			                    {
+				                    distFromPow = 0;
+			                    }
+
+			                    break;
+		                    case 4:
+			                    if (despooks <= 0 || distFromDes < 2)
+			                    {
+				                    // if there is too many or too close
+				                    rnd = 0;
+				                    spawned = Random.Range(0, avelen);
+				                    distFromDes++;
+			                    }
+			                    else
+			                    {
+				                    distFromDes = 0;
+			                    }
+
+			                    break;
+	                    }
+                    }
+
                     // Check to make sure the coordinate isn't already added to dict
                     if(!tmp_model.ContainsKey(coord))
                     {

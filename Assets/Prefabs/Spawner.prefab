@@ -51,11 +51,19 @@ MonoBehaviour:
   Alien: {fileID: 8859374689890134087, guid: 37721a248d6dcb7498242f9c1c695b5a, type: 3}
   endTable: {fileID: 7250554789379511836, guid: 24a03c8692e8683409cc4a129dd7abdd,
     type: 3}
-  table: {fileID: 713015991715273239, guid: 0a3c5c467e547b44c968345d656d8e08, type: 3}
+  table: {fileID: 6346882379615173618, guid: 92b92b4024631fb4fbf7031e15c6ae85, type: 3}
   chairSide: {fileID: 5694206263037646985, guid: b44d9e3f8b66fc04c87fcbd0c8f85345,
     type: 3}
   chairBack: {fileID: 2394184353795056603, guid: 879fc7b1e9e966d4c95a59043bef9802,
     type: 3}
+  Flashlight: {fileID: 7808637847861783578, guid: 19101c7ef2e390349883ba0d0540760a,
+    type: 3}
+  Teddy: {fileID: 5587014229061917684, guid: 2b846b06a1c1d194c87548acc6fa4cef, type: 3}
+  Candy: {fileID: 1719875897420511350, guid: 252c86a9c3c6f6b4d8d2929526a46d1a, type: 3}
+  Nerf: {fileID: 9043848066443676873, guid: 0351ca7b74fa10447aa277a728f08d4d, type: 3}
+  Soda: {fileID: 1719875897420511350, guid: 252c86a9c3c6f6b4d8d2929526a46d1a, type: 3}
+  Balloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485, type: 3}
+  Cape: {fileID: 6371271966087989422, guid: e8a49832c358bb449a2b1dae52491062, type: 3}
   width: 9
   height: 5
   spookPercent: 120
