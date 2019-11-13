@@ -9,11 +9,11 @@ public class Zombie : MonoBehaviour
     private Transform target;
 
     // speed at which to follow player
-    public float chaseSpeed;
+    public float chaseSpeed = 2.2f;
     // speed at which to Charge at player
-    public float chargeSpeed;
+    public float chargeSpeed = 3.5f;
     // distance that charge will be called at
-    public float chargeDist;
+    public float chargeDist = 4f;
 
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
@@ -22,7 +22,7 @@ public class Zombie : MonoBehaviour
     private bool _canCharge;
 
     // the max frames for zombie to be fatigued
-    public int maxFatigue;
+    public int maxFatigue = 6;
 
     // array to hold zombie sounds
     public AudioSource _as;

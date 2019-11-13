@@ -20,13 +20,13 @@ public class Skeleton : MonoBehaviour
     // public AudioClip damageClip;
 
     // Ranged attack radius for skeleton attack
-    public float attackRange;
+    public float attackRange = 4f;
 
     public GameObject enemyProjectile;
 
     // bool for coroutine in ranged attack
     public bool canShoot = true;
-    public float cooldownTime;
+    public float cooldownTime = 3f;
 
     // skeleton health
     public float health = 10f;

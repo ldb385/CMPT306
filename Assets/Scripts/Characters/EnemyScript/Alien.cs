@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
-    public float speed;
+    public float speed = 2.9f;
     private Transform target;
     public float health = 10f;
 
@@ -14,7 +14,7 @@ public class Alien : MonoBehaviour
     // public AudioClip damageClip;
 
     // Ranged attack radius for alien attack
-    public float attackRange;
+    public float attackRange = 5f;
 
     // bool for coroutine in ranged attack
     public bool canShoot = true;

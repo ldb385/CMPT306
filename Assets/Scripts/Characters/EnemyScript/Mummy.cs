@@ -7,7 +7,7 @@ using UnityEngine;
 public class Mummy : MonoBehaviour
 {
     public float health = 10f;
-    public float speed;
+    public float speed = 2.3f;
     private Transform target;
 
     // create audio clips uncomment when we have audio selected
@@ -16,7 +16,7 @@ public class Mummy : MonoBehaviour
     // public AudioClip damageClip;
 
     // coroutine variables
-    public float cooldownTime;
+    public float cooldownTime = 3f;
     public bool canGroan = true;
 
     // Stop enemy from ending up on top of player

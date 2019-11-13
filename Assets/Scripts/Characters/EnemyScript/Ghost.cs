@@ -12,14 +12,14 @@ public class Ghost : MonoBehaviour
     // Ghost speed, Note, this should be faster then average since the player will not
     // immidiately be targeted
 
-    public float speed;
+    public float speed = 2.8f;
     public float health = 10f;
 
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
 
     // these are used for detection and movement of AI
-    public float visibilityDistance;
+    public float visibilityDistance = 4f;
     private float latestDirectionChangeTime;
     private readonly float directionChangeTime = 1f;
     private Vector2 movementDirection;
