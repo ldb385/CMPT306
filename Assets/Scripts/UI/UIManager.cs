@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
 
     // pathnames to scenes that will be loaded using UI
     private string scenePath = "Assets/Scenes/MapPcgDemo.unity";
-    private string mainMenuPath = "Assets/Scene/MainMenu.unity";
+    private string mainMenuPath = "Assets/Scenes/MainMenu.unity";
 
     // Start is called before the first frame update
     void Start()
