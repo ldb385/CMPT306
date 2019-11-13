@@ -44,9 +44,8 @@ public class Spawner : MonoBehaviour
     public int height;
 
     // Used for spook level and Player spook
-    public int spookPercent;
     private float spookLevel;
-    private int minEnemies = 3;
+    private int minEnemies = 5;
  
     
 
@@ -87,9 +86,9 @@ public class Spawner : MonoBehaviour
 
 	private GameObject getDespooker( int max )
 	{
-		if (max > 4)
+		if (max > 5)
 		{
-			max = 4;
+			max = 5;
 		}
 	
 		int rnd = Random.Range(0, max );
@@ -113,9 +112,9 @@ public class Spawner : MonoBehaviour
 
 	private GameObject getPowerUp( int max )
 	{
-		if (max > 4)
+		if (max > 5)
 		{
-			max = 4;
+			max = 5;
 		}
 	
 		int rnd = Random.Range(0, max );
@@ -264,10 +263,9 @@ public class Spawner : MonoBehaviour
             enemies = minEnemies;
         }
 
-		int powers = (int) ( 9.0f - spookLevel );
-
-
-		int despooks = (int) ( 9.0f - spookLevel );
+        // this is the 
+		int powers = (int) spookLevel/2;
+		int despooks = (int) spookLevel/2;
 
 
         int avelen = w + h / 2;
@@ -286,9 +284,8 @@ public class Spawner : MonoBehaviour
             for(int j=0; j<h; j++)
             {	// iterate through height
                 Vector2Int coord = new Vector2Int(i, j);
-
-                //I changed this from 3 to 1 to account for the other cases I think...
-                spawned = spawned - 1;
+                
+                spawned = spawned - 3;
 
                 if (spawned <= 0)
                 {
@@ -306,7 +303,7 @@ public class Spawner : MonoBehaviour
                     {
 	                    switch (rnd)
 	                    {
-		                    // 0 Empty, 1 Obstacle, 2 Enemey
+		                    // 0 Empty, 1 Obstacle, 2 Enemey, 3 Powerup, 4 Despooker
 		                    case 1:
 			                    obstacles--;
 			                    if (obstacles <= 0 || distFromObs < 2)
@@ -351,6 +348,8 @@ public class Spawner : MonoBehaviour
 				                    distFromPow = 0;
 			                    }
 
+			                    powers--;
+
 			                    break;
 		                    case 4:
 			                    if (despooks <= 0 || distFromDes < 2)
@@ -364,6 +363,8 @@ public class Spawner : MonoBehaviour
 			                    {
 				                    distFromDes = 0;
 			                    }
+
+			                    despooks--;
 
 			                    break;
 	                    }
@@ -402,9 +403,8 @@ public class Spawner : MonoBehaviour
     public void spawnIn( )
     {
         data = GenerateModel( width, height );
-        LoadTiles();
         hasBeenActivated = true;
-
+        LoadTiles();
     }
 
 
@@ -416,6 +416,8 @@ public class Spawner : MonoBehaviour
         GameObject wiz = GameObject.FindGameObjectWithTag("Player");
         Player playerScript = wiz.GetComponent<Player>();
         spookLevel = playerScript.spookLevel;
+        
+        // check if the player is within bounds and checks whether the spawner as already been activated
         if (player.x > transform.position.x && player.x < transform.position.x + width
                                             && player.y > transform.position.y &&
                                             player.y < transform.position.y + height &&
