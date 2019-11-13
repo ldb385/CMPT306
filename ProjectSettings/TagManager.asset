@@ -16,6 +16,8 @@ TagManager:
   - Balloon
   - Candy
   - Teddy
+  - wall
+  - Text
   layers:
   - Default
   - TransparentFX
