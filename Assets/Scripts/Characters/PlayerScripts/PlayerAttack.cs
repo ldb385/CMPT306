@@ -45,13 +45,14 @@ public class PlayerAttack : MonoBehaviour
     public void ThrowBalloon()
     {
         Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector2 direction = clickPosition - playerPosition;
+        Vector2 BalloonPosition = new Vector2(transform.position.x, transform.position.y);
+        Vector2 direction = clickPosition - BalloonPosition;
         direction.Normalize();
 
         // create projectile and make it move
-        GameObject watBalloon = Instantiate(WaterBaloon, playerPosition, Quaternion.identity);
-        watBalloon.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed / 2;
+        GameObject watBalloon = Instantiate(WaterBaloon, BalloonPosition, Quaternion.identity);
+        transform.position = Vector2.MoveTowards(BalloonPosition, clickPosition, Time.deltaTime);
+        // watBalloon.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed / 2;
 
         Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), GetComponent<Collider2D>());
 
