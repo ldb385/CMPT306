@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6408232461057747336}
   - component: {fileID: 6408232461057747337}
-  - component: {fileID: 6408232461057747339}
   - component: {fileID: 6408232461057747341}
   - component: {fileID: 6408232461057747338}
+  - component: {fileID: 5237430885122519610}
   m_Layer: 0
   m_Name: mummy
   m_TagString: Enemies
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440110965
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5e8700017df6b4434ab89d2e84d399dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -82,22 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6408232461057747339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6408232461057747334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62bc09a0da088d04e96cdfb982d38b9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  speed: 2
-  cooldownTime: 5
-  canGroan: 1
 --- !u!50 &6408232461057747341
 Rigidbody2D:
   serializedVersion: 4
@@ -145,3 +129,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45253038, y: 0.8859656}
   m_EdgeRadius: 0
+--- !u!114 &5237430885122519610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6408232461057747334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8539f1f072873ed478d55308edb182e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  speed: 2.2
+  cooldownTime: 4
+  canGroan: 1

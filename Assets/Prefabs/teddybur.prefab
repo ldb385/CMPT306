@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5587014229061917680}
   - component: {fileID: 5587014229061917683}
   - component: {fileID: 5587014229061917682}
-  - component: {fileID: 5587014229061917685}
+  - component: {fileID: 891236417841166885}
   m_Layer: 0
   m_Name: teddybur
   m_TagString: Teddy
@@ -97,7 +97,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.016836822, y: 0.025255382}
   m_Size: {x: 0.22469223, y: 0.40989697}
   m_Direction: 0
---- !u!114 &5587014229061917685
+--- !u!114 &891236417841166885
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,6 +106,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5587014229061917684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2b1469e688794438863cf0c517fded, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b4d8b595e9bbad439f181bb67a4195d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7536065948401648837}
   - component: {fileID: 7536065948401648838}
-  - component: {fileID: 7536065948401648840}
   - component: {fileID: 7536065948401648839}
   - component: {fileID: 137289694392638514}
   - component: {fileID: 5667796841551968827}
+  - component: {fileID: 7321851728832834491}
   m_Layer: 0
   m_Name: zombie128
   m_TagString: Enemies
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440110965
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 400e85f6988df7940a18e7ca88131f8b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -83,29 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7536065948401648840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7536065948401648841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c94aca9fa2cf484e8bc86a03937db8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chaseSpeed: 1.5
-  chargeSpeed: 2.9
-  chargeDist: 4.5
-  maxFatigue: 150
-  _as: {fileID: 137289694392638514}
-  audioClipArray:
-  - {fileID: 8300000, guid: 3daaf57b1ce4e447489b628f51890a30, type: 3}
-  - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}
-  - {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
-  - {fileID: 8300000, guid: 0bfe87246421040649ce8bc0fa22e47e, type: 3}
-  health: 10
 --- !u!50 &7536065948401648839
 Rigidbody2D:
   serializedVersion: 4
@@ -249,3 +226,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.40900993, y: 0.8042488}
   m_EdgeRadius: 0
+--- !u!114 &7321851728832834491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536065948401648841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e4f5520d8912043bdda967edee66c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseSpeed: 2.2
+  chargeSpeed: 2.8
+  chargeDist: 4
+  maxFatigue: 6
+  _as: {fileID: 0}
+  audioClipArray: []
+  health: 10

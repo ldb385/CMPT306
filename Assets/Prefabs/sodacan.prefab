@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1719875897420511338}
   - component: {fileID: 1719875897420511339}
   - component: {fileID: 1719875897420511336}
-  - component: {fileID: 1719875897420511337}
+  - component: {fileID: 4758098195654528644}
   m_Layer: 0
   m_Name: sodacan
   m_TagString: Soda
@@ -97,7 +97,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0.021310609, y: -0.014169622}
   m_Size: {x: 0.24698739, y: 0.36605343}
   m_Direction: 0
---- !u!114 &1719875897420511337
+--- !u!114 &4758098195654528644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,6 +106,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1719875897420511350}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2b1469e688794438863cf0c517fded, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b4d8b595e9bbad439f181bb67a4195d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

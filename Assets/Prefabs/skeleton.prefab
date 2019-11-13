@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4647141352398576601}
   - component: {fileID: 4647141352398576600}
-  - component: {fileID: 4647141352398576602}
   - component: {fileID: 4722897191499538468}
   - component: {fileID: 935946324334906589}
+  - component: {fileID: 1226004824399524181}
   m_Layer: 0
   m_Name: skeleton
   m_TagString: Enemies
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440110965
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 183b4555a12920b4c835f662e19231c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -82,26 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4647141352398576602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4647141352398576607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3277b6f2af4ac6d44a3fc5a57f33da9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathClip: {fileID: 8300000, guid: 0bfe87246421040649ce8bc0fa22e47e, type: 3}
-  projectileClip: {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
-  attackRange: 5
-  enemyProjectile: {fileID: 280472947904706412, guid: 369454ac4dddb4496a45180f6ab06796,
-    type: 3}
-  canShoot: 1
-  cooldownTime: 3
-  health: 10
 --- !u!61 &4722897191499538468
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,3 +129,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1226004824399524181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647141352398576607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61c57ef478348a43b316ded60e71675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
+  projectileClip: {fileID: 8300000, guid: 196a1e172df0c2c45932d4e4e41959d4, type: 3}
+  attackRange: 4
+  enemyProjectile: {fileID: 280472947904706412, guid: 369454ac4dddb4496a45180f6ab06796,
+    type: 3}
+  canShoot: 1
+  cooldownTime: 2
+  health: 10
