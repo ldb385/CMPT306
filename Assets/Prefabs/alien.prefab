@@ -146,4 +146,4 @@ MonoBehaviour:
   projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
   attackRange: 3
   canShoot: 1
-  cooldownTime: 0
+  cooldownTime: 5
