@@ -18,6 +18,7 @@ TagManager:
   - Teddy
   - wall
   - Text
+  - ShowOnPause
   layers:
   - Default
   - TransparentFX
@@ -63,4 +64,7 @@ TagManager:
     locked: 0
   - name: proj
     uniqueID: 1651236077
+    locked: 0
+  - name: facewall
+    uniqueID: 733974527
     locked: 0

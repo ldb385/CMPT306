@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public float projectileSpeed = 1f;
     private float CoolDown = 0;
     private const float ShootInterval = 0.5f;
+    int height = 0;
 
     private void Update()
     {
@@ -44,19 +45,27 @@ public class PlayerAttack : MonoBehaviour
 
     public void ThrowBalloon()
     {
-        Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-        Vector2 BalloonPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector2 direction = clickPosition - BalloonPosition;
+        // gets mouse position
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // gets balloon position
+        Vector3 BalloonPosition = new Vector2(transform.position.x, transform.position.y);
+        // gets distance between the two
+        Vector3 direction = mousePos - BalloonPosition;
         direction.Normalize();
 
         // create projectile and make it move
         GameObject watBalloon = Instantiate(WaterBaloon, BalloonPosition, Quaternion.identity);
-        transform.position = Vector2.MoveTowards(BalloonPosition, clickPosition, Time.deltaTime);
-        // watBalloon.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed / 2;
-
+        // calculates the distance and speed of balloon
+        float distance = Vector3.Distance(watBalloon.transform.position, mousePos);
+        float moveSpeed = Mathf.Clamp(distance * 4f ,50f,250f);
+       // move the balloon
+        watBalloon.GetComponent<Rigidbody2D>().velocity = direction * moveSpeed;
+        watBalloon.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
+       
+       // ignore collition between player and balloon
         Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
 
-        // destroy projectile after 4 seconds if it hasn't hit anything
+        // destroy projectile after 1 seconds if it hasn't hit anything
         Destroy(watBalloon, 1.0f);
     }
 }
