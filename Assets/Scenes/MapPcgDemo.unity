@@ -420,6 +420,11 @@ PrefabInstance:
       propertyPath: footstepClip
       value: 
       objectReference: {fileID: 8300000, guid: 1f4f4b414e53a4f73b22852aac9f5e10, type: 3}
+    - target: {fileID: 3030530881243452751, guid: cfb343976707cc54f91825e46dbd83a7,
+        type: 3}
+      propertyPath: footstepDelay
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
 --- !u!1 &196722845
