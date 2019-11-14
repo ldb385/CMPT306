@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     public AudioClip deathClip;
 
     // footstep sounds
-    public AudioSource _as;
     public AudioClip footstepClip;
 
     // create rigid body
@@ -200,7 +199,7 @@ public class Player : MonoBehaviour
     {   
 
         // play footstep sound
-        _as.PlayOneShot(footstepClip);
+        AudioSource.PlayClipAtPoint(footstepClip, transform.position);
 
         // cooldown starts
         canWalk = false;
