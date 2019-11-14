@@ -242,6 +242,10 @@ MonoBehaviour:
   chargeSpeed: 0
   chargeDist: 0
   maxFatigue: 0
-  _as: {fileID: 0}
-  audioClipArray: []
+  _as: {fileID: 137289694392638514}
+  audioClipArray:
+  - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}
+  - {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
+  - {fileID: 8300000, guid: 0bfe87246421040649ce8bc0fa22e47e, type: 3}
+  - {fileID: 8300000, guid: 3daaf57b1ce4e447489b628f51890a30, type: 3}
   health: 10
