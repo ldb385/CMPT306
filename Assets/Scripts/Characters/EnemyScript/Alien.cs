@@ -21,7 +21,7 @@ public class Alien : MonoBehaviour
     public float cooldownTime;
 
     // Stop enemy from ending up on top of player
-    private float stopDist = 0.65f;
+    // private float stopDist = 0.65f;
 
     // detect if hit by projectile
     void OnCollisionEnter2D(Collision2D col)
@@ -88,19 +88,18 @@ public class Alien : MonoBehaviour
         // cooldown time endsy
         canShoot = true;
 
-
+    }
         // Start is called before the first frame update
-        void Start()
-        {
-            // set the target as the player
-            target = GameObject.FindWithTag("Player").transform;
-        }
+    void Start()
+    {
+        // set the target as the player
+        target = GameObject.FindWithTag("Player").transform;
+    }
 
-        // Update is called once per frame
-        void Update()
-        {
-            // check if player is in range
-            inRange();
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        // check if player is in range
+        inRange();
     }
 }
