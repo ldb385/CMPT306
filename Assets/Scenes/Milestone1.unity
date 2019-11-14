@@ -1331,7 +1331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2212b31a30874e69a88f1aacd6ec31b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spookBar: {fileID: 0}
+  spookBar: {fileID: 1195121714}
 --- !u!114 &1930292025
 MonoBehaviour:
   m_ObjectHideFlags: 0
