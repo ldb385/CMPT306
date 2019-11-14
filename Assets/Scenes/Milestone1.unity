@@ -477,7 +477,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -22542927
-  m_SortingLayer: 1
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bb8bc85d5a3dc4a838ed02400c3109f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -925,10 +925,10 @@ RectTransform:
   m_Father: {fileID: 1930292028}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -398.5, y: 266.3}
-  m_SizeDelta: {x: 296.5, y: 79.4}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 229, y: -90}
+  m_SizeDelta: {x: 296.5, y: 79.399994}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1204287191
 GameObject:
@@ -1108,7 +1108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e0110cddf473c43820d065e7c74cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spookBar: {fileID: 1195121714}
 --- !u!114 &1930292025
 MonoBehaviour:
   m_ObjectHideFlags: 0
