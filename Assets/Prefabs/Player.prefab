@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7496065576434700579}
   - component: {fileID: 7496065576434700578}
   - component: {fileID: 3030530881243452751}
-  - component: {fileID: 2177238312918356034}
+  - component: {fileID: 3270685002314729797}
+  - component: {fileID: 2655169339526233564}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1134746801
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 350c9e5794a4fb341a0fbbc802fa7c64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -124,7 +125,7 @@ MonoBehaviour:
   _as: {fileID: 0}
   footstepClip: {fileID: 8300000, guid: b4f10b6da1314fe4f8153e15dc1087ec, type: 3}
   footstepDelay: 5
---- !u!114 &2177238312918356034
+--- !u!114 &3270685002314729797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,4 +142,30 @@ MonoBehaviour:
     type: 3}
   WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
     type: 3}
-  projectileSpeed: 3
+  projectileSpeed: 9
+--- !u!61 &2655169339526233564
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496065576434700588}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0225631, y: -0.00000011920929}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.5329114, y: 0.76341105}
+  m_EdgeRadius: 0

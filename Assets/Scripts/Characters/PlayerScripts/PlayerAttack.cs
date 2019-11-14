@@ -37,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
             projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
 
             // projectile can travel through player
-            Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
             CoolDown = ShootInterval;
         }
     }
@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
         transform.position = Vector2.MoveTowards(BalloonPosition, clickPosition, Time.deltaTime);
         // watBalloon.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed / 2;
 
-        Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
 
         // destroy projectile after 4 seconds if it hasn't hit anything
         Destroy(watBalloon, 1.0f);
