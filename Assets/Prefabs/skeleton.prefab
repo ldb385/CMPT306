@@ -141,11 +141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3277b6f2af4ac6d44a3fc5a57f33da9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathClip: {fileID: 0}
-  projectileClip: {fileID: 0}
-  attackRange: 0
+  deathClip: {fileID: 8300000, guid: 20c94ff927fab4916920fa6926a26bd6, type: 3}
+  projectileClip: {fileID: 8300000, guid: 8a1a366e4277f475fabd62bf53cda527, type: 3}
+  attackRange: 8
   enemyProjectile: {fileID: 280472947904706412, guid: 369454ac4dddb4496a45180f6ab06796,
     type: 3}
   canShoot: 1
-  cooldownTime: 0
+  cooldownTime: 5
   health: 10
