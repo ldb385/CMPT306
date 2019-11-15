@@ -39,28 +39,12 @@ public class Zombie : MonoBehaviour
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
 
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-
-            }
-        }
-        if (col.gameObject.CompareTag("DMGBalloon"))
-        {
-            health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
-
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-
-            }
         }
     }
-
+    public void ApplyDamage(float damage)
+    {
+        health -= damage;
+    }
     /**
      * simple following command that follows target based off vector position
      */
@@ -170,6 +154,17 @@ public class Zombie : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) <= 1)
         {
             zombieAttack();
+        }
+    }
+
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            // play death sound/animation here
+
+            Destroy(gameObject);
+
         }
     }
 }

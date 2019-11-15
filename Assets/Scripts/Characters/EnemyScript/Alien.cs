@@ -29,27 +29,6 @@ public class Alien : MonoBehaviour
         if (col.gameObject.CompareTag("Projectile"))
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
-
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-
-            }
-        }
-        if (col.gameObject.CompareTag("DMGBalloon"))
-        {
-
-            health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
-
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-
-            }
         }
     }
 
@@ -89,7 +68,13 @@ public class Alien : MonoBehaviour
         canShoot = true;
 
     }
-        // Start is called before the first frame update
+    public void ApplyDamage(float damage)
+    {
+        health -= damage;
+    }
+
+
+    // Start is called before the first frame update
     void Start()
     {
         // set the target as the player
@@ -101,5 +86,13 @@ public class Alien : MonoBehaviour
     {
         // check if player is in range
         inRange();
+
+        if (health <= 0)
+        {
+            // play death sound/animation here
+
+            Destroy(gameObject);
+
+        }
     }
 }

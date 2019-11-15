@@ -5,28 +5,57 @@ using UnityEngine;
 public class BalloonFire : MonoBehaviour
 {
     private int HeightState = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int radius = 2;
 
     // Update is called once per frame
     void Update()
     {
         // simulates the height change 
-        switch(HeightState){
+        switch (HeightState)
+        {
             default:
             case 0:
+                // enlarge
                 transform.localScale += Vector3.one * 7f * Time.deltaTime;
-                if(transform.localScale.x >= 2.5f) HeightState = 1;
+                if (transform.localScale.x >= 2.5f) HeightState = 1;
                 break;
             case 1:
+                // shrink to norm
                 transform.localScale -= Vector3.one * 7f * Time.deltaTime;
-                if(transform.localScale.x <= 1f) HeightState = 2;
+                if (transform.localScale.x <= 1f) HeightState = 2;
                 break;
             case 2:
+                // fall and break
+                Destroy(gameObject);
+                Vector3 explosionPos = transform.position;
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
+                foreach (Collider2D hit in colliders)
+                {
+                    if (hit.gameObject.tag == "Enemies")
+                    {
+                        hit.SendMessage("ApplyDamage", 5.0f);
+                    }
+                }
                 break;
+
         }
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag != "wall")
+        {
+            Debug.Log("hit");
+            Physics2D.IgnoreCollision( collision.collider, this.GetComponent<Collider2D>());
+
+        }
+    }
+
+    // to see the radius of the balloon (doesnt work well but not important)
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+        Gizmos.DrawWireSphere(transform.position + transform.position, radius);
     }
 }

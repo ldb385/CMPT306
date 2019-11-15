@@ -147,6 +147,11 @@ public class Ghost : MonoBehaviour
         movement();
     }
 
+    public void ApplyDamage(float damage)
+    {
+        health -= damage;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "wall")
@@ -158,27 +163,16 @@ public class Ghost : MonoBehaviour
         if (collision.gameObject.CompareTag("Projectile"))
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
-
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-
-            }
-        }
-        if (collision.gameObject.CompareTag("DMGBalloon"))
-        {
-
-            health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
-
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-            }
         }
     }
+    private void Update()
+    {
+        if (health <= 0)
+        {
+            // play death sound/animation here
 
+            Destroy(gameObject);
+
+        }
+    }
 }

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7496065576434700576}
   - component: {fileID: 7496065576434700579}
   - component: {fileID: 7496065576434700578}
+  - component: {fileID: 2655169339526233564}
   - component: {fileID: 3030530881243452751}
   - component: {fileID: 3270685002314729797}
-  - component: {fileID: 2655169339526233564}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -104,45 +104,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3030530881243452751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7496065576434700588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abc7ad420b4154d53b50c54d00cd84a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spookLevel: 0
-  speed: 3.2
-  ballonAmmo: 0
-  BalloonDMG: 5
-  FireballDMG: 1
-  deathClip: {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
-  _as: {fileID: 0}
-  footstepClip: {fileID: 8300000, guid: b4f10b6da1314fe4f8153e15dc1087ec, type: 3}
-  footstepDelay: 5
---- !u!114 &3270685002314729797
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7496065576434700588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f02822215fd4f49ce9a9b50fc337c027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
-  playerProjectile: {fileID: 6813800049911920383, guid: 154813756ed29724fab8d67614ac5a3a,
-    type: 3}
-  WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
-    type: 3}
-  projectileSpeed: 9
 --- !u!61 &2655169339526233564
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -169,3 +130,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5329114, y: 0.76341105}
   m_EdgeRadius: 0
+--- !u!114 &3030530881243452751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496065576434700588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc7ad420b4154d53b50c54d00cd84a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spookLevel: 0
+  speed: 3.2
+  ballonAmmo: 0
+  BalloonDMG: 5
+  FireballDMG: 1
+  deathClip: {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
+  footstepClip: {fileID: 8300000, guid: b4f10b6da1314fe4f8153e15dc1087ec, type: 3}
+  footstepDelay: 5
+--- !u!114 &3270685002314729797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496065576434700588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f02822215fd4f49ce9a9b50fc337c027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
+  playerProjectile: {fileID: 6813800049911920383, guid: 154813756ed29724fab8d67614ac5a3a,
+    type: 3}
+  WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
+    type: 3}
+  projectileSpeed: 9

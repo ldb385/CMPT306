@@ -10,7 +10,6 @@ public class PlayerAttack : MonoBehaviour
     public float projectileSpeed = 1f;
     private float CoolDown = 0;
     private const float ShootInterval = 0.5f;
-    int height = 0;
 
     private void Update()
     {
@@ -57,15 +56,16 @@ public class PlayerAttack : MonoBehaviour
         GameObject watBalloon = Instantiate(WaterBaloon, BalloonPosition, Quaternion.identity);
         // calculates the distance and speed of balloon
         float distance = Vector3.Distance(watBalloon.transform.position, mousePos);
-        float moveSpeed = Mathf.Clamp(distance * 4f ,50f,250f);
+        float moveSpeed = Mathf.Clamp(distance * 4f,50f,250f);
+        
        // move the balloon
-        watBalloon.GetComponent<Rigidbody2D>().velocity = direction * moveSpeed;
+        watBalloon.GetComponent<Rigidbody2D>().velocity = (direction * moveSpeed/2);
         watBalloon.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
        
        // ignore collition between player and balloon
         Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
 
         // destroy projectile after 1 seconds if it hasn't hit anything
-        Destroy(watBalloon, 1.0f);
+        // Destroy(watBalloon, 1.0f);
     }
 }

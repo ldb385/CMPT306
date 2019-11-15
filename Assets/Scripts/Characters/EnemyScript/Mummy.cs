@@ -67,28 +67,11 @@ public class Mummy : MonoBehaviour
         if (col.gameObject.CompareTag("Projectile"))
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
-
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-
-            }
         }
-        if (col.gameObject.CompareTag("DMGBalloon"))
-        {
+    }
 
-            health -= GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
-
-            if (health <= 0)
-            {
-                // play death sound/animation here
-
-                Destroy(gameObject);
-
-            }
-        }
+    public void ApplyDamage(float damage){
+        health-=damage;
     }
 
     // Start is called before the first frame update
@@ -101,7 +84,13 @@ public class Mummy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         if (health <= 0)
+            {
+                // play death sound/animation here
 
+                Destroy(gameObject);
+
+            }
     }
 
     private void FixedUpdate()
