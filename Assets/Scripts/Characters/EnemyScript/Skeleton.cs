@@ -63,7 +63,9 @@ public class Skeleton : MonoBehaviour
     void lookAt()
     {
         // Check where player is located and turn towards
-        relativeTarget = transform.InverseTransformPoint(target.GetComponent<Transform>().position);
+
+        relativeTarget = transform.InverseTransformPoint(target.transform.position);
+
         if (relativeTarget.x > 0f)
         {
             // On right side
@@ -107,19 +109,18 @@ public class Skeleton : MonoBehaviour
     public IEnumerator rangedAttack()
     {
         // projectile sprite goes here
+        Vector2 playerPosition = target.transform.position;
 
         // get positions
         Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
-        Vector2 direction = relativeTarget - enemyPosition;
+        Vector2 direction = playerPosition - enemyPosition;
         direction.Normalize();
 
-        //Vector3 playerPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-
         // create projectile and make it move
-        GameObject projectile = Instantiate(enemyProjectile, enemyPosition, Quaternion.LookRotation(Vector3.forward, playerPosition - transform.position));
+        GameObject projectile = Instantiate(enemyProjectile, enemyPosition, Quaternion.identity);
 
-        projectile.GetComponent<Rigidbody2D>().velocity = direction * 3f;
+        projectile.GetComponent<Rigidbody2D>().velocity = direction * 5f;
+        projectile.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
 
         // projectile can travel through player
         Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
