@@ -8,18 +8,20 @@ public class PlayerAttack : MonoBehaviour
     public GameObject playerProjectile;
     public GameObject WaterBaloon;
     public float projectileSpeed = 1f;
-    private float CoolDown = 0;
+    private float FireCoolDown = 0;
+    private float WaterCoolDown = 0;
     private const float ShootInterval = 0.5f;
 
     private void Update()
     {
-        CoolDown -= Time.deltaTime;
+        FireCoolDown -= Time.deltaTime;
+        WaterCoolDown -= Time.deltaTime;
     }
 
     public void Shoot()
     {
         // fire speed limiter
-        if (CoolDown <= 0)
+        if (FireCoolDown <= 0)
         {
             // get positions
             Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
@@ -38,34 +40,35 @@ public class PlayerAttack : MonoBehaviour
 
             // projectile can travel through player
             Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
-            CoolDown = ShootInterval;
+            FireCoolDown = ShootInterval;
         }
     }
 
     public void ThrowBalloon()
     {
-        // gets mouse position
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // gets balloon position
-        Vector3 BalloonPosition = new Vector2(transform.position.x, transform.position.y);
-        // gets distance between the two
-        Vector3 direction = mousePos - BalloonPosition;
-        direction.Normalize();
+        if (WaterCoolDown <= 0){
+            // gets mouse position
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // gets balloon position
+            Vector3 BalloonPosition = new Vector2(transform.position.x, transform.position.y);
+            // gets distance between the two
+            Vector3 direction = mousePos - BalloonPosition;
+            direction.Normalize();
 
-        // create projectile and make it move
-        GameObject watBalloon = Instantiate(WaterBaloon, BalloonPosition, Quaternion.identity);
-        // calculates the distance and speed of balloon
-        float distance = Vector3.Distance(watBalloon.transform.position, mousePos);
-        float moveSpeed = Mathf.Clamp(distance * 4f,50f,250f);
+            // create projectile and make it move
+            GameObject watBalloon = Instantiate(WaterBaloon, BalloonPosition, Quaternion.identity);
+            // calculates the distance and speed of balloon
+            float distance = Vector3.Distance(watBalloon.transform.position, mousePos);
+            float moveSpeed = Mathf.Clamp(distance * 4f,50f,250f);
+            
+        // move the balloon
+            watBalloon.GetComponent<Rigidbody2D>().velocity = (direction * moveSpeed/2);
+            watBalloon.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
         
-       // move the balloon
-        watBalloon.GetComponent<Rigidbody2D>().velocity = (direction * moveSpeed/2);
-        watBalloon.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
-       
-       // ignore collition between player and balloon
-        Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
-
-        // destroy projectile after 1 seconds if it hasn't hit anything
-        // Destroy(watBalloon, 1.0f);
+        // ignore collition between player and balloon
+            Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
+            WaterCoolDown = ShootInterval;
+        }
+    
     }
 }

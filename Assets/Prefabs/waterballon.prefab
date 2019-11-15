@@ -132,3 +132,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 2
+  emitter: {fileID: 5144059940428976907, guid: e54969d5c11f24c6898db0565ea24a29, type: 3}

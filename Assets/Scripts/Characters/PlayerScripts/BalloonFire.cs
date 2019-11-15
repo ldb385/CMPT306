@@ -6,7 +6,7 @@ public class BalloonFire : MonoBehaviour
 {
     private int HeightState = 0;
     public int radius = 2;
-
+    public ParticleSystem emitter;
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +27,10 @@ public class BalloonFire : MonoBehaviour
             case 2:
                 // fall and break
                 Destroy(gameObject);
+                ParticleSystem part = Instantiate(emitter, transform.position, Quaternion.identity);
+                part.transform.position = transform.position;
+                part.Play();
+
                 Vector3 explosionPos = transform.position;
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
                 foreach (Collider2D hit in colliders)
