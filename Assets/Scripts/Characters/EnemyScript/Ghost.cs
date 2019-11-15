@@ -26,7 +26,7 @@ public class Ghost : MonoBehaviour
     private Vector2 movementPerSecond;
 
     // create audio clips
-    public AudioClip deathClip;
+    //public AudioClip deathClip;
     public AudioClip chaseClip;
     // public AudioClip damageClip;
 

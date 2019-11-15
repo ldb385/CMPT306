@@ -141,10 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b5377d100b675469143b8b7f7e7de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 1
   health: 10
-  visibilityDistance: 0
-  deathClip: {fileID: 0}
-  chaseClip: {fileID: 0}
+  visibilityDistance: 10
+  chaseClip: {fileID: 8300000, guid: fdfe59be3519c428bbc822ec9db9bbab, type: 3}
   canLaugh: 1
-  cooldownTime: 0
+  cooldownTime: 5
