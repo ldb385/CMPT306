@@ -52,6 +52,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ImgHealth: {fileID: 2487526347647545417}
+  TrackPlayerSpook: {fileID: 7496065576434700588, guid: cfb343976707cc54f91825e46dbd83a7,
+    type: 3}
   Min: 0
   Max: 100
 --- !u!1 &6413022023961389203
