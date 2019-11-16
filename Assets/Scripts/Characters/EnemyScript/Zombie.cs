@@ -25,7 +25,7 @@ public class Zombie : MonoBehaviour
     public int maxFatigue = 6;
 
     // array to hold zombie sounds
-    public AudioSource _as;
+    private AudioSource _as;
     public AudioClip[] audioClipArray;
     // public AudioClip deathClip;
     // public AudioClip damageClip;

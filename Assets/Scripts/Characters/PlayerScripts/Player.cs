@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public float speed;
 
     // For shooting
-    public int ballonAmmo = 0;
     public float BalloonDMG= 5.0f;
     public float FireballDMG = 1.0f; 
 
@@ -75,10 +74,7 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)){
-            if (ballonAmmo > 0){
-                ballonAmmo -= 1;
                 FindObjectOfType<PlayerAttack>().ThrowBalloon();
-            }
         }
     
 
@@ -149,9 +145,9 @@ public class Player : MonoBehaviour
     
     // SodaPickUp changes the speed to 2.0(?)
     public IEnumerator SodaPickUp(){
-            speed = 2.0f;
+            speed *= 2;
             yield return new WaitForSecondsRealtime(5);
-            speed = 1.0f;
+            speed /= 2;
     }
     
     // CapePickUp gives the player immunity from damage for 15(?) seconds
@@ -188,7 +184,7 @@ public class Player : MonoBehaviour
     
     // WaterBallonPickUp adds a waterballon to the current amount of balloons
     public void WaterBalloonPickUp(){
-            ballonAmmo +=1;
+             this.GetComponent<PlayerAttack>().ballonAmmo++;
     }
 
     // Play footstep sound based on canWalk interval

@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public AudioClip projectileClip;
     public GameObject playerProjectile;
     public GameObject WaterBaloon;
+    public int ballonAmmo = 0;
     public float projectileSpeed = 1f;
     private float FireCoolDown = 0;
     private float WaterCoolDown = 0;
@@ -46,7 +47,9 @@ public class PlayerAttack : MonoBehaviour
 
     public void ThrowBalloon()
     {
-        if (WaterCoolDown <= 0){
+        if (WaterCoolDown <= 0 && ballonAmmo > 0)
+        {
+            ballonAmmo--;
             // gets mouse position
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             // gets balloon position
@@ -59,16 +62,16 @@ public class PlayerAttack : MonoBehaviour
             GameObject watBalloon = Instantiate(WaterBaloon, BalloonPosition, Quaternion.identity);
             // calculates the distance and speed of balloon
             float distance = Vector3.Distance(watBalloon.transform.position, mousePos);
-            float moveSpeed = Mathf.Clamp(distance * 4f,50f,250f);
-            
-        // move the balloon
-            watBalloon.GetComponent<Rigidbody2D>().velocity = (direction * moveSpeed/2);
+            float moveSpeed = Mathf.Clamp(distance * 4f, 50f, 250f);
+
+            // move the balloon
+            watBalloon.GetComponent<Rigidbody2D>().velocity = (direction * moveSpeed / 2);
             watBalloon.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
-        
-        // ignore collition between player and balloon
+
+            // ignore collition between player and balloon
             Physics2D.IgnoreCollision(watBalloon.GetComponent<Collider2D>(), this.GetComponent<Collider2D>());
             WaterCoolDown = ShootInterval;
         }
-    
+
     }
 }
