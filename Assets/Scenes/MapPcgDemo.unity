@@ -562,6 +562,12 @@ PrefabInstance:
       propertyPath: Max
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7606792665116230826, guid: 2582767c2dea340019da626fdcbf3d9d,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 1ba95b38337a48747b8a80eec0c4d06d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2582767c2dea340019da626fdcbf3d9d, type: 3}
 --- !u!1 &196722845
@@ -810,6 +816,16 @@ PrefabInstance:
         type: 3}
       propertyPath: ballonAmmo
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496065576434700578, guid: cfb343976707cc54f91825e46dbd83a7,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496065576434700578, guid: cfb343976707cc54f91825e46dbd83a7,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfb343976707cc54f91825e46dbd83a7, type: 3}
@@ -1078,6 +1094,14 @@ MonoBehaviour:
   southWall: {fileID: 2916426934056704017, guid: d541a519e16a6654daa71fa6097b7bd5,
     type: 3}
   westWall: {fileID: 2264969029579212247, guid: 17cdc885fb15f4ababbdc8b395e9685b,
+    type: 3}
+  eastOuterWall: {fileID: 8772548054662941249, guid: 0a00fa33fd070854493de9b823313c0e,
+    type: 3}
+  westOuterWall: {fileID: 4235167870357057791, guid: 2f2ed507f24bfdb4b8bd1b80571e1088,
+    type: 3}
+  eastInnerWall: {fileID: 1647380442484027934, guid: 0d9bf124342533d4d84122e496b4dee1,
+    type: 3}
+  westInnerWall: {fileID: 3939928861798060040, guid: 3caea01af32658e42baa2cdb3a251e65,
     type: 3}
   spawner: {fileID: 309428189480847958, guid: 7d27ac7c0b34bc44082921b539f337c8, type: 3}
   roomAmount: 21
