@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public AudioClip projectileClip;
+    //public AudioClip projectileClip;
     public GameObject playerProjectile;
     public GameObject WaterBaloon;
     public int ballonAmmo = 0;
@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
             direction.Normalize();
 
             // play projectile sound
-            AudioSource.PlayClipAtPoint(projectileClip, transform.position);
+            //AudioSource.PlayClipAtPoint(projectileClip, transform.position);
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
