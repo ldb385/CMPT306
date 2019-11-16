@@ -14,17 +14,20 @@ public class MapRedemption : MonoBehaviour
     [SerializeField] private GameObject eastWall;
     [SerializeField] private GameObject southWall;
     [SerializeField] private GameObject westWall;
+    [SerializeField] private GameObject eastOuterWall;
+    [SerializeField] private GameObject westOuterWall;
+    [SerializeField] private GameObject eastInnerWall;
+    [SerializeField] private GameObject westInnerWall;
     
     // Spawner to add to rooms
     [SerializeField] private Spawner spawner;
 
     // Set how many rooms to create
-    public int roomAmount = 10;
+    public int roomAmount = 21;
     // Set the Max Length and Width of room and length of Cooridor
-    [SerializeField] private int maxRoomWidth = 11;
-    [SerializeField] private int maxRoomHeight = 11;
-    [SerializeField] private int maxCooridorLength = 8;
-    
+    [SerializeField] private int maxRoomWidth = 15;
+    [SerializeField] private int maxRoomHeight = 15;
+    [SerializeField] private int maxCooridorLength = 15;
     
 
     // create room bool
@@ -44,6 +47,10 @@ public class MapRedemption : MonoBehaviour
     private int wallEastG = 2;
     private int wallSouthG = 3;
     private int wallWestG = 4;
+    private int eastOuterWallG = 5;
+    private int westOuterWallG = 6;
+    private int eastInnerWallG = 7;
+    private int westInnerWallG = 8;
 
     private readonly Action<string> _logger;
 
@@ -74,11 +81,16 @@ public class MapRedemption : MonoBehaviour
             ylen = yLength;
         }
 
+        if (!validSpace(x, y, xlen, ylen))
+        {
+            return false;
+        }
+
         // Check if there is space in Genotype to make room first
         ArrayList coordinates = getRoomCoords(x, y, xlen, ylen);
         foreach (Vector2Int cXY in coordinates)
         {
-            if ( isPlaced( cXY ))
+            if ( isPlaced( cXY ) )
             {
                 return false;
             }
@@ -98,6 +110,70 @@ public class MapRedemption : MonoBehaviour
         }
 
         // made it to end must be true
+        return true;
+    }
+
+    private bool validSpace(int x, int y, int xLength, int yLength)
+    {
+        // this will be used to make sure that room walls will not overlap 
+        int xL = splitNum( xLength, true ) +1;
+        int xR = splitNum( xLength, false ) +1;
+        int yL = splitNum( yLength, true ) +1;
+        int yR = splitNum( yLength, false ) +1;
+
+        // Now fill in coordinate array
+        int tempyL;
+        int tempyR;
+        while (xR > 0)
+        {
+            tempyL = yL;
+            tempyR = yR;
+            while (tempyR > 0)
+            {
+                if (data.ContainsKey(new Vector2Int(x + xR, y + tempyR)))
+                {
+                    return false;
+                }
+                tempyR--;
+            }
+
+            while (tempyL > 0)
+            {
+                if (data.ContainsKey(new Vector2Int(x + xR, y - tempyL)))
+                {
+                    return false;
+                }
+                tempyL--;
+            }
+
+            xR--;
+        }
+
+        while (xL > 0)
+        {
+            tempyL = yL;
+            tempyR = yR;
+            while (tempyR > 0)
+            {
+                if (data.ContainsKey(new Vector2Int(x - xL, y + tempyR)))
+                {
+                    return false;
+                }
+                tempyR--;
+            }
+            
+            while (tempyL > 0)
+            {
+                if (data.ContainsKey(new Vector2Int(x - xL, y - tempyL)))
+                {
+                    return false;
+                }
+                tempyL--;
+            }
+
+            xL--;
+        }
+
         return true;
     }
 
@@ -289,11 +365,39 @@ public class MapRedemption : MonoBehaviour
             }   
             else if (data[i] == wallEastG )                                                                       
             {                                                                                                      
-                // spawn North wall at this location                                                               
+                // spawn East wall at this location                                                               
                 tile = Instantiate( eastWall, (Vector2) i, Quaternion.identity) as GameObject;                    
                 if (!tiles.ContainsKey(i))                                                                         
                     tiles.Add(i, tile);                                                                            
-            }                                                                                                      
+            }     
+            else if (data[i] == eastOuterWallG )                                                                       
+            {                                                                                                      
+                // spawn East outer wall at this location                                                               
+                tile = Instantiate( eastOuterWall, (Vector2) i, Quaternion.identity) as GameObject;                    
+                if (!tiles.ContainsKey(i))                                                                         
+                    tiles.Add(i, tile);                                                                            
+            }   
+            else if (data[i] == westOuterWallG )                                                                       
+            {                                                                                                      
+                // spawn West outer wall at this location                                                               
+                tile = Instantiate( westOuterWall, (Vector2) i, Quaternion.identity) as GameObject;                    
+                if (!tiles.ContainsKey(i))                                                                         
+                    tiles.Add(i, tile);                                                                            
+            }   
+            else if (data[i] == eastInnerWallG )                                                                       
+            {                                                                                                      
+                // spawn east inner wall at this location                                                               
+                tile = Instantiate( eastInnerWall, (Vector2) i, Quaternion.identity) as GameObject;                    
+                if (!tiles.ContainsKey(i))                                                                         
+                    tiles.Add(i, tile);                                                                            
+            }   
+            else if (data[i] == westInnerWallG )                                                                       
+            {                                                                                                      
+                // spawn west inner wall at this location                                                               
+                tile = Instantiate( westInnerWall, (Vector2) i, Quaternion.identity) as GameObject;                    
+                if (!tiles.ContainsKey(i))                                                                         
+                    tiles.Add(i, tile);                                                                            
+            }   
         }
     }
 
@@ -529,6 +633,7 @@ public class MapRedemption : MonoBehaviour
             }
         }
         
+        // this will check the east and west wall
         foreach (Vector2Int coord in data.Keys.ToList()) {   
             // this will check if a East wall needs to be spawned                       
             Vector2Int eastCoord = new Vector2Int( coord.x +1, coord.y );             
@@ -543,7 +648,64 @@ public class MapRedemption : MonoBehaviour
             {
                 data.Add( westCoord, wallWestG );
             }
+        }
+        
+        // apply Inner and Outer walls with bricks
+        foreach (Vector2Int coord in data.Keys.ToList()) {   
+            // this will check if a Inner wall must be spawned                     
+            if (data[ coord ] == floorG &&
+                data[new Vector2Int(coord.x +1, coord.y)] == wallSouthG &&
+                data[new Vector2Int(coord.x -1, coord.y)] == wallSouthG)
+            {
+                // check south path
+                data[new Vector2Int(coord.x +1, coord.y)] = eastInnerWallG;
+                data[new Vector2Int(coord.x -1, coord.y)] = westInnerWallG;
+            }
+            if (data[ coord ] == floorG &&
+                     data[new Vector2Int(coord.x, coord.y +1)] == wallNorthG && 
+                     data[new Vector2Int(coord.x, coord.y -1)] == wallSouthG )
+            {
+                // check east path
+                if( data.ContainsKey( new Vector2Int(coord.x, coord.y +2 )) &&
+                    data.ContainsKey( new Vector2Int(coord.x, coord.y -2 )) &&
+                    data[new Vector2Int(coord.x, coord.y +2 )] == wallEastG &&
+                    data[new Vector2Int(coord.x, coord.y -2 )] == wallEastG )
+                {
+                    // make sure it is in dict before trying to index
+                    data[new Vector2Int(coord.x, coord.y -1)] = eastInnerWallG;
+                }
+            }
+            if (data[ coord ] == floorG &&
+                     data[new Vector2Int(coord.x, coord.y +1)] == wallNorthG && 
+                     data[new Vector2Int(coord.x, coord.y -1)] == wallSouthG )
+            {
+                // check west path
+                if( data.ContainsKey( new Vector2Int(coord.x, coord.y +2 )) &&
+                    data.ContainsKey( new Vector2Int(coord.x, coord.y -2 )) &&
+                    data[new Vector2Int(coord.x, coord.y +2 )] == wallWestG &&
+                    data[new Vector2Int(coord.x, coord.y -2 )] == wallWestG )
+                {
+                    // make sure it is in dict before trying to index
+                    data[new Vector2Int(coord.x, coord.y -1)] = westInnerWallG;
+                }
+            }
             
+            // this will check if a Outer wall must be spawned
+            if (data[coord] == wallWestG &&
+                     data[new Vector2Int( coord.x +1, coord.y ) ] == wallSouthG &&
+                     !isPlaced(new Vector2Int(coord.x -1, coord.y)))
+            {
+                // check west path
+                data[coord] = westOuterWallG;
+            }
+            if (data[coord] == wallEastG &&
+                     data[new Vector2Int( coord.x -1, coord.y ) ] == wallSouthG &&
+                     !isPlaced(new Vector2Int(coord.x +1, coord.y)))
+            {
+                // check east path
+                data[coord] = eastOuterWallG;
+            }
+
         }
     }
 
