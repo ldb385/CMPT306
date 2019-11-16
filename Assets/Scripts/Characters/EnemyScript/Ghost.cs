@@ -14,6 +14,7 @@ public class Ghost : MonoBehaviour
 
     public float speed = 2.8f;
     public float health = 10f;
+    public int GhostDamage = 1;
 
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
@@ -158,12 +159,15 @@ public class Ghost : MonoBehaviour
         {
             calcuateNewMovementVector();
         }
-
         // damage for ghost
-        if (collision.gameObject.CompareTag("Projectile"))
+        else if (collision.gameObject.CompareTag("Projectile"))
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
         }
+        else if(collision.gameObject.CompareTag("Player")){
+            collision.gameObject.SendMessage("DamagePlayer", GhostDamage);
+        }
+
     }
     private void Update()
     {

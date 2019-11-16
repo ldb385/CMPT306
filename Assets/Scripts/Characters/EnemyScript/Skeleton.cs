@@ -119,7 +119,7 @@ public class Skeleton : MonoBehaviour
         // create projectile and make it move
         GameObject projectile = Instantiate(enemyProjectile, enemyPosition, Quaternion.identity);
 
-        projectile.GetComponent<Rigidbody2D>().velocity = direction * 5f;
+        projectile.GetComponent<Rigidbody2D>().velocity = direction * 6f;
         projectile.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
 
         // projectile can travel through player

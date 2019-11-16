@@ -37,7 +37,8 @@ public class BalloonFire : MonoBehaviour
                 {
                     if (hit.gameObject.tag == "Enemies")
                     {
-                        hit.SendMessage("ApplyDamage", 5.0f);
+                        int BalloonDamage = GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
+                        hit.SendMessage("ApplyDamage", BalloonDamage);
                     }
                 }
                 break;

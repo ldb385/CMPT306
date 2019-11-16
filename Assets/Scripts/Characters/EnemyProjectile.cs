@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
+	public int BoneDamage = 1;
 	// Update is called once per frame
 	void Update()
 	{
@@ -19,5 +20,8 @@ public class EnemyProjectile : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+		if(collision.gameObject.CompareTag("Player")){
+            collision.gameObject.SendMessage("DamagePlayer", BoneDamage);
+        }
 	}
 }

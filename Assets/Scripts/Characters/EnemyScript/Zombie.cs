@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public class Zombie : MonoBehaviour
 {
     // Target will always be player
-    private Transform target;
+    private GameObject target;
+    public int ZombieDamage = 1;
 
     // speed at which to follow player
     public float chaseSpeed = 2.2f;
@@ -51,7 +52,7 @@ public class Zombie : MonoBehaviour
     void Chase()
     {
         // this will be used to chase the player
-        transform.position = Vector2.MoveTowards(transform.position, target.position,
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
             chaseSpeed * Time.deltaTime);
     }
 
@@ -68,7 +69,7 @@ public class Zombie : MonoBehaviour
             gameObject.GetComponent<SpriteRenderer>().color = new Color(0.9245283f, 0.7893378f, 0.7893378f, 1);
 
             // Charge after player
-            transform.position = Vector2.MoveTowards(transform.position, target.position,
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
                 chargeSpeed * Time.deltaTime);
             // get tired from charging
             _chargeFatigue++;
@@ -100,15 +101,20 @@ public class Zombie : MonoBehaviour
      * this function will be used to perform an attack from the
      * zombie when the player is close enough
      */
-    void zombieAttack()
+    public IEnumerator zombieAttack()
     {
+        Debug.Log("attack");
         // just a place holder for now
+        target.gameObject.SendMessage("DamagePlayer", ZombieDamage);
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds(1);
+        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     }
 
     void Start()
     {
         // initialize player as target
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.FindGameObjectWithTag("Player");
 
         // Setting up for charge functions
         _chargeFatigue = 0;
@@ -120,7 +126,8 @@ public class Zombie : MonoBehaviour
 
     void PlaySound()
     {
-        _as.clip = audioClipArray[Random.Range(0, audioClipArray.Length)];
+        _as.clip = audioClipArray[Random.Range(0, audioClipArray.Length -1)];
+        Debug.Log(_as.clip);
         _as.PlayOneShot(_as.clip);
     }
 
@@ -129,10 +136,10 @@ public class Zombie : MonoBehaviour
      */
     private void movement()
     {
-        if (Vector2.Distance(transform.position, target.position) > stopDist)
+        if (Vector2.Distance(transform.position, target.transform.position) > stopDist)
         {
             // check if the enemy is close enough to charge
-            if (Vector2.Distance(transform.position, target.position) <= chargeDist)
+            if (Vector2.Distance(transform.position, target.transform.position) <= chargeDist)
             {
                 Charge();
             }
@@ -151,7 +158,7 @@ public class Zombie : MonoBehaviour
         movement();
 
         // check if player is close enough to attack the player
-        if (Vector2.Distance(transform.position, target.position) <= 1)
+        if (Vector2.Distance(transform.position, target.transform.position) <= 1)
         {
             zombieAttack();
         }

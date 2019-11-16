@@ -238,9 +238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c94aca9fa2cf484e8bc86a03937db8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 1
+  chaseSpeed: 3
   chargeSpeed: 4
-  chargeDist: 3
+  chargeDist: 2
   maxFatigue: 5
   audioClipArray:
   - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}

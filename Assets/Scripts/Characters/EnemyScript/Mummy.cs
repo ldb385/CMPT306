@@ -7,6 +7,7 @@ public class Mummy : MonoBehaviour
 {
     public float health = 10f;
     public float speed = 2.3f;
+    public int MummyDamage = 1;
     private Transform target;
 
     // create audio clips uncomment when we have audio selected
@@ -68,8 +69,12 @@ public class Mummy : MonoBehaviour
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
         }
+        else if(col.gameObject.CompareTag("Player")){
+            col.gameObject.SendMessage("DamagePlayer", MummyDamage);
+        }
     }
 
+    // damages this GameObject(Mummy)
     public void ApplyDamage(float damage){
         health-=damage;
     }
