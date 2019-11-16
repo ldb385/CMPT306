@@ -19,6 +19,7 @@ TagManager:
   - wall
   - Text
   - ShowOnPause
+  - ShowOnGameOver
   layers:
   - Default
   - TransparentFX

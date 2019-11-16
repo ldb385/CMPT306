@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
     GameObject[] pauseObjects;
+    GameObject[] gameOverObjects;
+    GameObject player;
+
+    bool isAlive;
+
 
     // pathnames to scenes that will be loaded using UI
     private string scenePath = "Assets/Scenes/MapPcgDemo.unity";
@@ -15,13 +21,20 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1;
+
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
+        player = GameObject.FindWithTag("Player");
+
         hidePaused();
+        hideGameOver();
     }
 
     // Update is called once per frame
     void Update()
     {
+        isAlive = player.GetComponent<Player>().isAlive;
+
         // use p button to pause and unpause the game
         if (Input.GetKeyDown(KeyCode.P))
         {
@@ -34,6 +47,12 @@ public class UIManager : MonoBehaviour
                 Time.timeScale = 1;
                 hidePaused();
             }
+        }
+
+        if (isAlive == false)
+        {
+            Time.timeScale = 0;
+            showGameOver();
         }
     }
 
@@ -71,6 +90,22 @@ public class UIManager : MonoBehaviour
     public void hidePaused()
     {
         foreach(GameObject g in pauseObjects)
+        {
+            g.SetActive(false);
+        }
+    }
+
+    public void showGameOver()
+    {
+        foreach(GameObject g in gameOverObjects)
+        {
+            g.SetActive(true);
+        }
+    }
+
+    public void hideGameOver()
+    {
+        foreach(GameObject g in gameOverObjects)
         {
             g.SetActive(false);
         }

@@ -35,11 +35,15 @@ public class Player : MonoBehaviour
     // footstep sound variables
     private bool canWalk = true;
     public float footstepDelay;
+
+    // track if the player is alive
+    public bool isAlive;
     
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        isAlive = true;
     }
 
     // Update is called once per frame
@@ -101,9 +105,11 @@ public class Player : MonoBehaviour
 				{
 					// play death sound
 					AudioSource.PlayClipAtPoint(deathClip, transform.position);
-					// mark object destroyed in the next frame
-					Destroy(gameObject);
 
+                    // mark object destroyed in the next frame
+                    isAlive = false;
+                    //Debug.Log(isAlive);
+                    //Destroy(gameObject);
 				}
 			}
         }
