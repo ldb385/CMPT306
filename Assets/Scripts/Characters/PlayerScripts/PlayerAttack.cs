@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     private float FireCoolDown = 0;
     private float WaterCoolDown = 0;
     private const float ShootInterval = 0.5f;
+    //public AudioClip waterClip;
 
     private void Update()
     {
@@ -57,6 +58,9 @@ public class PlayerAttack : MonoBehaviour
             // gets distance between the two
             Vector3 direction = mousePos - BalloonPosition;
             direction.Normalize();
+
+            // play throwing sound
+            //AudioSource.PlayClipAtPoint(waterClip, transform.position);
 
             // create projectile and make it move
             GameObject watBalloon = Instantiate(WaterBaloon, BalloonPosition, Quaternion.identity);

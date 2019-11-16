@@ -149,6 +149,7 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
   footstepClip: {fileID: 8300000, guid: 1f4f4b414e53a4f73b22852aac9f5e10, type: 3}
   footstepDelay: 2
+  isAlive: 0
 --- !u!114 &3270685002314729797
 MonoBehaviour:
   m_ObjectHideFlags: 0
