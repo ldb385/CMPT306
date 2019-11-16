@@ -238,11 +238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c94aca9fa2cf484e8bc86a03937db8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseSpeed: 0
-  chargeSpeed: 0
-  chargeDist: 0
-  maxFatigue: 0
-  _as: {fileID: 137289694392638514}
+  chaseSpeed: 1
+  chargeSpeed: 4
+  chargeDist: 3
+  maxFatigue: 5
   audioClipArray:
   - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}
   - {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
