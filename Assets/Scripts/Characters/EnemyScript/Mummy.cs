@@ -12,7 +12,7 @@ public class Mummy : MonoBehaviour
 
     // create audio clips uncomment when we have audio selected
     // public AudioClip deathClip;
-    // public AudioClip groanClip;
+    public AudioClip groanClip;
     // public AudioClip damageClip;
 
     // coroutine variables
@@ -43,7 +43,7 @@ public class Mummy : MonoBehaviour
     public IEnumerator Groan()
     {
         // play laugh
-        //AudioSource.PlayClipAtPoint(groanClip, transform.position);
+        AudioSource.PlayClipAtPoint(groanClip, transform.position);
 
         // cooldown begins here
         canGroan = false;

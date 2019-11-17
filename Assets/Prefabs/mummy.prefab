@@ -143,5 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 2.3
-  cooldownTime: 3
+  MummyDamage: 1
+  groanClip: {fileID: 8300000, guid: d6f2d0c297cfc5742ac3289b1d3f0b82, type: 3}
+  cooldownTime: 5
   canGroan: 1
