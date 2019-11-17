@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2655169339526233564}
   - component: {fileID: 3030530881243452751}
   - component: {fileID: 3270685002314729797}
+  - component: {fileID: 1659959810490732266}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7496065576434700588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.114, y: 1.038, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 1134746801
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 350c9e5794a4fb341a0fbbc802fa7c64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9b3ad4eb0e1174022a42c2aa8f28c820, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,18 +118,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0225631, y: -0.00000011920929}
+  m_Offset: {x: 0.012108065, y: -0.024395347}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5329114, y: 0.76341105}
+  m_Size: {x: 0.23320006, y: 0.4776392}
   m_EdgeRadius: 0
 --- !u!114 &3030530881243452751
 MonoBehaviour:
@@ -150,6 +151,7 @@ MonoBehaviour:
   footstepClip: {fileID: 8300000, guid: 1f4f4b414e53a4f73b22852aac9f5e10, type: 3}
   footstepDelay: 2
   isAlive: 0
+  animator: {fileID: 1659959810490732266}
 --- !u!114 &3270685002314729797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,10 +164,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f02822215fd4f49ce9a9b50fc337c027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
   playerProjectile: {fileID: 6813800049911920383, guid: 154813756ed29724fab8d67614ac5a3a,
     type: 3}
   WaterBaloon: {fileID: 5003905735237328931, guid: d198696968d0ac1488883cd41d866485,
     type: 3}
   ballonAmmo: 10
   projectileSpeed: 9
+--- !u!95 &1659959810490732266
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7496065576434700588}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b491e677fa4e54e289d16ef8b9f695db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

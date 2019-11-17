@@ -1,13 +1,12 @@
 fileFormatVersion: 2
-guid: 1bf53b253001347ab912ecb10ffd7f3a
+guid: 9b3ad4eb0e1174022a42c2aa8f28c820
 TextureImporter:
   fileIDToRecycleName:
-    21300000: walk-front_0
-    21300002: walk-front_1
-    21300004: walk-front_2
-    21300006: walk-front_3
-    21300008: walk-front_4
-    21300010: walk-front_5
+    21300000: PlayerSheet_0
+    21300002: PlayerSheet_1
+    21300004: PlayerSheet_2
+    21300006: PlayerSheet_3
+    21300008: PlayerSheet_4
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -90,7 +89,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk-front_0
+      name: PlayerSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -98,19 +97,19 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ca1e23d0b29b4ca39336ad8fa766e44
+      spriteID: 52ef8c40bcb414cd992594865b850861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk-front_1
+      name: PlayerSheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -118,19 +117,19 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bac9eda6fc9074598986e06870da242b
+      spriteID: 6908fba27bbbf48a5930990d7d45d45c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk-front_2
+      name: PlayerSheet_2
       rect:
         serializedVersion: 2
         x: 128
@@ -138,19 +137,19 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c53ef10abf4b441be9d5f8115a9b9acd
+      spriteID: 5546fbffdf74d4131a2a7a7dd74b26b7
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk-front_3
+      name: PlayerSheet_3
       rect:
         serializedVersion: 2
         x: 192
@@ -158,19 +157,19 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: badf802d6ce1e4d92abcf63d7bddcc48
+      spriteID: 2a68311fa9242470aacea02d040ff7ba
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk-front_4
+      name: PlayerSheet_4
       rect:
         serializedVersion: 2
         x: 256
@@ -178,33 +177,13 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 425bd4eb14bdd417d880b239fda76dde
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk-front_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f4dfbec786684ced820421ba718ef31
+      spriteID: ce9ffc62b026e4dbfa950047ec5292a3
       vertices: []
       indices: 
       edges: []
@@ -212,7 +191,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: cda307d4d38264c9ebee76d838c6913b
+    spriteID: e44091fb4820e4270a44e44dc379b770
     vertices: []
     indices: 
     edges: []

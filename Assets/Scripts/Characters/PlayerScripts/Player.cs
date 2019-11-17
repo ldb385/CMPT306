@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
 
     // track if the player is alive
     public bool isAlive;
+
+    public Animator animator;
     
     // Start is called before the first frame update
     void Start()
@@ -48,23 +50,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
+        animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVel = moveInput.normalized * speed;
 
         // check if the player is moving and play footset sounds
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0){
             PlayFootstep();
-        }
-
-        if (Input.GetKeyDown(KeyCode.D)){
-            if(faceRight==true){
-                Flip();
-            }
-        }
-        else if(Input.GetKeyDown(KeyCode.A)){
-            if(faceRight==false){
-                Flip();
-            }
         }
         
         if (Input.GetMouseButtonDown(0))
@@ -156,12 +149,6 @@ public class Player : MonoBehaviour
         }
 	}
     
-    // flips the sprite on key press
-    private void Flip(){
-            faceRight = !faceRight;
-            transform.Rotate(0f, 180f, 0f);
-
-    }
     
     // SodaPickUp changes the speed to 2.0(?)
     public IEnumerator SodaPickUp(){
