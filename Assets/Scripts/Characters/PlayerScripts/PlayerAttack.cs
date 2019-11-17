@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     private float WaterCoolDown = 0;
     private const float ShootInterval = 0.5f;
     //public AudioClip waterClip;
+    public AudioClip projectileClip;
 
     private void Update()
     {
@@ -32,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
             direction.Normalize();
 
             // play projectile sound
-            //AudioSource.PlayClipAtPoint(projectileClip, transform.position);
+            AudioSource.PlayClipAtPoint(projectileClip, transform.position);
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
