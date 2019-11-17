@@ -26,7 +26,7 @@ public class Zombie : MonoBehaviour
     public int maxFatigue = 6;
 
     // array to hold zombie sounds
-    private AudioSource _as;
+    public AudioSource _as;
     public AudioClip[] audioClipArray;
     // public AudioClip deathClip;
     // public AudioClip damageClip;
@@ -127,7 +127,6 @@ public class Zombie : MonoBehaviour
     void PlaySound()
     {
         _as.clip = audioClipArray[Random.Range(0, audioClipArray.Length -1)];
-        Debug.Log(_as.clip);
         _as.PlayOneShot(_as.clip);
     }
 

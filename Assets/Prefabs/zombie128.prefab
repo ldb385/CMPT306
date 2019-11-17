@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7536065948401648837}
   - component: {fileID: 7536065948401648838}
   - component: {fileID: 7536065948401648839}
-  - component: {fileID: 137289694392638514}
   - component: {fileID: 5667796841551968827}
+  - component: {fileID: 137289694392638514}
   - component: {fileID: 7321851728832834491}
   m_Layer: 0
   m_Name: zombie128
@@ -104,6 +104,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!61 &5667796841551968827
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536065948401648841}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.010978699, y: 0.06953277}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.28, y: 1.28}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.40900993, y: 0.8042488}
+  m_EdgeRadius: 0
 --- !u!82 &137289694392638514
 AudioSource:
   m_ObjectHideFlags: 0
@@ -200,32 +226,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &5667796841551968827
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7536065948401648841}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.010978699, y: 0.06953277}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.28, y: 1.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.40900993, y: 0.8042488}
-  m_EdgeRadius: 0
 --- !u!114 &7321851728832834491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,10 +238,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c94aca9fa2cf484e8bc86a03937db8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZombieDamage: 1
   chaseSpeed: 3
   chargeSpeed: 4
   chargeDist: 2
   maxFatigue: 5
+  _as: {fileID: 137289694392638514}
   audioClipArray:
   - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}
   - {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}

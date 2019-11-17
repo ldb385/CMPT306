@@ -1210,6 +1210,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3030530881243452751, guid: cfb343976707cc54f91825e46dbd83a7,
+        type: 3}
+      propertyPath: footstepDelay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3270685002314729797, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: projectileClip

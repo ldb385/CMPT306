@@ -141,9 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6106c52c8d4c34d91e72c5703b03af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 1
   health: 10
-  projectileClip: {fileID: 0}
-  attackRange: 0
+  projectileClip: {fileID: 8300000, guid: 4698f668873dfe743869509ddc32b595, type: 3}
+  attackRange: 5
   canShoot: 1
-  cooldownTime: 0
+  cooldownTime: 5
