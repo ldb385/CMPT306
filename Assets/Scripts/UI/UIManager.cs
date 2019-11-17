@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour
             }
         }
 
+        // if player dies, display Game Over screen
         if (isAlive == false)
         {
             Time.timeScale = 0;

@@ -131,8 +131,12 @@ public class Player : MonoBehaviour
 
 	// check if the player has picked up an item
 	void OnTriggerEnter2D(Collider2D c){
+        
+
+
 		if(c.gameObject.CompareTag("Soda")){
             StartCoroutine(SodaPickUp());
+            
         }
         else if(c.gameObject.CompareTag("Cape")){
             StartCoroutine(CapePickUp());
