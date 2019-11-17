@@ -19,6 +19,9 @@ public class PlayerProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Debug.Log("hit");
+        Physics2D.IgnoreCollision( collision.collider, this.GetComponent<Collider2D>());
+
     }
 
 }
