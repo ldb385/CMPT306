@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
 
     // create audio clip
     public AudioClip deathClip;
+    public AudioClip damageClip;
 
     // footstep sounds
     public AudioClip footstepClip;
@@ -82,8 +83,11 @@ public class Player : MonoBehaviour
 
 // New Damage system ( USE send Message IE. GameObject.SendMessage("DamagePlayer", damage_amount))
     public void DamagePlayer(int Damage){
-       			if(!invincible){
-				 // players spook level goes up
+       		if(!invincible){
+                // play damage sound
+                AudioSource.PlayClipAtPoint(damageClip, transform.position);
+
+				// players spook level goes up
 				spookLevel += Damage;
 				// if spook meter is full, player is "killed"
 				if(spookLevel >= 10)

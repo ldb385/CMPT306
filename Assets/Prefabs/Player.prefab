@@ -147,7 +147,8 @@ MonoBehaviour:
   speed: 3.2
   BalloonDMG: 5
   FireballDMG: 1
-  deathClip: {fileID: 8300000, guid: db8f7c6ee83004ed995fe3e0fb2d3a0d, type: 3}
+  deathClip: {fileID: 8300000, guid: 2590104e836cd4f46ae279765b322ab3, type: 3}
+  damageClip: {fileID: 8300000, guid: 2590104e836cd4f46ae279765b322ab3, type: 3}
   footstepClip: {fileID: 8300000, guid: 1f4f4b414e53a4f73b22852aac9f5e10, type: 3}
   footstepDelay: 2
   isAlive: 0
@@ -170,6 +171,7 @@ MonoBehaviour:
     type: 3}
   ballonAmmo: 10
   projectileSpeed: 9
+  projectileClip: {fileID: 8300000, guid: 9a43b497a8842ea4a917b92360649d7c, type: 3}
 --- !u!95 &1659959810490732266
 Animator:
   serializedVersion: 3
