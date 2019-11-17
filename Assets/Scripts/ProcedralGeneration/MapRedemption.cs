@@ -305,7 +305,7 @@ public class MapRedemption : MonoBehaviour
                 break;
             case( 3 ): // West
                 tempy = y;
-                makeDoor( x, tempy, false );
+                makeDoor( x -1, tempy, false );
                 for (tempx = x; tempx > (x - len); tempx--)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
