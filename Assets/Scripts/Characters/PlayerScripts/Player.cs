@@ -51,8 +51,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // movement animation
         animator.SetFloat("Horizontal", Input.GetAxisRaw("Horizontal"));
         animator.SetFloat("Vertical", Input.GetAxisRaw("Vertical"));
+
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVel = moveInput.normalized * speed;
 
@@ -64,7 +66,6 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             FindObjectOfType<PlayerAttack>().Shoot();
- 
         }
 
         if (Input.GetKeyDown(KeyCode.Space)){

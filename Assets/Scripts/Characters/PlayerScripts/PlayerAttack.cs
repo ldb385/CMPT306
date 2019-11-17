@@ -26,6 +26,7 @@ public class PlayerAttack : MonoBehaviour
         // fire speed limiter
         if (FireCoolDown <= 0)
         {
+            FindObjectOfType<Player>().animator.SetTrigger("Attack");
             // get positions
             Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
             Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y+1);
