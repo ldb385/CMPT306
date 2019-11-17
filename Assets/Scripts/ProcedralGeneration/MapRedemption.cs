@@ -21,6 +21,9 @@ public class MapRedemption : MonoBehaviour
     
     // Spawner to add to rooms
     [SerializeField] private Spawner spawner;
+    // Doors to add to rooms
+    [SerializeField] private GameObject horizontalDoor;
+    [SerializeField] private GameObject verticalDoor;
 
     // Set how many rooms to create
     public int roomAmount = 21;
@@ -231,6 +234,20 @@ public class MapRedemption : MonoBehaviour
     }
 
 
+    // this will be used by make cooridor in order to spawn in doors at the 
+    // beginning and end of each cooridor
+    private void makeDoor(int x, int y, bool isHorizontal)
+    {
+        if ( isHorizontal )
+        {
+            Instantiate( horizontalDoor, new Vector3( x, y ), Quaternion.identity );
+        }
+        else
+        {
+            Instantiate( verticalDoor, new Vector3( x, y ), Quaternion.identity );
+        }
+    }
+
     private bool makeCooridor(int x, int y, int length, int direction)
     {
         // define the dimensions of the cooridor
@@ -249,6 +266,7 @@ public class MapRedemption : MonoBehaviour
         {
             case( 0 ): // North
                 tempx = x;
+                makeDoor( tempx, y, true );
                 for (tempy = y; tempy < (y + len); tempy++)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
@@ -257,9 +275,11 @@ public class MapRedemption : MonoBehaviour
                         data.Add(pos, floorG);
                     }
                 }
+                makeDoor( tempx, tempy -1, true );
                 break;
             case( 1 ): // East
                 tempy = y;
+                makeDoor( x, tempy, false );
                 for (tempx = x; tempx < ( x + len); tempx++)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
@@ -268,9 +288,11 @@ public class MapRedemption : MonoBehaviour
                         data.Add(pos, floorG);
                     }
                 }
+                makeDoor( tempx -1, tempy, false );
                 break;
             case( 2 ): // South
                 tempx = x;
+                makeDoor( tempx, y, true );
                 for (tempy = y; tempy > (y - len); tempy--)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
@@ -279,9 +301,11 @@ public class MapRedemption : MonoBehaviour
                         data.Add(pos, floorG);
                     }
                 }
+                makeDoor( tempx, tempy +1, true );
                 break;
             case( 3 ): // West
                 tempy = y;
+                makeDoor( x, tempy, false );
                 for (tempx = x; tempx > (x - len); tempx--)
                 {
                     Vector2Int pos = new Vector2Int(tempx, tempy);
@@ -290,6 +314,7 @@ public class MapRedemption : MonoBehaviour
                         data.Add(pos, floorG);
                     }
                 }
+                makeDoor( tempx +1, tempy, false );
                 break;
         }
         
@@ -309,17 +334,22 @@ public class MapRedemption : MonoBehaviour
         tiles.Clear();
     }
     
-    // Remove the Spawners
-    private void RemoveSpawners()
+    // Remove the Spawners and the Doors
+    private void RemoveExcess()
     {
-        // Destroy all instances of spawners 
+        // Destroy all instances of spawners and doors
         foreach (GameObject obj in Object.FindObjectsOfType<GameObject>()) {
             if( obj.transform.name == "Spawner(Clone)" ){
                 Destroy(obj);
             }
+            if( obj.transform.name == "VerDoor(Clone)" ){
+                Destroy(obj);
+            }
+            if( obj.transform.name == "HorDoor(Clone)" ){
+                Destroy(obj);
+            }
         }
     }
-
 
     private void UnloadData()
     {
@@ -601,7 +631,7 @@ public class MapRedemption : MonoBehaviour
         if ( roomsMade < roomAmount - 3 || roomsMade < cooridorsMade || ! roomsBuiltSuccessfully )
         {
             // if the rooms arent good enough rebuild rooms
-            RemoveSpawners();
+            RemoveExcess();
             UnloadTiles();
             UnloadData();
             GenerateModel();
