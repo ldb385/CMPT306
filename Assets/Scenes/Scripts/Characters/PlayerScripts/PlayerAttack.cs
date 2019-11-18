@@ -28,9 +28,8 @@ public class PlayerAttack : MonoBehaviour
         {
             FindObjectOfType<Player>().animator.SetTrigger("Attack");
             // get positions
-            Vector2 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
-            Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
-            Vector2 direction = clickPosition - playerPosition;
+            Vector3 clickPosition = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+            Vector3 direction = clickPosition - transform.position;
             direction.Normalize();
 
             // play projectile sound
@@ -39,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             // create projectile and make it move
-            GameObject projectile = Instantiate(playerProjectile, playerPosition, Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
+            GameObject projectile = Instantiate(playerProjectile, transform.position, Quaternion.LookRotation(Vector3.forward, mousePos - transform.position));
             projectile.GetComponent<Rigidbody2D>().velocity = direction * projectileSpeed;
 
             // projectile can travel through player

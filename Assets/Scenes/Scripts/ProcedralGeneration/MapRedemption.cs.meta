@@ -23,6 +23,10 @@ MonoImporter:
       type: 3}
   - spawner: {fileID: 309428189480847958, guid: 7d27ac7c0b34bc44082921b539f337c8,
       type: 3}
+  - horizontalDoor: {fileID: 7332371108441954968, guid: d2d873c220f5f174eb80e7e748163e79,
+      type: 3}
+  - verticalDoor: {fileID: 7332371108441954968, guid: 3a7009f8be563d34f8f53f8d62deb55c,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

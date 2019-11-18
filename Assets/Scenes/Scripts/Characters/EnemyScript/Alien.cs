@@ -5,7 +5,7 @@ using UnityEngine;
 public class Alien : MonoBehaviour
 {
     public float speed = 2.9f;
-    private Transform target;
+    private GameObject target;
     public float health = 10f;
 
     // create audio clips *** UNCOMMENT WHEN AUDIO CLIPS ARE CHOSEN ***
@@ -13,12 +13,18 @@ public class Alien : MonoBehaviour
     public AudioClip projectileClip;
     // public AudioClip damageClip;
 
+    private Rigidbody2D AlienRigidBody;
+
+    public GameObject AlienProjectile;
+
     // Ranged attack radius for alien attack
     public float attackRange = 5f;
 
     // bool for coroutine in ranged attack
-    public bool canShoot = true;
+    private bool canShoot = true;
     public float cooldownTime;
+    Vector3 origin;
+    private Vector2 movementDirection;
 
     // Stop enemy from ending up on top of player
     // private float stopDist = 0.65f;
@@ -30,22 +36,23 @@ public class Alien : MonoBehaviour
         {
             health -= GameObject.Find("Player").GetComponent<Player>().FireballDMG;
         }
+        if (col.gameObject.tag == "wall")
+        {
+            movementDirection = new Vector2(Random.Range(-10,10), Random.Range(-10,10)).normalized;
+        }
     }
 
     /**
      * This will check if the enemy is in range and do an ranged attack if so
      */
-    void inRange()
+    bool inRange()
     {
         // check if player is in range
         if (Vector2.Distance(transform.position, target.GetComponent<Transform>().position) <= attackRange)
         {
-            // check if on cooldown
-            if (canShoot)
-            {
-                StartCoroutine(rangedAttack());
-            }
+            return true;
         }
+        return false;
     }
 
     /**
@@ -54,7 +61,15 @@ public class Alien : MonoBehaviour
     public IEnumerator rangedAttack()
     {
         // projectile sprite goes here
+        Vector3 playerPosition = target.transform.position;
+        Vector3 direction = playerPosition - transform.position;
+        direction.Normalize();
 
+        // spawn the lazr
+        GameObject projectile = Instantiate(AlienProjectile, transform.position, Quaternion.LookRotation(Vector3.forward, playerPosition - transform.position));
+        projectile.GetComponent<Rigidbody2D>().velocity = direction * 50f;
+        // ignore collition with itself
+        Physics2D.IgnoreCollision(projectile.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         // play projectile sound *** UNCOMMENT WHEN AUDIO CLIP IS CHOSEN *** 
         AudioSource.PlayClipAtPoint(projectileClip, transform.position);
 
@@ -78,21 +93,39 @@ public class Alien : MonoBehaviour
     void Start()
     {
         // set the target as the player
-        target = GameObject.FindWithTag("Player").transform;
+        target = GameObject.FindWithTag("Player");
+        origin = transform.position;
+        AlienRigidBody = GetComponent<Rigidbody2D>();
+        movementDirection = new Vector2(Random.Range(-10,10), Random.Range(-10,10)).normalized;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         // check if player is in range
-        inRange();
+        if (!inRange())
+        {
+            // move back and forth
+            
+            GetComponent<Rigidbody2D>().MovePosition(AlienRigidBody.position + movementDirection * Time.deltaTime);
+        }
+        else
+        {
+            // check if on cooldown
+            if (canShoot)
+            {
+                StartCoroutine(rangedAttack());
+            }
+        }
 
         if (health <= 0)
         {
             // play death sound/animation here
-
             Destroy(gameObject);
 
         }
+
     }
+
 }

@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
+    public Animator animator;
 
     // Enable the rigidBody attached to the door
     private void enableDoor()
     {
+        animator.SetBool("DoorState", true);
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        
     }
 
     // Disable the rigidBody attached to the door
     private void disableDoor()
     {
+        animator.SetBool("DoorState", false);
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
     }
 

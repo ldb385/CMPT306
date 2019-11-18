@@ -60,8 +60,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: mid
+  - name: player
     uniqueID: 1134746801
+    locked: 0
+  - name: door
+    uniqueID: 2098218215
     locked: 0
   - name: fore
     uniqueID: 440110965

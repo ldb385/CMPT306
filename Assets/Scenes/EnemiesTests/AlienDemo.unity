@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 7496065576434700588, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
       propertyPath: m_Name
-      value: wizard128
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7496065576434700576, guid: cfb343976707cc54f91825e46dbd83a7,
         type: 3}
@@ -330,5 +330,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7086473463887191910, guid: 37721a248d6dcb7498242f9c1c695b5a,
+        type: 3}
+      propertyPath: AlienProjectile
+      value: 
+      objectReference: {fileID: 106087047207832713, guid: 8d913a38a97fe4846843efd8ca1f0ce7,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37721a248d6dcb7498242f9c1c695b5a, type: 3}

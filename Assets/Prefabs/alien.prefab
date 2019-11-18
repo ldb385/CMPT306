@@ -144,6 +144,7 @@ MonoBehaviour:
   speed: 1
   health: 10
   projectileClip: {fileID: 8300000, guid: 4698f668873dfe743869509ddc32b595, type: 3}
+  AlienProjectile: {fileID: 106087047207832713, guid: 8d913a38a97fe4846843efd8ca1f0ce7,
+    type: 3}
   attackRange: 5
-  canShoot: 1
   cooldownTime: 5

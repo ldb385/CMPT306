@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -101,7 +101,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa795f769322f2945bf4a410349a55b2
+      spriteID: a797749522d8b4f2497f2ff5b5af2c08
       vertices: []
       indices: 
       edges: []
@@ -110,9 +110,9 @@ TextureImporter:
       name: DoorSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 97
+        x: 65
         y: 0
-        width: 39
+        width: 70
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -121,7 +121,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3e7790b729b4ad448a02c4ede807227
+      spriteID: 921df4ca12a364fa1b230f519cc681e8
       vertices: []
       indices: 
       edges: []
@@ -130,9 +130,9 @@ TextureImporter:
       name: DoorSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 183
+        x: 136
         y: 0
-        width: 12
+        width: 59
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,7 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4229acc9c5981f4585c55f77bae40ef
+      spriteID: e7a31dc30598249b7b3c4048a5b3233a
       vertices: []
       indices: 
       edges: []
