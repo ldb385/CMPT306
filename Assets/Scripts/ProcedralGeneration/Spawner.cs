@@ -14,6 +14,13 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject Zombie;
     [SerializeField] private GameObject Alien;
     
+    // ALL ENEMIES PARTICLES
+    [SerializeField] private ParticleSystem GhostParticle;
+    [SerializeField] private ParticleSystem SkeletonParticle;
+    [SerializeField] private ParticleSystem MummyParticle;
+    [SerializeField] private ParticleSystem ZombieParticle;
+    [SerializeField] private ParticleSystem AlienParticle;
+    
     // ALL OBSTACLES
     [SerializeField] private GameObject endTable;
     [SerializeField] private GameObject table;
@@ -136,20 +143,17 @@ public class Spawner : MonoBehaviour
 		return Soda;
 	}
 
-    private GameObject getEnemy( int max )
+    private GameObject getEnemy( int rnd )
     {
-        if (max > 5)
+        if (rnd > 5)
         {
-            max = 5;
+            rnd = 5;
         }
-
-        int rnd = Random.Range(0, max);
 
         switch (rnd)
         {
             case 0:
-                // Spawn in stool
-                return Skeleton;
+	            return Skeleton;
             case 1:
                 return Ghost;
             case 2:
@@ -162,6 +166,39 @@ public class Spawner : MonoBehaviour
 
         // It will never hit this
         return Skeleton;
+    }
+    
+    
+    private void enemyParticles( int val, Vector2 space )
+    {
+	    if (val > 5)
+	    {
+		    val = 5;
+	    }
+
+	    ParticleSystem em = Instantiate(SkeletonParticle, space, Quaternion.identity);
+
+	    switch (val)
+	    {
+		    case 0:
+			    em = Instantiate( SkeletonParticle, space, Quaternion.identity );
+			    break;
+		    case 1:
+			    em = Instantiate( GhostParticle, space, Quaternion.identity );
+			    break;
+		    case 2:
+			    em = Instantiate( ZombieParticle, space, Quaternion.identity );
+			    break;
+		    case 3:
+			    em = Instantiate( MummyParticle, space, Quaternion.identity );
+			    break;
+		    case 4:
+			    em = Instantiate( AlienParticle, space, Quaternion.identity );
+			    break;
+	    }
+
+	    // Play the animation
+	    em.Play();
     }
     
     
@@ -186,20 +223,13 @@ public class Spawner : MonoBehaviour
                     tile = Instantiate( getObstacle(), (Vector2)i + diff, Quaternion.identity) as GameObject;
                     break;
                 case 2:
-                    if ( spookLevel <= 0 )
-                    {
-                        // Spawn in Enemy
-                        tile = Instantiate(getEnemy( 9 ),
-                            (Vector2) i + diff, Quaternion.identity) as GameObject;
-                    }
-                    else
-                    {
-                        // Spawn in Enemy
-                        tile = Instantiate(getEnemy((int) (9.0f - spookLevel)),
-                            (Vector2) i + diff, Quaternion.identity) as GameObject;
-                    }
-
-                    break;
+	                int whichEn = Random.Range(0, (int) (9.0f - spookLevel) );
+                    // Spawn in Enemy
+                    tile = Instantiate(getEnemy(whichEn ),
+                        (Vector2) i + diff, Quaternion.identity) as GameObject;
+                    // Spawn in Particle effect around enemy
+                    enemyParticles( whichEn, i + diff );
+	                break;
                 case 3:
                     if ( spookLevel <= 0 )
                     {

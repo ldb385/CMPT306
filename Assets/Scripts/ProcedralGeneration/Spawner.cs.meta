@@ -11,6 +11,14 @@ MonoImporter:
   - Zombie: {fileID: 7536065948401648841, guid: 84f9596f607f6b64ebe0e93a5880251f,
       type: 3}
   - Alien: {fileID: 8859374689890134087, guid: 37721a248d6dcb7498242f9c1c695b5a, type: 3}
+  - GhostParticle: {fileID: 4233620564182895398, guid: ea1a900cf0954684a8e8b7b5e01069e7,
+      type: 3}
+  - SkeletonParticle: {fileID: 4233620564182895398, guid: f2f771923e752fd4ab3bc12015ddb7ee,
+      type: 3}
+  - MummyParticle: {fileID: 4233620564182895398, guid: 0ae330d4b3deb8f4d83efdba44a4dac5,
+      type: 3}
+  - ZombieParticle: {instanceID: 0}
+  - AlienParticle: {instanceID: 0}
   - endTable: {fileID: 7250554789379511836, guid: 24a03c8692e8683409cc4a129dd7abdd,
       type: 3}
   - table: {fileID: 713015991715273239, guid: 0a3c5c467e547b44c968345d656d8e08, type: 3}
