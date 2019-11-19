@@ -14,14 +14,11 @@ public class PlayerProjectile : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
         // add fancy effects here
-
         if (collision.gameObject.tag != "Player")
         {
             Destroy(gameObject);
         }
-        Debug.Log("hit");
         Physics2D.IgnoreCollision( collision.collider, this.GetComponent<Collider2D>());
-
     }
 
 }

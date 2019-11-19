@@ -50,9 +50,7 @@ public class BalloonFire : MonoBehaviour
     {
         if (collision.gameObject.tag != "wall")
         {
-            Debug.Log("hit");
             Physics2D.IgnoreCollision( collision.collider, this.GetComponent<Collider2D>());
-
         }
     }
 
