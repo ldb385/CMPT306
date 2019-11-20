@@ -108,7 +108,7 @@ public class MapRedemption : MonoBehaviour
         // Put in the spawner in this step to make sure values are proper
         if (spawn)
         {
-            spawner.createSpawner(xlen, ylen);
+            spawner.createSpawner(xlen -1, ylen -1);
             Instantiate(spawner, new Vector3(x - xlen / 2, y - ylen / 2), Quaternion.identity );
         }
 
