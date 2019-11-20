@@ -12,6 +12,7 @@ public class IntroBehaviour : StateMachineBehaviour
             animator.SetTrigger("Idle");
         }
         else{
+            animator.GetComponent<BossData>().AttackOne();
             animator.SetTrigger("Attack");
         }
     }
