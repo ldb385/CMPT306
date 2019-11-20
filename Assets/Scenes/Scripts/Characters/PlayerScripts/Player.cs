@@ -90,6 +90,8 @@ public class Player : MonoBehaviour
 
 				// players spook level goes up
 				spookLevel += Damage;
+				// player getAway activates
+				StartCoroutine(getAway());
 				// if spook meter is full, player is "killed"
 				if(spookLevel >= 10)
 				{
@@ -201,5 +203,14 @@ public class Player : MonoBehaviour
 
         canWalk = true;
     }
+
+	// Coroutine for getAway function
+	public IEnumerator getAway(){
+		invincible = true;
+		speed *= 2;
+        yield return new WaitForSecondsRealtime(1);
+        speed /= 2;
+		invincible = false;
+	}
 
 }
