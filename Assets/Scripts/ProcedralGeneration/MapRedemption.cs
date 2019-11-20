@@ -24,6 +24,8 @@ public class MapRedemption : MonoBehaviour
     // Doors to add to rooms
     [SerializeField] private GameObject horizontalDoor;
     [SerializeField] private GameObject verticalDoor;
+    // Boss scene transition for room
+    [SerializeField] private GameObject bossTele;
 
     // Set how many rooms to create
     public int roomAmount = 21;
@@ -32,10 +34,7 @@ public class MapRedemption : MonoBehaviour
     [SerializeField] private int maxRoomHeight = 15;
     [SerializeField] private int maxCooridorLength = 15;
     
-
-    // create room bool
-    private bool createRoom = false;
-
+    
     // (Phenotype)
     // Visual representation of data
     private Dictionary<Vector2Int, GameObject> tiles;
@@ -635,6 +634,11 @@ public class MapRedemption : MonoBehaviour
             UnloadTiles();
             UnloadData();
             GenerateModel();
+        }
+        else
+        {
+            // made it to last room can now place the teleporter to the boss
+            Instantiate( bossTele, new Vector3( newx, newy ), Quaternion.identity );
         }
     }
 
