@@ -31,7 +31,7 @@ public class AttackTwoBehaviour : StateMachineBehaviour
         Vector3 direction = Player.transform.position- animator.transform.position; 
         GameObject RazB = Instantiate(RazorBlade, animator.transform.position, Quaternion.LookRotation(Vector3.forward, Player.transform.position - animator.transform.position));
         RazB.GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x, direction.y).normalized * projectileSpeed;
-
+        RazB.GetComponent<Rigidbody2D>().angularVelocity = -1000f;
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
