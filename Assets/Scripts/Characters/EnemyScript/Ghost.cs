@@ -130,7 +130,6 @@ public class Ghost : MonoBehaviour
     }
 
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -155,9 +154,9 @@ public class Ghost : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "wall")
+        if (collision.gameObject.CompareTag("wall"))
         {
-            calcuateNewMovementVector();
+            Chase();
         }
         else if(collision.gameObject.CompareTag("Player")){
             collision.gameObject.SendMessage("DamagePlayer", GhostDamage);
