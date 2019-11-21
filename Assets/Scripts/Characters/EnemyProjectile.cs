@@ -13,13 +13,15 @@ public class EnemyProjectile : MonoBehaviour
 	void Update()
 	{
 		// destroy projectile after 10 seconds if it hasn't hit anything
-		Destroy(gameObject, 3.0f);
+		Destroy(gameObject, 10.0f);
 	}
 
 	public void OnCollisionEnter2D(Collision2D collision)
 	{
+		Debug.Log("Player");
 		// add fancy effects here
 		if(collision.gameObject.CompareTag("Player")){
+			
             collision.gameObject.SendMessage("DamagePlayer", ProjectileDamage);
 			Destroy(gameObject);
         }
