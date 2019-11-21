@@ -16,6 +16,8 @@ public class BossData : MonoBehaviour
     public Slider Healthbar;
     public AudioClip attackClip;
     public float attackVolume = 0.05f;
+    public AudioClip bossDeathSound;
+    public float bossDeathVolume = 1f;
 
     private void Start() {
         anim = GetComponent<Animator>();
@@ -40,6 +42,7 @@ public class BossData : MonoBehaviour
             anim.SetTrigger("stagetwo");
         }
         if(BossHealth <= 0 ){
+            AudioSource.PlayClipAtPoint(bossDeathSound, transform.position, bossDeathVolume);
             anim.SetTrigger("Death");
         }
 

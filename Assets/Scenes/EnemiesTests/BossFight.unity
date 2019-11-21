@@ -1056,6 +1056,16 @@ PrefabInstance:
       propertyPath: attackVolume
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 852227422456500043, guid: efcdb292b65d17d4e8a77136e8c626c7,
+        type: 3}
+      propertyPath: bossDeathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c0f0e020f6b8bde4b99fc1846271c5d4, type: 3}
+    - target: {fileID: 852227422456500043, guid: efcdb292b65d17d4e8a77136e8c626c7,
+        type: 3}
+      propertyPath: bossDeathVolume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efcdb292b65d17d4e8a77136e8c626c7, type: 3}
 --- !u!1001 &7165736780459645110
