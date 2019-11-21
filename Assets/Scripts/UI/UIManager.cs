@@ -8,9 +8,12 @@ public class UIManager : MonoBehaviour
 {
     GameObject[] pauseObjects;
     GameObject[] gameOverObjects;
+    GameObject[] winObjects;
     GameObject player;
+    GameObject boss;
 
     bool isAlive;
+    bool isDead;
 
 
     // pathnames to scenes that will be loaded using UI
@@ -24,16 +27,24 @@ public class UIManager : MonoBehaviour
 
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
         gameOverObjects = GameObject.FindGameObjectsWithTag("ShowOnGameOver");
+        winObjects = GameObject.FindGameObjectsWithTag("ShowOnWin");
         player = GameObject.FindWithTag("Player");
+        boss = GameObject.FindWithTag("Boss");
 
         hidePaused();
         hideGameOver();
+        hideWin();
     }
 
     // Update is called once per frame
     void Update()
     {
         isAlive = player.GetComponent<Player>().isAlive;
+        
+        if(boss != null)
+        {
+            isDead = boss.GetComponent<BossData>().isDead;
+        }
 
         // use p button to pause and unpause the game
         if (Input.GetKeyDown(KeyCode.P))
@@ -54,6 +65,13 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 0;
             showGameOver();
+        }
+
+        // if player kills boss, display win screen
+        if (isDead == true)
+        {
+            Time.timeScale = 0;
+            showWin();
         }
     }
 
@@ -116,6 +134,24 @@ public class UIManager : MonoBehaviour
     public void LoadMainMenu() {
         {
             SceneManager.LoadScene(mainMenuPath);
+        }
+    }
+
+    // show win screen
+    public void showWin()
+    {
+        foreach(GameObject g in winObjects)
+        {
+            g.SetActive(true);
+        }
+    }
+
+    // hide win screen
+    public void hideWin()
+    {
+        foreach (GameObject g in winObjects)
+        {
+            g.SetActive(false);
         }
     }
 
