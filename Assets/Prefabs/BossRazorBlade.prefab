@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5382743313997379848}
   - component: {fileID: 4248784386692693781}
   - component: {fileID: 5777046275967055758}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BossRazorBlade
   m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b0a0b3e2e70b481e8c7427042832f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProjectileDamage: 5
+  ProjectileDamage: 3
