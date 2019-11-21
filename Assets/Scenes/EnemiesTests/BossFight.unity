@@ -1336,7 +1336,7 @@ PrefabInstance:
     - target: {fileID: 2026595570491507246, guid: 5f1138fe36df45249aae13ae875ec112,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: hidePaused
+      value: pausedControl
       objectReference: {fileID: 0}
     - target: {fileID: 2026595570884529626, guid: 5f1138fe36df45249aae13ae875ec112,
         type: 3}
@@ -1812,7 +1812,7 @@ PrefabInstance:
     - target: {fileID: 6092317437729403636, guid: f5afd73e3d4bf0048a78e7453a547b99,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6092317437729403636, guid: f5afd73e3d4bf0048a78e7453a547b99,
         type: 3}
