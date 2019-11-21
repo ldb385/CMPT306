@@ -34,7 +34,7 @@ public class Alien : MonoBehaviour
     {
         if (col.gameObject.tag == "wall")
         {
-            movementDirection = new Vector2(Random.Range(-10,10), Random.Range(-10,10)).normalized;
+            AlienRigidBody.velocity = RandomVector(-5f, 5f);
         }
     }
 
@@ -92,10 +92,15 @@ public class Alien : MonoBehaviour
         target = GameObject.FindWithTag("Player");
         origin = transform.position;
         AlienRigidBody = GetComponent<Rigidbody2D>();
-        movementDirection = new Vector2(Random.Range(-10,10), Random.Range(-10,10)).normalized;
+        AlienRigidBody.velocity = RandomVector(-5f, 5f);
 
     }
-
+  private Vector3 RandomVector(float min, float max) {
+         var x = Random.Range(min, max);
+         var y = Random.Range(min, max);
+         var z = Random.Range(min, max);
+         return new Vector3(x, y, z);
+     }
     // Update is called once per frame
     void Update()
     {
@@ -103,14 +108,15 @@ public class Alien : MonoBehaviour
         if (!inRange())
         {
             // move back and forth
+            AlienRigidBody.velocity = new Vector2(3f,3f);
             
-            GetComponent<Rigidbody2D>().MovePosition(AlienRigidBody.position + movementDirection * Time.deltaTime);
         }
         else
         {
             // check if on cooldown
             if (canShoot)
             {
+                AlienRigidBody.velocity = RandomVector(0f, 0f);
                 StartCoroutine(rangedAttack());
             }
         }

@@ -44,6 +44,7 @@ public class BossData : MonoBehaviour
         if(BossHealth <= 0 ){
             AudioSource.PlayClipAtPoint(bossDeathSound, transform.position, bossDeathVolume);
             anim.SetTrigger("Death");
+            Destroy(this);
         }
 
     }

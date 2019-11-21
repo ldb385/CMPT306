@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
 
     // WaterBallonPickUp adds a waterballon to the current amount of balloons
     public void WaterBalloonPickUp(){
-             this.GetComponent<PlayerAttack>().ballonAmmo++;
+             this.GetComponent<PlayerAttack>().ballonAmmo += 3;
     }
 
     // Play footstep sound based on canWalk interval
