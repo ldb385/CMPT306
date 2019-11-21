@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3404101786548523599}
   - component: {fileID: 3404101786548523584}
   - component: {fileID: 3404101786548523585}
+  - component: {fileID: 2466762883047315221}
   - component: {fileID: 4736585959229146680}
   m_Layer: 0
   m_Name: temptpickup
@@ -97,6 +98,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.018095672, y: 0.021714866}
   m_Size: {x: 0.11160612, y: 0.35770714}
   m_Direction: 0
+--- !u!114 &2466762883047315221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3404101786548523587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112304705b9d6df4daa7ae3e93902ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointAddition: 0
+  pointSubtraction: 50
 --- !u!114 &4736585959229146680
 MonoBehaviour:
   m_ObjectHideFlags: 0

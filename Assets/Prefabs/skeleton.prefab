@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4647141352398576600}
   - component: {fileID: 4722897191499538468}
   - component: {fileID: 935946324334906589}
+  - component: {fileID: 5534232917103606365}
   - component: {fileID: 1226004824399524181}
   m_Layer: 0
   m_Name: skeleton
@@ -69,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440110965
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 183b4555a12920b4c835f662e19231c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -129,6 +130,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &5534232917103606365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4647141352398576607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112304705b9d6df4daa7ae3e93902ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointAddition: 100
+  pointSubtraction: 0
 --- !u!114 &1226004824399524181
 MonoBehaviour:
   m_ObjectHideFlags: 0

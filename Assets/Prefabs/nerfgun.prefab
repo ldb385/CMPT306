@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9043848066443676877}
   - component: {fileID: 9043848066443676876}
   - component: {fileID: 9043848066443676879}
+  - component: {fileID: 7648675200498045903}
   - component: {fileID: 377756195013226528}
   m_Layer: 0
   m_Name: nerfgun
@@ -107,6 +108,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3565848, y: 0.2074185}
   m_EdgeRadius: 0
+--- !u!114 &7648675200498045903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043848066443676873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112304705b9d6df4daa7ae3e93902ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointAddition: 0
+  pointSubtraction: 100
 --- !u!114 &377756195013226528
 MonoBehaviour:
   m_ObjectHideFlags: 0
