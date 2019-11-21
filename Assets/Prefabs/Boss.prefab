@@ -185,3 +185,5 @@ MonoBehaviour:
   numProjectile: 10
   projSpeed: 5
   Healthbar: {fileID: 0}
+  attackClip: {fileID: 8300000, guid: dae8edeafbddb8841826f34f87988bc9, type: 3}
+  attackVolume: 0.01

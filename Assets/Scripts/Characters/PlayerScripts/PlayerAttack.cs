@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     private const float ShootInterval = 0.5f;
     //public AudioClip waterClip;
     public AudioClip projectileClip;
+    public float attackVolume = 1.5f;
 
     private void Update()
     {
@@ -36,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
             Vector3 direction = clickPosition - transform.position;
 
             // play projectile sound
-            AudioSource.PlayClipAtPoint(projectileClip, transform.position);
+            AudioSource.PlayClipAtPoint(projectileClip, transform.position, attackVolume);
 
             // create projectile and make it move
             GameObject projectile = Instantiate(playerProjectile, transform.position, Quaternion.LookRotation(Vector3.forward, clickPosition - transform.position));

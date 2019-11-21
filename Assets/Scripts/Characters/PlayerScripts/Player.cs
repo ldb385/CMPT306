@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
     public void DamagePlayer(int Damage){
        		if(!invincible){
                 // play damage sound
-                AudioSource.PlayClipAtPoint(damageClip, transform.position);
+                AudioSource.PlayClipAtPoint(damageClip, transform.position, 0.5f);
 
 				// players spook level goes up
 				spookLevel += Damage;
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
 				if(spookLevel >= 10)
 				{
 					// play death sound
-					AudioSource.PlayClipAtPoint(deathClip, transform.position);
+					AudioSource.PlayClipAtPoint(deathClip, transform.position, 0.5f);
 
                     // mark object destroyed in the next frame
                     isAlive = false;

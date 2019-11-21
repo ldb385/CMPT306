@@ -14,6 +14,8 @@ public class BossData : MonoBehaviour
     public int numProjectile = 100;
     public float projSpeed= 20;
     public Slider Healthbar;
+    public AudioClip attackClip;
+    public float attackVolume = 0.05f;
 
     private void Start() {
         anim = GetComponent<Animator>();
@@ -56,6 +58,8 @@ public class BossData : MonoBehaviour
 
 			Vector2 projectileVector = new Vector2 (projectileDirXposition, projectileDirYposition);
 			Vector2 projectileMoveDirection = (projectileVector - (Vector2)this.transform.position).normalized * projSpeed;
+
+            AudioSource.PlayClipAtPoint(attackClip, transform.position, attackVolume);
 
 			var proj = Instantiate (SpeechBubbles[rand], this.transform.position, Quaternion.identity);
 			proj.GetComponent<Rigidbody2D> ().velocity = 

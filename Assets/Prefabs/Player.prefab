@@ -150,7 +150,7 @@ MonoBehaviour:
   deathClip: {fileID: 8300000, guid: 2590104e836cd4f46ae279765b322ab3, type: 3}
   damageClip: {fileID: 8300000, guid: 2590104e836cd4f46ae279765b322ab3, type: 3}
   footstepClip: {fileID: 8300000, guid: 1f4f4b414e53a4f73b22852aac9f5e10, type: 3}
-  footstepDelay: 0.8
+  footstepDelay: 0.5
   isAlive: 0
   animator: {fileID: 1659959810490732266}
 --- !u!114 &3270685002314729797
