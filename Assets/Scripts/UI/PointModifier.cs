@@ -18,7 +18,8 @@ public class PointModifier : MonoBehaviour
         }
         else
         {
-            Points.score += pointAddition - pointSubtraction;   
+            int cur = Points.score;
+            Points.score = pointAddition - pointSubtraction + cur;   
         }
     }
 }

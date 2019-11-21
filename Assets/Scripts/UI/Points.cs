@@ -5,16 +5,15 @@ using UnityEngine;
 // this class will allow for comunication of score between scenes
 public static class Points
 {
-    public static int score
-    {
+    private static int _score;
+    public static int score {
         get 
         {
-            return score;
+            return _score;
         }
-        set 
+        set
         {
-            Debug.Log("PointUpdatesd");
-            score = value;
+            _score = value;
         }
     }
 }
