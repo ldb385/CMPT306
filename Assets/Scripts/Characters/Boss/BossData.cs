@@ -18,6 +18,7 @@ public class BossData : MonoBehaviour
     public float attackVolume = 0.05f;
     public AudioClip bossDeathSound;
     public float bossDeathVolume = 1f;
+    public bool isDead = false;
 
     private void Start() {
         anim = GetComponent<Animator>();
@@ -45,6 +46,7 @@ public class BossData : MonoBehaviour
             AudioSource.PlayClipAtPoint(bossDeathSound, transform.position, bossDeathVolume);
             anim.SetTrigger("Death");
             Destroy(this);
+            isDead = true;
         }
 
     }
