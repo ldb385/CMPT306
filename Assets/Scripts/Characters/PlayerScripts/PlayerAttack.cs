@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     //public AudioClip projectileClip;
     public GameObject playerProjectile;
     public GameObject WaterBaloon;
-    public int ballonAmmo = 0;
+    public int ballonAmmo = 10;
     public float projectileSpeed = 1f;
     private float FireCoolDown = 0;
     private float WaterCoolDown = 0;
@@ -19,6 +19,10 @@ public class PlayerAttack : MonoBehaviour
     {
         FireCoolDown -= Time.deltaTime;
         WaterCoolDown -= Time.deltaTime;
+    }
+
+    void Start(){
+      ballonAmmo = GlobalControl.Instance.BalloonCount;
     }
 
     public void Shoot()
@@ -75,5 +79,9 @@ public class PlayerAttack : MonoBehaviour
             WaterCoolDown = ShootInterval;
         }
 
+    }
+    public void SaveBalloons()
+{
+    GlobalControl.Instance.BalloonCount = ballonAmmo;
     }
 }

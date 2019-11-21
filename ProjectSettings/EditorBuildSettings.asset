@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapPcgDemo.unity
     guid: 7f843010479454d10b6371e7407c4eaa
+  - enabled: 1
+    path: Assets/Scenes/EnemiesTests/BossFight.unity
+    guid: b4cbfa93e825b4d48bb7bc8dcc121655
   m_configObjects: {}

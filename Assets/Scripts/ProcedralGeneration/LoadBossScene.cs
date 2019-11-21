@@ -18,6 +18,8 @@ public class LoadBossScene : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col){
       if(col.gameObject.tag == "Player"){
+        GameObject.Find("Player").GetComponent<Player>().SavePlayer();
+        GameObject.Find("Player").GetComponent<PlayerAttack>().SaveBalloons();
         SceneManager.LoadScene("BossFight");
       }
 }

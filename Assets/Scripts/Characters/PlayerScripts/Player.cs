@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     // For shooting
     public int BalloonDMG= 5;
-    public float FireballDMG = 1.0f; 
+    public float FireballDMG = 1.0f;
 
     // create audio clip
     public AudioClip deathClip;
@@ -40,12 +40,13 @@ public class Player : MonoBehaviour
     public bool isAlive;
 
     public Animator animator;
-    
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         isAlive = true;
+        spookLevel = GlobalControl.Instance.spookLevel;
     }
 
     // Update is called once per frame
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0){
             PlayFootstep();
         }
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             FindObjectOfType<PlayerAttack>().Shoot();
@@ -71,7 +72,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)){
                 FindObjectOfType<PlayerAttack>().ThrowBalloon();
         }
-    
+
 
     }
 
@@ -107,12 +108,12 @@ public class Player : MonoBehaviour
 
 	// check if the player has picked up an item
 	void OnTriggerEnter2D(Collider2D c){
-        
+
 
 
 		if(c.gameObject.CompareTag("Soda")){
             StartCoroutine(SodaPickUp());
-            
+
         }
         else if(c.gameObject.CompareTag("Cape")){
             StartCoroutine(CapePickUp());
@@ -133,27 +134,27 @@ public class Player : MonoBehaviour
             WaterBalloonPickUp();
         }
 	}
-    
-    
+
+
     // SodaPickUp changes the speed to 2.0(?)
     public IEnumerator SodaPickUp(){
             speed *= 2;
             yield return new WaitForSecondsRealtime(5);
             speed /= 2;
     }
-    
+
     // CapePickUp gives the player immunity from damage for 15(?) seconds
     public IEnumerator CapePickUp(){
             invincible = true;
             yield return new WaitForSecondsRealtime(15);
 			invincible = false;
     }
-    
+
     // FlashlightPickUp despooks player by 5(?)
     public void FlashlightPickUp(){
             spookLevel -=5.0f;
     }
-    
+
 
     /***NEED TO FIX***/
 
@@ -163,17 +164,17 @@ public class Player : MonoBehaviour
             yield return new WaitForSecondsRealtime(20);
             FindObjectOfType<PlayerAttack>().projectileSpeed = 15.0f;
     }
-    
+
     // TeddyBearPickUp despooks the player by 2(?)
     public void TeddyBearPickUp(){
             spookLevel -=2.0f;
     }
-    
+
     // CandyCornPickUp despooks the player by 1(?)
     public void CandyCornPickUp(){
             spookLevel -=1.0f;
     }
-    
+
     // WaterBallonPickUp adds a waterballon to the current amount of balloons
     public void WaterBalloonPickUp(){
              this.GetComponent<PlayerAttack>().ballonAmmo++;
@@ -190,7 +191,7 @@ public class Player : MonoBehaviour
 
     // Coroutine for previous function
     public IEnumerator PlayFootsteps()
-    {   
+    {
 
         // play footstep sound
         AudioSource.PlayClipAtPoint(footstepClip, transform.position);
@@ -212,5 +213,9 @@ public class Player : MonoBehaviour
         speed /= 2;
 		invincible = false;
 	}
+  public void SavePlayer()
+{
+    GlobalControl.Instance.spookLevel = spookLevel;
+    }
 
 }
