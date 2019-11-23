@@ -26,6 +26,16 @@ MonoImporter:
       type: 3}
   - chairBack: {fileID: 2394184353795056603, guid: 879fc7b1e9e966d4c95a59043bef9802,
       type: 3}
+  - vase: {fileID: 1229748727989841053, guid: a7ac2b13c924aa34794bc3d473651bda, type: 3}
+  - candyS: {fileID: 5981393875614391418, guid: c2aef39e2176e0640af01f934021fed9,
+      type: 3}
+  - candyM: {fileID: 7570342970591654764, guid: a319d9194d50d8943bf86611cc511344,
+      type: 3}
+  - candyL: {fileID: 289946157805708473, guid: 48c279735dacfd346a7f766506dbe237, type: 3}
+  - candySParticle: {fileID: 4335390940727764031, guid: 6b9ecd86ce35fad43a3f7caf16537075,
+      type: 3}
+  - candyMParticle: {instanceID: 0}
+  - candyLParticle: {instanceID: 0}
   - Flashlight: {fileID: 7808637847861783578, guid: 19101c7ef2e390349883ba0d0540760a,
       type: 3}
   - Teddy: {fileID: 5587014229061917684, guid: 2b846b06a1c1d194c87548acc6fa4cef, type: 3}

@@ -26,8 +26,19 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject table;
     [SerializeField] private GameObject chairSide;
     [SerializeField] private GameObject chairBack;
+    [SerializeField] private GameObject vase;
+    
+    // ALL CANDY for Points
+    [SerializeField] private GameObject candyS;
+    [SerializeField] private GameObject candyM;
+    [SerializeField] private GameObject candyL;
+    
+    // ALL CANDY PARTICLES
+    [SerializeField] private ParticleSystem candySParticle;
+    [SerializeField] private ParticleSystem candyMParticle;
+    [SerializeField] private ParticleSystem candyLParticle;
 
-	// ALL DESPOOKERS
+    // ALL DESPOOKERS
 	[SerializeField] private GameObject Flashlight;
 	[SerializeField] private GameObject Teddy;
 	[SerializeField] private GameObject Candy;
@@ -73,7 +84,7 @@ public class Spawner : MonoBehaviour
 
     private GameObject getObstacle()
     {
-        int rnd = Random.Range(0, 4);
+        int rnd = Random.Range(0, 5);
 
         switch (rnd)
         {
@@ -85,6 +96,8 @@ public class Spawner : MonoBehaviour
                 return chairSide;
             case 3:
                 return chairBack;
+            case 4:
+	            return vase;
         }
 
         // It will never hit this
@@ -176,6 +189,7 @@ public class Spawner : MonoBehaviour
 		    val = 5;
 	    }
 
+	    // Just default
 	    ParticleSystem em = Instantiate(SkeletonParticle, space, Quaternion.identity);
 
 	    switch (val)
@@ -200,6 +214,57 @@ public class Spawner : MonoBehaviour
 	    // Play the animation
 	    em.Play();
     }
+    
+    private GameObject getCandy( int rnd )
+    {
+	    if (rnd > 2)
+	    {
+		    rnd = 2;
+	    }
+
+	    switch (rnd)
+	    {
+		    case 0:
+			    return candyS;
+		    case 1:
+			    return candyM;
+		    case 2:
+			    return candyL;
+	    }
+
+	    // It will never hit this
+	    return candyS;
+    }
+    
+    
+    private void candyParticles( int val, Vector2 space )
+    {
+	    if (val > 2)
+	    {
+		    val = 2;
+	    }
+
+	    // just default
+	    ParticleSystem em = Instantiate( candySParticle, space, Quaternion.identity);
+
+	    switch (val)
+	    {
+		    case 0:
+			    em = Instantiate( candySParticle, space, Quaternion.identity );
+			    break;
+		    case 1:
+			    em = Instantiate( candyMParticle, space, Quaternion.identity );
+			    break;
+		    case 2:
+			    em = Instantiate( candyLParticle, space, Quaternion.identity );
+			    break;
+	    }
+
+	    // Play the animation
+	    em.Play();
+    }
+
+    
     
     
     /**
@@ -258,8 +323,15 @@ public class Spawner : MonoBehaviour
 						tile = Instantiate(getPowerUp((int) (9.0f - spookLevel)),
 							(Vector2) i + diff, Quaternion.identity) as GameObject;
                     }
-
                     break;
+                case 5:
+	                int whichCandy = Random.Range(0, 3 );
+	                // Spawn in Enemy
+	                tile = Instantiate(getCandy( whichCandy ),
+		                (Vector2) i + diff, Quaternion.identity) as GameObject;
+	                // Spawn in Particle effect around enemy
+	                candyParticles( whichCandy, i + diff );
+	                break;
 				default:
                     tile = null;
                     break;
@@ -300,12 +372,14 @@ public class Spawner : MonoBehaviour
 
         int avelen = w + h / 2;
         int obstacles = ( avelen * 3) / Random.Range( avelen/2, avelen) ;
+        // this represents the distance between objects
         int distFromObs = 3;
         int distFromEne = 3;
 		int distFromPow = 3;
 		int distFromDes = 3;
+		int distFromCan = 3;
 
-        Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
+		Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
 
         int spawned = Random.Range(1, 5);
         
@@ -333,7 +407,7 @@ public class Spawner : MonoBehaviour
                     {
 	                    switch (rnd)
 	                    {
-		                    // 0 Empty, 1 Obstacle, 2 Enemey, 3 Powerup, 4 Despooker
+		                    // 0 Empty, 1 Obstacle, 2 Enemey, 3 Powerup, 4 Despooker, 5 Candy
 		                    case 1:
 			                    obstacles--;
 			                    if (obstacles <= 0 || distFromObs < 2)
@@ -392,6 +466,22 @@ public class Spawner : MonoBehaviour
 			                    else
 			                    {
 				                    distFromDes = 0;
+			                    }
+
+			                    despooks--;
+
+			                    break;
+		                    case 5:
+			                    if ( distFromCan < 2)
+			                    {
+				                    // if there is too many or too close
+				                    rnd = 0;
+				                    spawned = Random.Range(0, avelen);
+				                    distFromCan++;
+			                    }
+			                    else
+			                    {
+				                    distFromCan = 0;
 			                    }
 
 			                    despooks--;
