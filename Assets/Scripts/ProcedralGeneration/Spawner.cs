@@ -358,26 +358,24 @@ public class Spawner : MonoBehaviour
     public Dictionary<Vector2Int, int> GenerateModel( int w, int h )
     {
 
+	    // this is the max amount of gameObjects that can be spawned
         int enemies = (int) ( 9.0f - spookLevel );
-
         if (enemies < minEnemies)
         {
             enemies = minEnemies;
         }
-
-        // this is the 
-		int powers = (int) spookLevel/2;
-		int despooks = (int) spookLevel/2;
+        int powers = (int) spookLevel/3;
+		int despooks = (int) spookLevel/3;
 
 
         int avelen = w + h / 2;
-        int obstacles = ( avelen * 3) / Random.Range( avelen/2, avelen) ;
+        int obstacles = avelen*2 ;
         // this represents the distance between objects
-        int distFromObs = 3;
+        int distFromObs = 2;
         int distFromEne = 3;
 		int distFromPow = 3;
 		int distFromDes = 3;
-		int distFromCan = 3;
+		int distFromCan = 2;
 
 		Dictionary<Vector2Int, int> tmp_model = new Dictionary<Vector2Int, int>();
 
@@ -389,14 +387,18 @@ public class Spawner : MonoBehaviour
             {	// iterate through height
                 Vector2Int coord = new Vector2Int(i, j);
                 
-                spawned = spawned - 3;
+                spawned = spawned - 2;
 
                 if (spawned <= 0)
                 {
                     // Pick whether its empty, obstacle, enemy
-                    int rnd = Random.Range(0, avelen );
-                    
-                    
+                    int rnd = Random.Range(0, 9 );
+                    if ( avelen < 5 )
+                    {
+	                    rnd = Random.Range(0, 5);
+                    }
+
+
                     // need to make sure you are not spawning in front of a potential door
                     if (i == w / 2 && (j == 0 || j == h - 1) ||
                         j == h / 2 && (i == 0 || i == w - 1))
@@ -414,7 +416,7 @@ public class Spawner : MonoBehaviour
 			                    {
 				                    // if there is too many or too close
 				                    rnd = 0;
-				                    spawned = Random.Range(0, avelen);
+				                    spawned = Random.Range(0, avelen /2);
 				                    distFromObs++;
 			                    }
 			                    else
@@ -429,7 +431,7 @@ public class Spawner : MonoBehaviour
 			                    {
 				                    // if there is too many or too close
 				                    rnd = 0;
-				                    spawned = Random.Range(0, avelen);
+				                    spawned = Random.Range(0, avelen /2);
 				                    distFromEne++;
 			                    }
 			                    else
@@ -444,7 +446,7 @@ public class Spawner : MonoBehaviour
 			                    {
 				                    // if there is too many or too close
 				                    rnd = 0;
-				                    spawned = Random.Range(0, avelen);
+				                    spawned = Random.Range(0, avelen /2);
 				                    distFromPow++;
 			                    }
 			                    else
@@ -460,7 +462,7 @@ public class Spawner : MonoBehaviour
 			                    {
 				                    // if there is too many or too close
 				                    rnd = 0;
-				                    spawned = Random.Range(0, avelen);
+				                    spawned = Random.Range(0, avelen /2);
 				                    distFromDes++;
 			                    }
 			                    else
@@ -476,16 +478,16 @@ public class Spawner : MonoBehaviour
 			                    {
 				                    // if there is too many or too close
 				                    rnd = 0;
-				                    spawned = Random.Range(0, avelen);
+				                    spawned = Random.Range(0, avelen /2);
 				                    distFromCan++;
 			                    }
 			                    else
 			                    {
 				                    distFromCan = 0;
 			                    }
-
-			                    despooks--;
-
+			                    break;
+		                    default:
+			                    rnd = 0;
 			                    break;
 	                    }
                     }
