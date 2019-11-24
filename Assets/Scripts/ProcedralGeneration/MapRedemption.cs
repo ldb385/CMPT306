@@ -118,10 +118,10 @@ public class MapRedemption : MonoBehaviour
     private bool validSpace(int x, int y, int xLength, int yLength)
     {
         // this will be used to make sure that room walls will not overlap 
-        int xL = splitNum( xLength, true ) +1;
-        int xR = splitNum( xLength, false ) +1;
-        int yL = splitNum( yLength, true ) +1;
-        int yR = splitNum( yLength, false ) +1;
+        int xL = splitNum( xLength, true ) +2;
+        int xR = splitNum( xLength, false ) +2;
+        int yL = splitNum( yLength, true ) +2;
+        int yR = splitNum( yLength, false ) +2;
 
         // Now fill in coordinate array
         int tempyL;
