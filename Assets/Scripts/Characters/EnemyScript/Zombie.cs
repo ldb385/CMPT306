@@ -7,6 +7,9 @@ public class Zombie : MonoBehaviour
 {
     // Target will always be player
     private GameObject target;
+    private float zombieAttackInterval = 0.5f;
+    private float ZombieCoolDown = 0;
+    private float attackRange = 0.3f;
     public int ZombieDamage = 1;
 
     // speed at which to follow player
@@ -96,18 +99,16 @@ public class Zombie : MonoBehaviour
      * this function will be used to perform an attack from the
      * zombie when the player is close enough
      */
-    public IEnumerator zombieAttack()
+    public void zombieAttack()
     {
         Debug.Log("attack");
         // just a place holder for now
         target.gameObject.SendMessage("DamagePlayer", ZombieDamage);
-        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        yield return new WaitForSeconds(3);
-        this.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
     }
 
     void Start()
     {
+        ZombieCoolDown -= Time.deltaTime;
         // initialize player as target
         target = GameObject.FindGameObjectWithTag("Player");
 
@@ -149,12 +150,13 @@ public class Zombie : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        movement();
-
         // check if player is close enough to attack the player
         if (Vector2.Distance(transform.position, target.transform.position) <= 1)
         {
-            zombieAttack();
+                zombieAttack();
+        }
+        else{
+            movement();
         }
     }
 

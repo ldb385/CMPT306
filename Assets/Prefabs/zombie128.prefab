@@ -254,10 +254,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ZombieDamage: 1
-  chaseSpeed: 3
-  chargeSpeed: 4
-  chargeDist: 2
-  maxFatigue: 5
+  chaseSpeed: 2.5
+  chargeSpeed: 3
+  chargeDist: 1
+  maxFatigue: 6
   _as: {fileID: 137289694392638514}
   audioClipArray:
   - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}

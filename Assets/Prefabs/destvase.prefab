@@ -93,12 +93,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcdb808af26bf244981453d361eb4b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  largePoint: {fileID: 0}
-  mediumPoint: {fileID: 0}
-  smallPoint: {fileID: 0}
-  largeParticle: {fileID: 0}
-  mediumParticle: {fileID: 0}
-  smallParticle: {fileID: 0}
+  largePoint: {fileID: 289946157805708473, guid: 48c279735dacfd346a7f766506dbe237,
+    type: 3}
+  mediumPoint: {fileID: 7570342970591654764, guid: a319d9194d50d8943bf86611cc511344,
+    type: 3}
+  smallPoint: {fileID: 5981393875614391418, guid: c2aef39e2176e0640af01f934021fed9,
+    type: 3}
+  largeParticle: {fileID: 3175623017812978466, guid: 8014eb6795074554087340ed003d2f4a,
+    type: 3}
+  mediumParticle: {fileID: 8714252582869286670, guid: 6cb329a3d0744444385ef8384e9a7686,
+    type: 3}
+  smallParticle: {fileID: 4335390940727764029, guid: 6b9ecd86ce35fad43a3f7caf16537075,
+    type: 3}
 --- !u!70 &1229748727989841041
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
