@@ -158,9 +158,9 @@ public class Spawner : MonoBehaviour
 
     private GameObject getEnemy( int rnd )
     {
-        if (rnd > 5)
+        if (rnd > 4)
         {
-            rnd = 5;
+            rnd = 4;
         }
 
         switch (rnd)
@@ -288,7 +288,7 @@ public class Spawner : MonoBehaviour
                     tile = Instantiate( getObstacle(), (Vector2)i + diff, Quaternion.identity) as GameObject;
                     break;
                 case 2:
-	                int whichEn = Random.Range(0, (int) (9.0f - spookLevel) );
+	                int whichEn = Random.Range(0, (int) ((9.0f - spookLevel) /1.5f ) );
                     // Spawn in Enemy
                     tile = Instantiate(getEnemy(whichEn ),
                         (Vector2) i + diff, Quaternion.identity) as GameObject;
