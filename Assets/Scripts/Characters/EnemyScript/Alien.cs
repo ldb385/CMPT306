@@ -32,10 +32,7 @@ public class Alien : MonoBehaviour
     // detect if hit by projectile
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "wall")
-        {
-            AlienRigidBody.velocity = RandomVector(-5f, 5f);
-        }
+
     }
 
     /**
@@ -92,33 +89,20 @@ public class Alien : MonoBehaviour
         target = GameObject.FindWithTag("Player");
         origin = transform.position;
         AlienRigidBody = GetComponent<Rigidbody2D>();
-        AlienRigidBody.velocity = RandomVector(-5f, 5f);
 
     }
-  private Vector3 RandomVector(float min, float max) {
-         var x = Random.Range(min, max);
-         var y = Random.Range(min, max);
-         var z = Random.Range(min, max);
-         return new Vector3(x, y, z);
-     }
+
     // Update is called once per frame
     void Update()
     {
         // check if player is in range
-        if (!inRange())
+
+
+        // check if on cooldown
+        if (canShoot)
         {
-            // move back and forth
-            AlienRigidBody.velocity = new Vector2(3f,3f);
-            
-        }
-        else
-        {
-            // check if on cooldown
-            if (canShoot)
-            {
-                AlienRigidBody.velocity = RandomVector(0f, 0f);
-                StartCoroutine(rangedAttack());
-            }
+
+            StartCoroutine(rangedAttack());
         }
 
         if (health <= 0)
@@ -128,6 +112,12 @@ public class Alien : MonoBehaviour
 
         }
 
+    }
+
+    private void FixedUpdate() {
+        if(!inRange()){
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        }
     }
 
 }
