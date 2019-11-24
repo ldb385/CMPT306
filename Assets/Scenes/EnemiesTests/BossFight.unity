@@ -1760,6 +1760,11 @@ PrefabInstance:
       propertyPath: bossDeathVolume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 852227422456500043, guid: efcdb292b65d17d4e8a77136e8c626c7,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 757944585}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efcdb292b65d17d4e8a77136e8c626c7, type: 3}
 --- !u!1001 &6092317437321389332

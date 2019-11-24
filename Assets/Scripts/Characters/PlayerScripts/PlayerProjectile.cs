@@ -15,7 +15,7 @@ public class PlayerProjectile : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D collision)
     {
 
-        if(collision.gameObject.tag == "Enemies"){
+        if(collision.gameObject.tag == "Enemies" || collision.gameObject.tag == "Boss" ){
             float FireballDMG = GameObject.Find("Player").GetComponent<Player>().FireballDMG;
             collision.gameObject.SendMessage("ApplyDamage", FireballDMG);
             Destroy(this.gameObject);

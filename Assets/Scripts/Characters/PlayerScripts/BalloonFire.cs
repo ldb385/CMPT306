@@ -35,7 +35,7 @@ public class BalloonFire : MonoBehaviour
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(explosionPos, radius);
                 foreach (Collider2D hit in colliders)
                 {
-                    if (hit.gameObject.tag == "Enemies")
+                    if (hit.gameObject.tag == "Enemies" || hit.gameObject.tag == "Boss")
                     {
                         int BalloonDamage = GameObject.Find("Player").GetComponent<Player>().BalloonDMG;
                         hit.SendMessage("ApplyDamage", BalloonDamage);
