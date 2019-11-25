@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spookLevel: 0
-  BalloonCount: 10
+  BalloonCount: 3
 --- !u!4 &1446406100
 Transform:
   m_ObjectHideFlags: 0

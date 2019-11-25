@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     //public AudioClip projectileClip;
     public GameObject playerProjectile;
     public GameObject WaterBaloon;
-    public int ballonAmmo = 10;
+    public int ballonAmmo = 3;
     public float projectileSpeed = 1f;
     private float FireCoolDown = 0;
     private float WaterCoolDown = 0;
