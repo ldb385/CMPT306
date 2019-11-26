@@ -22,11 +22,11 @@ public class Zombie : MonoBehaviour
     // Stop enemy from ending up on top of player
     private float stopDist = 0.65f;
 
-    private int _chargeFatigue;
+    private float _chargeFatigue;
     private bool _canCharge;
 
     // the max frames for zombie to be fatigued
-    public int maxFatigue = 6;
+    public float maxFatigue = 5f;
 
     // array to hold zombie sounds
     public AudioSource _as;
@@ -64,10 +64,11 @@ public class Zombie : MonoBehaviour
      * This will be used to increase speed when the zombie gets close enough to the player
      * after a certain amount of frames the zombie will become tired and slow its speed
      */
+    // NEEDS A FIX FOR THE CHARGE 
     void Charge()
     {
         // this function will increase speed slightly when it gets closer to the player
-        if ((_chargeFatigue <= maxFatigue) && _canCharge)
+        if ((_chargeFatigue <= 0) && _canCharge)
         {
             // *** Tint zombie when its charging ( CAN BE TAKEN OUT ) ***
             gameObject.GetComponent<SpriteRenderer>().color = new Color(0.9245283f, 0.7893378f, 0.7893378f, 1);
@@ -76,8 +77,8 @@ public class Zombie : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
                 chargeSpeed * Time.deltaTime);
             // get tired from charging
-            _chargeFatigue++;
-            if (_chargeFatigue == maxFatigue)
+            _chargeFatigue = maxFatigue;
+            if (_chargeFatigue >= maxFatigue)
             {
                 // too tired can no longer charge till strength is regained
                 _canCharge = false;
@@ -95,9 +96,6 @@ public class Zombie : MonoBehaviour
             {
                 _canCharge = true;
             }
-            // zombie regains strength
-            _chargeFatigue--;
-
         }
     }
 
@@ -168,6 +166,7 @@ public class Zombie : MonoBehaviour
 
     private void Update()
     {
+        _chargeFatigue-=Time.deltaTime;
         if (health <= 0)
         {
             // play death sound/animation here

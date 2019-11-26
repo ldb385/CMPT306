@@ -245,6 +245,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 20.099976
       objectReference: {fileID: 0}
+    - target: {fileID: 6631703295167472317, guid: 2582767c2dea340019da626fdcbf3d9d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.6599731
+      objectReference: {fileID: 0}
     - target: {fileID: 6673292650357948158, guid: 2582767c2dea340019da626fdcbf3d9d,
         type: 3}
       propertyPath: TrackPlayerSpook
