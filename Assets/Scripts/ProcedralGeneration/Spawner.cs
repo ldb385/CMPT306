@@ -530,6 +530,8 @@ public class Spawner : MonoBehaviour
     {
         data = GenerateModel( width, height );
         hasBeenActivated = true;
+		GameObject wiz = GameObject.FindGameObjectWithTag("Player");
+        wiz.GetComponent<Player>().theOuchies();
         LoadTiles();
     }
 
