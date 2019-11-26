@@ -121,6 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 231708803574205351}
+  doorClose: {fileID: 8300000, guid: 7205362631ac0f54fb7e6ad46a79fa91, type: 3}
+  doorOpen: {fileID: 8300000, guid: fa3e7d942f4d48742a4a3305dadb87b9, type: 3}
+  closeHasPlayed: 0
+  openHasPlayed: 0
 --- !u!95 &231708803574205351
 Animator:
   serializedVersion: 3
