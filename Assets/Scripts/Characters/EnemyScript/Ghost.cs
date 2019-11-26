@@ -37,6 +37,8 @@ public class Ghost : MonoBehaviour
 
     private Transform target;
 
+    public Animator anim;
+
 
 
     void calcuateNewMovementVector()
@@ -45,6 +47,9 @@ public class Ghost : MonoBehaviour
         movementDirection = new Vector2(Random.Range(target.position.x - 0.3f, target.position.x + 0.3f),
             Random.Range(target.position.y, target.position.y)).normalized;
         movementPerSecond = movementDirection * 1.2f;
+        anim.SetFloat("Xinput",movementDirection.normalized.x);
+        anim.SetFloat("Yinput",movementDirection.normalized.y);
+
     }
 
 
@@ -70,6 +75,8 @@ public class Ghost : MonoBehaviour
         // this will be used to chase the player
         transform.position = Vector2.MoveTowards(transform.position, target.position,
             speed * Time.deltaTime);
+        anim.SetFloat("Xinput",target.position.normalized.x);
+        anim.SetFloat("Yinput",target.position.normalized.y);
 
         // play laughter sound if not on cooldown
         if (canLaugh)
