@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3999281744606656019}
   - component: {fileID: 1610960334429459435}
   - component: {fileID: 2715758833755189646}
+  - component: {fileID: 9170104694713906196}
   m_Layer: 0
   m_Name: mummy-center_0
   m_TagString: Enemies
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4219639485027154883}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.225, y: -0.783, z: 0}
-  m_LocalScale: {x: 1.0689, y: 1.1695, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -138,9 +139,10 @@ MonoBehaviour:
   health: 10
   speed: 2.3
   MummyDamage: 1
-  groanClip: {fileID: 0}
+  groanClip: {fileID: 8300000, guid: d6f2d0c297cfc5742ac3289b1d3f0b82, type: 3}
   cooldownTime: 3
   canGroan: 1
+  anim: {fileID: 4219639485027154880}
 --- !u!61 &2715758833755189646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -154,16 +156,30 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0072228387, y: 0.054463238}
+  m_Offset: {x: -0.0072228387, y: -0.07284507}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.28, y: 0.41}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.28, y: 0.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14998738, y: 0.3010735}
+  m_Size: {x: 0.14998738, y: 0.3580771}
   m_EdgeRadius: 0
+--- !u!114 &9170104694713906196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4219639485027154883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 112304705b9d6df4daa7ae3e93902ea1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointAddition: 100
+  pointSubtraction: 0

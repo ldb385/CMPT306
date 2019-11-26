@@ -44,11 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ghost: {fileID: 217831021496617436, guid: bfb3d0ab90b254e7dbd1fb774aac7417, type: 3}
-  Skeleton: {fileID: 4647141352398576607, guid: c9fcac4af61d9bf40a3f6b54882f74ca,
+  Skeleton: {fileID: 4911042203371924786, guid: e1b764b050dc541798fe3236d577e7ad,
     type: 3}
-  Mummy: {fileID: 6408232461057747334, guid: 857fe20336c8df242919ff7b6289d024, type: 3}
-  Zombie: {fileID: 7536065948401648841, guid: 84f9596f607f6b64ebe0e93a5880251f, type: 3}
-  Alien: {fileID: 8859374689890134087, guid: 37721a248d6dcb7498242f9c1c695b5a, type: 3}
+  Mummy: {fileID: 4219639485027154883, guid: d71f705eaa5db124a8b3ab4dd7a4fda3, type: 3}
+  Zombie: {fileID: 1715763120740693460, guid: 1abf811f5178e4bb89981fbd04b2bb7d, type: 3}
+  Alien: {fileID: 9072061175580977053, guid: ea5a4a61e5ef94caa9cebe3f90199da2, type: 3}
   GhostParticle: {fileID: 4233620564182895396, guid: ea1a900cf0954684a8e8b7b5e01069e7,
     type: 3}
   SkeletonParticle: {fileID: 4233620564182895396, guid: f2f771923e752fd4ab3bc12015ddb7ee,
