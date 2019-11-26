@@ -30,6 +30,7 @@ public class Skeleton : MonoBehaviour
 
     // skeleton health
     public float health = 10f;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +49,9 @@ public class Skeleton : MonoBehaviour
     {
     }
 
-   public void ApplyDamage(float damage){
-        health-=damage;
+    public void ApplyDamage(float damage)
+    {
+        health -= damage;
     }
 
     /**
@@ -58,10 +60,6 @@ public class Skeleton : MonoBehaviour
      */
     void lookAt()
     {
-        // Check where player is located and turn towards
-
-        relativeTarget = transform.InverseTransformPoint(target.transform.position);
-
         if (relativeTarget.x > 0f)
         {
             // On right side
@@ -86,17 +84,20 @@ public class Skeleton : MonoBehaviour
     /**
      * This will check if the enemy is in range and do an ranged attack if so
      */
-    void inRange()
+
+
+    bool inRange()
     {
         // check if player is in range
         if (Vector2.Distance(transform.position, target.GetComponent<Transform>().position) <= attackRange)
         {
-            // check if on cooldown
             if (canShoot)
             {
                 StartCoroutine(rangedAttack());
             }
+            return true;
         }
+        return false;
     }
 
     /**
@@ -144,12 +145,23 @@ public class Skeleton : MonoBehaviour
         // Can just run look at since checks are called in function
         lookAt();
 
-         if (health <= 0)
-            {
-                // play death sound/animation here
+        if (health <= 0)
+        {
+            // play death sound/animation here
 
-                Destroy(gameObject);
+            Destroy(gameObject);
 
-            }
+        }
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (!inRange())
+        {
+            animator.SetFloat("Xinput", (target.transform.position - transform.position).normalized.x);
+            animator.SetFloat("Yinput", (target.transform.position - transform.position).normalized.y);
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, 1 * Time.deltaTime);
+        }
     }
 }

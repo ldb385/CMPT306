@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f0e3248f76bca43e5b5243953cf77ced
+guid: 7781e7928776542f6b927d752fa37f37
 TextureImporter:
   fileIDToRecycleName:
-    21300000: skeleton-top_0
-    21300002: skeleton-top_1
-    21300004: skeleton-top_2
+    21300000: 2_0
+    21300002: 2_1
+    21300004: 2_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -87,7 +87,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: skeleton-top_0
+      name: 2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -101,13 +101,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91f4a1c3f89944a76b00b3cdb4d429b4
+      spriteID: e2401e3bbeabb4880a44751d709e4646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skeleton-top_1
+      name: 2_1
       rect:
         serializedVersion: 2
         x: 64
@@ -121,13 +121,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efbc264853921429496df673bc28dd15
+      spriteID: 9ac8b248940dd4d3093c0a19f74a24e1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: skeleton-top_2
+      name: 2_2
       rect:
         serializedVersion: 2
         x: 128
@@ -141,7 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa7e8805584a74110a6db45a57661344
+      spriteID: e5cbdae9928744289ad5c61a2cf02d8d
       vertices: []
       indices: 
       edges: []
@@ -149,7 +149,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c226b3896ae344cfe948f6743e61ee7e
+    spriteID: 06541f291987743f6aea60350413e476
     vertices: []
     indices: 
     edges: []

@@ -36,6 +36,8 @@ public class Zombie : MonoBehaviour
 
     public float health = 10f;
 
+    public Animator anim;
+
     // detect if hit by projectile
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -52,6 +54,10 @@ public class Zombie : MonoBehaviour
         // this will be used to chase the player
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
             chaseSpeed * Time.deltaTime);
+
+            anim.SetFloat("XInput", (target.transform.position - transform.position).normalized.x);
+            anim.SetFloat("YInput", (target.transform.position - transform.position).normalized.y);
+
     }
 
     /**

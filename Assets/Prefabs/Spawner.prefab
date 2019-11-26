@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c59c5feb2897e6429046b0d9c4414d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ghost: {fileID: 4789583149841275649, guid: 102ccd43a6a5ea44dacdd64be8664c90, type: 3}
+  Ghost: {fileID: 217831021496617436, guid: bfb3d0ab90b254e7dbd1fb774aac7417, type: 3}
   Skeleton: {fileID: 4647141352398576607, guid: c9fcac4af61d9bf40a3f6b54882f74ca,
     type: 3}
   Mummy: {fileID: 6408232461057747334, guid: 857fe20336c8df242919ff7b6289d024, type: 3}

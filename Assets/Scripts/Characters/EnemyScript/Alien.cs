@@ -25,6 +25,7 @@ public class Alien : MonoBehaviour
     public float cooldownTime;
     Vector3 origin;
     private Vector2 movementDirection;
+    public Animator animator;
 
     // Stop enemy from ending up on top of player
     // private float stopDist = 0.65f;
@@ -116,6 +117,8 @@ public class Alien : MonoBehaviour
 
     private void FixedUpdate() {
         if(!inRange()){
+            animator.SetFloat("Xinput", (target.transform.position - transform.position).normalized.x);
+            animator.SetFloat("Yinput", (target.transform.position - transform.position).normalized.y);
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         }
     }

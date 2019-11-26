@@ -75,8 +75,9 @@ public class Ghost : MonoBehaviour
         // this will be used to chase the player
         transform.position = Vector2.MoveTowards(transform.position, target.position,
             speed * Time.deltaTime);
-        anim.SetFloat("Xinput",target.position.normalized.x);
-        anim.SetFloat("Yinput",target.position.normalized.y);
+        Vector2 direction = target.position - transform.position;
+        anim.SetFloat("Xinput",direction.normalized.x);
+        anim.SetFloat("Yinput",direction.normalized.y);
 
         // play laughter sound if not on cooldown
         if (canLaugh)
