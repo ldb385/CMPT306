@@ -6,6 +6,7 @@ public class PowerUp : MonoBehaviour
 {
 
     public AudioClip chompSound;
+    public float volume = 1f;
     
     
     void OnTriggerEnter2D(Collider2D other)
@@ -14,7 +15,7 @@ public class PowerUp : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             // play chomp sound when the candy gets eaten
-            AudioSource.PlayClipAtPoint(chompSound, transform.position, 100f);
+            AudioSource.PlayClipAtPoint(chompSound, transform.position, volume);
             CleanUp();
         }
         

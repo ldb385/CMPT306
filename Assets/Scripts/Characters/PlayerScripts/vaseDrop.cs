@@ -12,8 +12,10 @@ public class vaseDrop : MonoBehaviour
     [SerializeField] private GameObject mediumParticle;
     [SerializeField] private GameObject smallParticle;
 
-		private bool blowUp = false;
-		private int drop;
+	private bool blowUp = false;
+	private int drop;
+    public AudioClip vaseSmash;
+    public float volume = 1f;
 	
 	// detect if hit by projectile
     void OnCollisionEnter2D(Collision2D col)
@@ -46,6 +48,7 @@ public class vaseDrop : MonoBehaviour
     {
 		if(blowUp == true)
 		{
+            AudioSource.PlayClipAtPoint(vaseSmash, transform.position, volume);
 			Destroy(gameObject);
 			// Spawn candy drop
 			Candy();

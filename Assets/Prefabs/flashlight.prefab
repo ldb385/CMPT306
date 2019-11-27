@@ -134,3 +134,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2b1469e688794438863cf0c517fded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chompSound: {fileID: 8300000, guid: f899dbfe6659ed248bac21729fa1b275, type: 3}
+  volume: 1

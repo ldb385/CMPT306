@@ -118,9 +118,10 @@ MonoBehaviour:
   health: 10
   GhostDamage: 1
   visibilityDistance: 4
-  chaseClip: {fileID: 0}
+  chaseClip: {fileID: 8300000, guid: fdfe59be3519c428bbc822ec9db9bbab, type: 3}
   canLaugh: 1
   cooldownTime: 0
+  anim: {fileID: 0}
 --- !u!50 &5713329339452433222
 Rigidbody2D:
   serializedVersion: 4
@@ -158,8 +159,8 @@ BoxCollider2D:
   m_Offset: {x: 0.005065739, y: 0.0050660074}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.46689877, y: 0.48262173}
-    oldSize: {x: 0.21, y: 0.4}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 0.21, y: 0.4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
