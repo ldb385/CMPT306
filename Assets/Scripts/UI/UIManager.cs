@@ -80,7 +80,6 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(scenePath);
-        Points.score = 0;
     }
 
 

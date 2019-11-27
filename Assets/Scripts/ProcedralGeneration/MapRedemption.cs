@@ -756,6 +756,9 @@ public class MapRedemption : MonoBehaviour
         GenerateModel();
         GenerateWalls();
         LoadTiles();
+        
+        // Since you are starting actual map should set score to Zero
+        Points.score = 0;
     }
     
 }
