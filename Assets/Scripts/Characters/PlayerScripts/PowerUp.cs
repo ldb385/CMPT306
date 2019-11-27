@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+
+    public AudioClip chompSound;
     
     
     void OnTriggerEnter2D(Collider2D other)
@@ -11,6 +13,8 @@ public class PowerUp : MonoBehaviour
         // Will Destroy the pickup only if the player goes over it
         if (other.CompareTag("Player"))
         {
+            // play chomp sound when the candy gets eaten
+            AudioSource.PlayClipAtPoint(chompSound, transform.position, 100f);
             CleanUp();
         }
         
