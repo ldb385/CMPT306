@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Linq.Expressions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
@@ -22,7 +23,7 @@ public class Ghost : MonoBehaviour
     // these are used for detection and movement of AI
     public float visibilityDistance = 4f;
     private float latestDirectionChangeTime;
-    private readonly float directionChangeTime = 1f;
+    private readonly float directionChangeTime = 2.5f;
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
 
@@ -44,9 +45,7 @@ public class Ghost : MonoBehaviour
     void calcuateNewMovementVector()
     {
         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
-        movementDirection = new Vector2(Random.Range(target.position.x - 0.3f, target.position.x + 0.3f),
-            Random.Range(target.position.y, target.position.y)).normalized;
-        movementPerSecond = movementDirection * 1.2f;
+        movementDirection = target.position;
         anim.SetFloat("Xinput",movementDirection.normalized.x);
         anim.SetFloat("Yinput",movementDirection.normalized.y);
 
@@ -114,8 +113,8 @@ public class Ghost : MonoBehaviour
         }
 
         //move enemy: 
-        transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
-            transform.position.y + (movementPerSecond.y * Time.deltaTime));
+        transform.position = Vector2.MoveTowards(transform.position, movementDirection,
+            1.3f * Time.deltaTime);
     }
 
     /**
@@ -161,16 +160,19 @@ public class Ghost : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
-    {
+    { 
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag("wall"))
         {
-            Chase();
+            movementDirection = target.position;
         }
         else if(collision.gameObject.CompareTag("Player")){
-            collision.gameObject.SendMessage("DamagePlayer", GhostDamage);
+            collision.gameObject.SendMessage("DamagePlayer", GhostDamage); 
         }
-
     }
+    
+    
+
     private void Update()
     {
         if (health <= 0)
