@@ -35,7 +35,6 @@ public class Mummy : MonoBehaviour
         //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
         movementDirection = new Vector2(Random.Range(target.position.x - 0.3f, target.position.x + 0.3f),
             Random.Range(target.position.y, target.position.y)).normalized;
-		Vector2 direction = (target.position - transform.position).normalized;
         movementPerSecond = movementDirection * 1.2f;
         anim.SetFloat("Xinput",movementDirection.normalized.x);
         anim.SetFloat("Yinput",movementDirection.normalized.y);
@@ -50,9 +49,8 @@ public class Mummy : MonoBehaviour
         // this will be used to chase the player
         transform.position = Vector2.MoveTowards(transform.position, target.position,
             speed * Time.deltaTime);
-		Vector2 direction = (target.position - transform.position).normalized;
-		anim.SetFloat("Xinput",target.position.normalized.x);
-		anim.SetFloat("Yinput",target.position.normalized.y);
+		anim.SetFloat("Xinput", (target.transform.position - transform.position).normalized.x);
+        anim.SetFloat("Yinput", (target.transform.position - transform.position).normalized.y);
 
         // play mummy sound if not on cooldown
         if (canGroan)
