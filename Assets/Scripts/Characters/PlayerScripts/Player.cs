@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
 				// players spook level goes up
 				spookLevel += Damage;
 				// player getAway activates
-				theOuchies();
+				StartCoroutine(getAway());
 				// if spook meter is full, player is "killed"
 				if(spookLevel >= 10)
 				{
@@ -216,7 +216,14 @@ public class Player : MonoBehaviour
 
 	public void theOuchies()
 	{
-		StartCoroutine(getAway());
+		StartCoroutine(equalizer());
+	}
+
+	public IEnumerator equalizer()
+	{
+		invincible = true;
+        yield return new WaitForSecondsRealtime(1);
+		invincible = false;
 	}
   
   public void SavePlayer()
