@@ -25,7 +25,7 @@ public class MapRedemption : MonoBehaviour
     [SerializeField] private GameObject horizontalDoor;
     [SerializeField] private GameObject verticalDoor;
     // Boss scene transition for room
-    [SerializeField] private GameObject bossTele;
+    [SerializeField] private GameObject tele;
 
     // Set how many rooms to create
     public int roomAmount = 21;
@@ -638,7 +638,7 @@ public class MapRedemption : MonoBehaviour
         else
         {
             // made it to last room can now place the teleporter to the boss
-            Instantiate( bossTele, new Vector3( newx, newy ), Quaternion.identity );
+            Instantiate( tele, new Vector3( newx, newy ), Quaternion.identity );
         }
     }
 
@@ -756,9 +756,6 @@ public class MapRedemption : MonoBehaviour
         GenerateModel();
         GenerateWalls();
         LoadTiles();
-        
-        // Since you are starting actual map should set score to Zero
-        Points.score = 0;
     }
     
 }
