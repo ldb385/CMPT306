@@ -32,6 +32,8 @@ public class MapRedemption : MonoBehaviour
     // Set the Max Length and Width of room and length of Cooridor
     [SerializeField] private int maxRoomWidth = 15;
     [SerializeField] private int maxRoomHeight = 15;
+    [SerializeField] private int minRoomWidth = 6;
+    [SerializeField] private int minRoomHeight = 6;
     [SerializeField] private int maxCooridorLength = 15;
     
     
@@ -571,8 +573,8 @@ public class MapRedemption : MonoBehaviour
             // if cooridor was built build a room
             if ( cooridorbuilt )
             {
-                int roomYLen = Random.Range(4, maxRoomHeight);
-                int roomXLen = Random.Range(4, maxRoomWidth);
+                int roomYLen = Random.Range(minRoomHeight, maxRoomHeight);
+                int roomXLen = Random.Range(minRoomWidth, maxRoomWidth);
                 if (roomXLen % 2 == 0)
                 {
                     roomXLen++;
