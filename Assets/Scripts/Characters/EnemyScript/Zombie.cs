@@ -8,7 +8,7 @@ public class Zombie : MonoBehaviour
 {
     // Target will always be player
     private GameObject target;
-    private float zombieAttackInterval = 0.5f;
+    // private float zombieAttackInterval = 0.5f;
     private float ZombieCoolDown = 0;
     private float attackRange = 0.3f;
     public int ZombieDamage = 1;

@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public AudioClip deathClip;
     public AudioClip damageClip;
 
+    public float deathVolume = 1f;
+
     // footstep sounds
     public AudioClip footstepClip;
 
@@ -97,7 +99,7 @@ public class Player : MonoBehaviour
 				if(spookLevel >= 10)
 				{
 					// play death sound
-					AudioSource.PlayClipAtPoint(deathClip, transform.position, 0.5f);
+					AudioSource.PlayClipAtPoint(deathClip, transform.position, deathVolume);
 
                     // mark object destroyed in the next frame
                     isAlive = false;
