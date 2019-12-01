@@ -1140,8 +1140,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 114.4, y: 75.5}
-  m_SizeDelta: {x: 549.4, y: 115.2}
+  m_AnchoredPosition: {x: 73, y: 132.99}
+  m_SizeDelta: {x: 853.6, y: 230.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1664159113
 MonoBehaviour:
@@ -1176,7 +1176,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Fucking Win!!!!
+  m_Text: "\t\tCongratulations! \n\nYou have defeated your enemies and reclaimed your
+    candy!"
 --- !u!222 &1664159114
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1302,6 +1303,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2026595570491507246, guid: 5f1138fe36df45249aae13ae875ec112,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2064840842}
+    - target: {fileID: 2026595570491507246, guid: 5f1138fe36df45249aae13ae875ec112,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: pausedControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 2026595571541093731, guid: 5f1138fe36df45249aae13ae875ec112,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2064840842}
+    - target: {fileID: 2026595571541093731, guid: 5f1138fe36df45249aae13ae875ec112,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
     - target: {fileID: 2026595570480106149, guid: 5f1138fe36df45249aae13ae875ec112,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1328,16 +1349,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMainMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 2026595570491507246, guid: 5f1138fe36df45249aae13ae875ec112,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2064840842}
-    - target: {fileID: 2026595570491507246, guid: 5f1138fe36df45249aae13ae875ec112,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: pausedControl
-      objectReference: {fileID: 0}
     - target: {fileID: 2026595570884529626, guid: 5f1138fe36df45249aae13ae875ec112,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1357,16 +1368,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadMainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 2026595571541093731, guid: 5f1138fe36df45249aae13ae875ec112,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2064840842}
-    - target: {fileID: 2026595571541093731, guid: 5f1138fe36df45249aae13ae875ec112,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Restart
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f1138fe36df45249aae13ae875ec112, type: 3}
