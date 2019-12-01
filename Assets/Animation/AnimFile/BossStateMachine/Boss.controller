@@ -85,6 +85,18 @@ MonoBehaviour:
   timer: 0
   minTime: 0.5
   maxTime: 1.5
+--- !u!114 &114260406500342594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccb468892109d024da09694751b5c4aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114305146326152104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,6 +109,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1d2b7c85b5d4a2cbc48a112c29148a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114327340711316772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6acb4f786c2a54db9f19c23e2ff2fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  minTime: 0
+  maxTime: 0
+--- !u!114 &114398924041281946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8cb8be2b4fcb64b96ee17fbbe9f3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114450943919256028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9fb93588ac532a40af9fa98cc97c2ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  minTime: 0
+  maxTime: 0
+  projectileSpeed: 0
+  RazorBlade: {fileID: 0}
+  razorSound: {fileID: 0}
+  razorVolume: 1
 --- !u!114 &114553417650693360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -112,6 +170,21 @@ MonoBehaviour:
   timer: 0
   minTime: 1
   maxTime: 2
+--- !u!114 &114613182531105328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63258bd8fc7317e42a887b4aaed652f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  minTime: 0
+  maxTime: 0
 --- !u!114 &114634617951959336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -147,6 +220,33 @@ MonoBehaviour:
     type: 3}
   razorSound: {fileID: 8300000, guid: f7e0e47edde216f4cab0d48f3fe45d29, type: 3}
   razorVolume: 0.2
+--- !u!114 &114777354113469360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7b4bf7b99cd3e45be4256bbd0fc836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  minTime: 0
+  maxTime: 0
+--- !u!114 &114787951218256878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8cb8be2b4fcb64b96ee17fbbe9f3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1101 &1101119590784328372
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -429,7 +529,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101673725715424024}
   - {fileID: 1101628963282064208}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114398924041281946}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -456,7 +557,8 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101861029680047178}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114260406500342594}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -483,7 +585,12 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101722481966695530}
+<<<<<<< Updated upstream
   m_StateMachineBehaviours: []
+=======
+  m_StateMachineBehaviours:
+  - {fileID: 114777354113469360}
+>>>>>>> Stashed changes
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -510,7 +617,12 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101416228441939030}
+<<<<<<< Updated upstream
   m_StateMachineBehaviours: []
+=======
+  m_StateMachineBehaviours:
+  - {fileID: 114613182531105328}
+>>>>>>> Stashed changes
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -538,7 +650,12 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101244282200354376}
   - {fileID: 1101888747765095574}
+<<<<<<< Updated upstream
   m_StateMachineBehaviours: []
+=======
+  m_StateMachineBehaviours:
+  - {fileID: 114787951218256878}
+>>>>>>> Stashed changes
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -565,7 +682,12 @@ AnimatorState:
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101119590784328372}
+<<<<<<< Updated upstream
   m_StateMachineBehaviours: []
+=======
+  m_StateMachineBehaviours:
+  - {fileID: 114450943919256028}
+>>>>>>> Stashed changes
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -593,7 +715,12 @@ AnimatorState:
   m_Transitions:
   - {fileID: 1101731425950915732}
   - {fileID: 1101727848858050354}
+<<<<<<< Updated upstream
   m_StateMachineBehaviours: []
+=======
+  m_StateMachineBehaviours:
+  - {fileID: 114327340711316772}
+>>>>>>> Stashed changes
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
