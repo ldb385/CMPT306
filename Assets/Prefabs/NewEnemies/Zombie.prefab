@@ -181,7 +181,7 @@ MonoBehaviour:
   chaseSpeed: 2.2
   chargeSpeed: 3.5
   chargeDist: 4
-  maxFatigue: 6
+  maxFatigue: 60
   _as: {fileID: 379588409791894165}
   audioClipArray:
   - {fileID: 8300000, guid: dba43af24cefd483498d32120884e259, type: 3}
@@ -202,7 +202,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.17
   m_Pitch: 1
   Loop: 0
   Mute: 0

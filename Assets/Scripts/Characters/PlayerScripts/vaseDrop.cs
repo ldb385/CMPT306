@@ -18,9 +18,12 @@ public class vaseDrop : MonoBehaviour
     public float volume = 1f;
 	
 	// detect if hit by projectile
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D c)
     {
-		blowUp = true;
+        if (c.gameObject.CompareTag("Projectile"))
+        {
+            blowUp = true;
+        }
     }
     
     // Raandomly selects a canday

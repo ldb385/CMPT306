@@ -586,16 +586,13 @@ public class MapRedemption : MonoBehaviour
                 }
                 prevXSize = roomXLen;
                 prevYSize = roomYLen;
-
-                // Don't want to spawn in enemies if on the last room
-                bool spawnEnemies = (roomsMade +1 < roomAmount);
                 
                 switch( direction )
                 {
                     case( 0 ):
                         // Moved North
                         newy = newy + splitNum( prevYSize, true );
-                        if ( !makeRoom(newx, newy, roomXLen, roomYLen, spawnEnemies))
+                        if ( !makeRoom(newx, newy, roomXLen, roomYLen))
                         {
                             roomsBuiltSuccessfully = false;
                         }
@@ -603,7 +600,7 @@ public class MapRedemption : MonoBehaviour
                     case( 1 ):
                         // Moved East
                         newx = newx + splitNum( prevXSize, true );
-                        if ( !makeRoom(newx, newy, roomXLen, roomYLen, spawnEnemies))
+                        if ( !makeRoom(newx, newy, roomXLen, roomYLen))
                         {
                             roomsBuiltSuccessfully = false;
                         }
@@ -611,7 +608,7 @@ public class MapRedemption : MonoBehaviour
                     case( 2 ):
                         // Moved South
                         newy = newy - splitNum( prevYSize, false );
-                        if (!makeRoom(newx, newy, roomXLen, roomYLen, spawnEnemies))
+                        if (!makeRoom(newx, newy, roomXLen, roomYLen))
                         {
                             roomsBuiltSuccessfully = false;
                         }
@@ -619,7 +616,7 @@ public class MapRedemption : MonoBehaviour
                     case( 3 ):
                         // Moved West
                         newx = newx - splitNum( prevXSize, false );
-                        if (!makeRoom(newx, newy, roomXLen, roomYLen, spawnEnemies))
+                        if (!makeRoom(newx, newy, roomXLen, roomYLen))
                         {
                             roomsBuiltSuccessfully = false;
                         }
@@ -632,7 +629,7 @@ public class MapRedemption : MonoBehaviour
         }
 
 
-        if ( roomsMade < roomAmount || roomsMade < cooridorsMade || ! roomsBuiltSuccessfully )
+        if ( roomsMade < roomAmount - 3 || roomsMade < cooridorsMade || ! roomsBuiltSuccessfully )
         {
             // if the rooms arent good enough rebuild rooms
             RemoveExcess();
