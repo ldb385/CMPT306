@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 public class Zombie : MonoBehaviour
 {
@@ -37,11 +38,7 @@ public class Zombie : MonoBehaviour
     public float health = 10f;
 
     public Animator anim;
-
-    // detect if hit by projectile
-    void OnCollisionEnter2D(Collision2D col)
-    {
-    }
+    
     public void ApplyDamage(float damage)
     {
         health -= damage;
@@ -51,25 +48,27 @@ public class Zombie : MonoBehaviour
      */
     void Chase()
     {
+        // *** Tint zombie when its not charging ( CAN BE TAKEN OUT ) ***
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         // this will be used to chase the player
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
             chaseSpeed * Time.deltaTime);
-
-            anim.SetFloat("XInput", (target.transform.position - transform.position).normalized.x);
-            anim.SetFloat("YInput", (target.transform.position - transform.position).normalized.y);
-
+        if (_chargeFatigue > 0)
+        {
+            _chargeFatigue -= 1;
+        }
     }
 
     /**
      * This will be used to increase speed when the zombie gets close enough to the player
      * after a certain amount of frames the zombie will become tired and slow its speed
      */
-    // NEEDS A FIX FOR THE CHARGE 
     void Charge()
     {
         // this function will increase speed slightly when it gets closer to the player
-        if ((_chargeFatigue <= 0) && _canCharge)
+        if ( _canCharge )
         {
+            Debug.Log("CHARGING");
             // *** Tint zombie when its charging ( CAN BE TAKEN OUT ) ***
             gameObject.GetComponent<SpriteRenderer>().color = new Color(0.9245283f, 0.7893378f, 0.7893378f, 1);
 
@@ -77,19 +76,15 @@ public class Zombie : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position,
                 chargeSpeed * Time.deltaTime);
             // get tired from charging
-            _chargeFatigue = maxFatigue;
+            _chargeFatigue += 1;
             if (_chargeFatigue >= maxFatigue)
             {
                 // too tired can no longer charge till strength is regained
                 _canCharge = false;
-
             }
         }
         else
         {
-            // *** Tint zombie when its not charging ( CAN BE TAKEN OUT ) ***
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-
             // zombie is too tired to charge more and will just chase instead
             Chase();
             if (_chargeFatigue <= 0)
@@ -148,6 +143,8 @@ public class Zombie : MonoBehaviour
                 Chase();
             }
         }
+        anim.SetFloat("XInput", (target.transform.position - transform.position).normalized.x);
+        anim.SetFloat("YInput", (target.transform.position - transform.position).normalized.y);
     }
 
 
@@ -166,11 +163,9 @@ public class Zombie : MonoBehaviour
 
     private void Update()
     {
-        _chargeFatigue-=Time.deltaTime;
         if (health <= 0)
         {
             // play death sound/animation here
-
             Destroy(gameObject);
 
         }
