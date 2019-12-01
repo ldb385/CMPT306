@@ -227,8 +227,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -400, y: -260}
-  m_SizeDelta: {x: 200, y: 45}
+  m_AnchoredPosition: {x: -160, y: -160}
+  m_SizeDelta: {x: 120, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144191558
 MonoBehaviour:
@@ -282,17 +282,6 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1307690332}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 552883914}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -663,7 +652,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1ba95b38337a48747b8a80eec0c4d06d, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
@@ -1175,17 +1164,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 552883914}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &595006002
@@ -1262,8 +1240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: -265}
-  m_SizeDelta: {x: 200, y: 80}
+  m_AnchoredPosition: {x: -0, y: -60}
+  m_SizeDelta: {x: 120, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630789379
 MonoBehaviour:
@@ -1776,8 +1754,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 430, y: -95}
-  m_SizeDelta: {x: 650, y: 372.5}
+  m_AnchoredPosition: {x: 540.9, y: -221.4}
+  m_SizeDelta: {x: 457.4, y: 372.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &875724319
 MonoBehaviour:
@@ -1812,11 +1790,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Powerups:\n\nSoda\t                 -Increases run speed for a short time\nNerf
-    Gun\t    - Increases projectile speed for a short time\nTeddy Bear   - Lowers
-    Spook Level\nFlashlight  -  Greatly Lowers Spook Level\nBalloon\t        - Special
-    attack that does AOE damage\nCape\t                - Become Invincible for a short
-    time"
+  m_Text: "Power-Ups:\n\nSoda\t - Increases speed for 5 seconds\nNerf Gun\t - Increases
+    projectile 5 seconds\nTeddy Bear - Lowers Spook Level\nBalloon\t - Special attack
+    that does area damage\nCape\t - Makes player invincible for a short time\nFlashlight
+    \   - Gives player a flashlight for a short time\nCandy\t - Not sure"
 --- !u!222 &875724320
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1922,7 +1899,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1ba95b38337a48747b8a80eec0c4d06d, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -2014,8 +1991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 400, y: -260}
-  m_SizeDelta: {x: 200, y: 45}
+  m_AnchoredPosition: {x: 160, y: -160}
+  m_SizeDelta: {x: 120, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1023966572
 MonoBehaviour:
@@ -2475,7 +2452,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1ba95b38337a48747b8a80eec0c4d06d, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 17
     m_FontStyle: 0
     m_BestFit: 0
@@ -2976,7 +2953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -430, y: -30}
+  m_AnchoredPosition: {x: -462, y: 232}
   m_SizeDelta: {x: 586.6, y: 243.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801990054
@@ -3001,7 +2978,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1ba95b38337a48747b8a80eec0c4d06d, type: 3}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3015,11 +2992,11 @@ MonoBehaviour:
   m_Text: 'Controls
 
 
-    Move                             WASD Keys
+    Run                         = WASD
 
-    Main Attack            Left Mouse Click
+    Main Attack     = Left Mouse Click
 
-    Special Attack       Spacebar'
+    Special Attack = Spacebar'
 --- !u!222 &1801990055
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3250,7 +3227,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 1ba95b38337a48747b8a80eec0c4d06d, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -3384,7 +3361,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -30, y: -20}
+  m_AnchoredPosition: {x: 0.0000076294, y: -26}
   m_SizeDelta: {x: 488.3, y: 220.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991002048
@@ -3409,7 +3386,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1ba95b38337a48747b8a80eec0c4d06d, type: 3}
-    m_FontSize: 20
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -3420,9 +3397,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Enemies:\n\nAlien\t           - Ranged Attack\nGhosts\t       - Melee Attack\nMummy\t
-    \      - Melee Attack\nSkeleton\t   - Ranged Attack\nZombie\t           - Melee
-    Attack"
+  m_Text: "Enemies:\n\nAlien\t- Ranged Attack\nGhosts\t- Melee Attack\nMummy\t- Melee
+    Attack\nSkeleton\t- Ranged Attack\nZombie\t- Melee Attack"
 --- !u!222 &1991002049
 CanvasRenderer:
   m_ObjectHideFlags: 0
