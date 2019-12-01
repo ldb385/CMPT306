@@ -117,6 +117,7 @@ public class UIManager : MonoBehaviour
 
     public void showGameOver()
     {
+        
         foreach(GameObject g in gameOverObjects)
         {
             g.SetActive(true);
