@@ -108,8 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a2b1469e688794438863cf0c517fded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chompSound: {fileID: 8300000, guid: 4c84ccead7bfd744584766db02bf0d57, type: 3}
-  volume: 0.5
+  chompSound: {fileID: 8300000, guid: eae497e155d5bb44b8209a1e88245d61, type: 3}
 --- !u!70 &3873007535251726555
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
