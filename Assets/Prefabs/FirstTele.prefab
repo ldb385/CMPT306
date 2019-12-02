@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5512065970543476057}
   - component: {fileID: 8363401889862828221}
   - component: {fileID: 2128089393744883994}
-  - component: {fileID: 4521587965349185550}
+  - component: {fileID: 4987457223445849598}
   m_Layer: 0
   m_Name: FirstTele
   m_TagString: Untagged
@@ -195,7 +195,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6012279, y: 0.037416637}
   m_EdgeRadius: 0
---- !u!114 &4521587965349185550
+--- !u!114 &4987457223445849598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -204,6 +204,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6817427814813242072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f25b9f20d1332c046b8abf715d38f31f, type: 3}
+  m_Script: {fileID: 11500000, guid: c82a7db217b83ff40b16a5c306a341ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
