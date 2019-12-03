@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &309428189480847953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309428189480847959}
+  - component: {fileID: 309428189480847958}
+  m_Layer: 0
+  m_Name: SpawnerLevelOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &309428189480847959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309428189480847953}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.5, y: -3.11, z: 0.099609375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &309428189480847958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309428189480847953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c59c5feb2897e6429046b0d9c4414d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ghost: {fileID: 217831021496617436, guid: bfb3d0ab90b254e7dbd1fb774aac7417, type: 3}
+  Skeleton: {fileID: 4911042203371924786, guid: e1b764b050dc541798fe3236d577e7ad,
+    type: 3}
+  Mummy: {fileID: 4219639485027154883, guid: 5d965238573a8bb4c86a55961485de66, type: 3}
+  Zombie: {fileID: 1715763120740693460, guid: 1abf811f5178e4bb89981fbd04b2bb7d, type: 3}
+  Alien: {fileID: 9072061175580977053, guid: ea5a4a61e5ef94caa9cebe3f90199da2, type: 3}
+  GhostParticle: {fileID: 4233620564182895396, guid: ea1a900cf0954684a8e8b7b5e01069e7,
+    type: 3}
+  SkeletonParticle: {fileID: 4233620564182895396, guid: f2f771923e752fd4ab3bc12015ddb7ee,
+    type: 3}
+  MummyParticle: {fileID: 4233620564182895396, guid: 0ae330d4b3deb8f4d83efdba44a4dac5,
+    type: 3}
+  ZombieParticle: {fileID: 2721537670059810952, guid: 03d1a718445374bee99a453e91e5f111,
+    type: 3}
+  AlienParticle: {fileID: 4233620564182895396, guid: ec31fd3ac06e34e80919a4690469ced1,
+    type: 3}
+  endTable: {fileID: 7250554789379511836, guid: 24a03c8692e8683409cc4a129dd7abdd,
+    type: 3}
+  table: {fileID: 36787712434243094, guid: fdf648adac1be5e428a14a40eb365562, type: 3}
+  chairSide: {fileID: 5694206263037646985, guid: b44d9e3f8b66fc04c87fcbd0c8f85345,
+    type: 3}
+  chairBack: {fileID: 2394184353795056603, guid: 879fc7b1e9e966d4c95a59043bef9802,
+    type: 3}
+  vase: {fileID: 1229748727989841053, guid: a7ac2b13c924aa34794bc3d473651bda, type: 3}
+  candyS: {fileID: 5981393875614391418, guid: c2aef39e2176e0640af01f934021fed9, type: 3}
+  candyM: {fileID: 7570342970591654764, guid: a319d9194d50d8943bf86611cc511344, type: 3}
+  candyL: {fileID: 289946157805708473, guid: 48c279735dacfd346a7f766506dbe237, type: 3}
+  candySParticle: {fileID: 4335390940727764031, guid: 6b9ecd86ce35fad43a3f7caf16537075,
+    type: 3}
+  candyMParticle: {fileID: 8714252582869286668, guid: 6cb329a3d0744444385ef8384e9a7686,
+    type: 3}
+  candyLParticle: {fileID: 3175623017812978464, guid: 8014eb6795074554087340ed003d2f4a,
+    type: 3}
+  Flashlight: {fileID: 7808637847861783578, guid: 19101c7ef2e390349883ba0d0540760a,
+    type: 3}
+  Teddy: {fileID: 5587014229061917684, guid: 2b846b06a1c1d194c87548acc6fa4cef, type: 3}
+  Candy: {fileID: 1719875897420511350, guid: 252c86a9c3c6f6b4d8d2929526a46d1a, type: 3}
+  Nerf: {fileID: 9043848066443676873, guid: 0351ca7b74fa10447aa277a728f08d4d, type: 3}
+  Soda: {fileID: 1719875897420511350, guid: 252c86a9c3c6f6b4d8d2929526a46d1a, type: 3}
+  Balloon: {fileID: 6092317437729403599, guid: f5afd73e3d4bf0048a78e7453a547b99, type: 3}
+  Cape: {fileID: 6371271966087989422, guid: e8a49832c358bb449a2b1dae52491062, type: 3}
+  width: 9
+  height: 5

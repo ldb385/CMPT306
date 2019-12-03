@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 309428189480847959}
   - component: {fileID: 309428189480847958}
   m_Layer: 0
-  m_Name: Spawner
+  m_Name: SpawnerLevelTwo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,10 +61,10 @@ MonoBehaviour:
     type: 3}
   endTable: {fileID: 7250554789379511836, guid: 24a03c8692e8683409cc4a129dd7abdd,
     type: 3}
-  table: {fileID: 713015991715273239, guid: 0a3c5c467e547b44c968345d656d8e08, type: 3}
-  chairSide: {fileID: 5694206263037646985, guid: b44d9e3f8b66fc04c87fcbd0c8f85345,
+  table: {fileID: 2978689343060378288, guid: b91840fb867aef24ca3695ed4274ebac, type: 3}
+  chairSide: {fileID: 4220533926120366578, guid: 2ce5c09d04be46d40af8320c5f12874b,
     type: 3}
-  chairBack: {fileID: 2394184353795056603, guid: 879fc7b1e9e966d4c95a59043bef9802,
+  chairBack: {fileID: 9045393021949933174, guid: 5f15e1e4775c4ad4e91c5725240cef81,
     type: 3}
   vase: {fileID: 1229748727989841053, guid: a7ac2b13c924aa34794bc3d473651bda, type: 3}
   candyS: {fileID: 5981393875614391418, guid: c2aef39e2176e0640af01f934021fed9, type: 3}
