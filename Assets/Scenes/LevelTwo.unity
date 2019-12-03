@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a3c56b6b174f354491055540b33fee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Floor: {fileID: 6899980623330892631, guid: 10a439e5fc8b0094db945afe93ac52d0, type: 3}
+  Floor: {fileID: 5871707444375353495, guid: 84543a1b3f2393c4aa819dea7e814455, type: 3}
   northWall: {fileID: 2422697530156550729, guid: 90999e7924680ea47bcdf4b6a88e47fe,
     type: 3}
   eastWall: {fileID: 1893388467336113446, guid: cbcf40297ddf840ac9dda1f63f70735b,
@@ -507,7 +507,7 @@ MonoBehaviour:
     type: 3}
   westInnerWall: {fileID: 3939928861798060040, guid: 3caea01af32658e42baa2cdb3a251e65,
     type: 3}
-  spawner: {fileID: 309428189480847958, guid: 7d27ac7c0b34bc44082921b539f337c8, type: 3}
+  spawner: {fileID: 309428189480847958, guid: 86e3666dfa7b83945adf29c735759d1e, type: 3}
   horizontalDoor: {fileID: 7332371108441954968, guid: d2d873c220f5f174eb80e7e748163e79,
     type: 3}
   verticalDoor: {fileID: 7332371108441954968, guid: 3a7009f8be563d34f8f53f8d62deb55c,
