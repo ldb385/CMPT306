@@ -101,8 +101,9 @@ MonoBehaviour:
   minTime: 0
   maxTime: 0
   projectileSpeed: 0
-  RazorBlade: {fileID: 0}
-  razorSound: {fileID: 0}
+  RazorBlade: {fileID: 681987619778679380, guid: 79f8362056f3b4e4e91e6b48abdcbcd5,
+    type: 3}
+  razorSound: {fileID: 8300000, guid: f7e0e47edde216f4cab0d48f3fe45d29, type: 3}
   razorVolume: 1
 --- !u!114 &114258710131574198
 MonoBehaviour:
@@ -530,7 +531,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e7ab9abf83007484db68c064919d9de5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 2030a8f9deb959e4d94357186231e322, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
