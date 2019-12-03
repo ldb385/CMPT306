@@ -343,6 +343,15 @@ public class MapRedemption : MonoBehaviour
             if( obj.transform.name == "Spawner(Clone)" ){
                 Destroy(obj);
             }
+            if( obj.transform.name == "SpawnerLevelOne(Clone)" ){
+                Destroy(obj);
+            }
+            if( obj.transform.name == "SpawnerLevelTwo(Clone)" ){
+                Destroy(obj);
+            }
+            if( obj.transform.name == "SpawnerLevelThree(Clone)" ){
+                Destroy(obj);
+            }
             if( obj.transform.name == "VerDoor(Clone)" ){
                 Destroy(obj);
             }
