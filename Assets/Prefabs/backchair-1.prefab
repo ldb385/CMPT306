@@ -153,5 +153,5 @@ MonoBehaviour:
     type: 3}
   smallParticle: {fileID: 4335390940727764029, guid: 6b9ecd86ce35fad43a3f7caf16537075,
     type: 3}
-  obSmash: {fileID: 0}
+  obSmash: {fileID: 8300000, guid: 1172ea7c5c1e6ec418cd1a5604b11132, type: 3}
   volume: 1
