@@ -43,6 +43,8 @@ public class Player : MonoBehaviour
 
     public Animator animator;
 
+	private float maxSpeed = 6.4f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -140,9 +142,13 @@ public class Player : MonoBehaviour
 
     // SodaPickUp changes the speed to 2.0(?)
     public IEnumerator SodaPickUp(){
-            speed *= 2;
-            yield return new WaitForSecondsRealtime(5);
-            speed /= 2;
+            if( speed < maxSpeed)
+			{
+				speed *= 2;
+				yield return new WaitForSecondsRealtime(5);
+				speed /= 2;
+			}
+			
     }
 
     // CapePickUp gives the player immunity from damage for 15(?) seconds
@@ -210,9 +216,11 @@ public class Player : MonoBehaviour
 	// Coroutine for getAway function
 	public IEnumerator getAway(){
 		invincible = true;
-		speed *= 2;
+		if( speed < maxSpeed)
+		{
+			StartCoroutine(SodaPickUp());
+		}
         yield return new WaitForSecondsRealtime(1);
-        speed /= 2;
 		invincible = false;
 	}
 
