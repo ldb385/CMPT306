@@ -97,14 +97,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9fb93588ac532a40af9fa98cc97c2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
-  minTime: 0
-  maxTime: 0
-  projectileSpeed: 0
+  timer: 5
+  minTime: 1
+  maxTime: 3
+  projectileSpeed: 6
   RazorBlade: {fileID: 681987619778679380, guid: 79f8362056f3b4e4e91e6b48abdcbcd5,
     type: 3}
   razorSound: {fileID: 8300000, guid: f7e0e47edde216f4cab0d48f3fe45d29, type: 3}
-  razorVolume: 1
+  razorVolume: 0.5
 --- !u!114 &114258710131574198
 MonoBehaviour:
   m_ObjectHideFlags: 1
