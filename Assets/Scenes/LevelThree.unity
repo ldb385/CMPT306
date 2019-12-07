@@ -327,7 +327,7 @@ PrefabInstance:
     - target: {fileID: 4055270039469593439, guid: 2582767c2dea340019da626fdcbf3d9d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -1.8999996
+      value: -1.8999977
       objectReference: {fileID: 0}
     - target: {fileID: 4055270039469593439, guid: 2582767c2dea340019da626fdcbf3d9d,
         type: 3}
@@ -337,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 4055270039469593439, guid: 2582767c2dea340019da626fdcbf3d9d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.3014
+      value: 6.301401
       objectReference: {fileID: 0}
     - target: {fileID: 4055270039469593439, guid: 2582767c2dea340019da626fdcbf3d9d,
         type: 3}
@@ -533,7 +533,7 @@ MonoBehaviour:
   verticalDoor: {fileID: 7332371108441954968, guid: 3a7009f8be563d34f8f53f8d62deb55c,
     type: 3}
   tele: {fileID: 6817427814813242072, guid: f8d2dcf6201d42d45a15711c30a87732, type: 3}
-  roomAmount: 8
+  roomAmount: 6
   maxRoomWidth: 15
   maxRoomHeight: 15
   minRoomWidth: 6
