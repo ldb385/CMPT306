@@ -9,6 +9,8 @@ public class ResetScore : MonoBehaviour
     {
         // Since you are starting actual map should set score to Zero
         Points.score = 0;
+        GlobalControl.Instance.spookLevel = 0;
+        GlobalControl.Instance.BalloonCount = 3;
     }
 }
     
